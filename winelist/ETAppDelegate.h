@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ETAppDelegate : UIResponder <UIApplicationDelegate>
-
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic,strong) NSString *databaseName;
 @property (nonatomic,strong) NSString *databasePath;

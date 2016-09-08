@@ -10,10 +10,11 @@
 #import "ETViewController.h"
 
 @interface ETAlertView : UIView
-- (id)init:(int)imgWidth imgHeight:(int)imgHeight noOfTimesUsed:(int)noOfTimesUsed;
+- (id)init:(int)imgWidth imgHeight:(int)imgHeight noOfTimesUsed:(int)noOfTimesUsed mvc:(ETViewController*) mvc;
 
 @property (weak, nonatomic) NSTimer * timer;
 @property (nonatomic) int noOfTimesUsed;
 @property (nonatomic) int counter;
 @property (strong, nonatomic) UILabel *label;
+@property (weak, nonatomic) ETViewController* mvc;
 @end

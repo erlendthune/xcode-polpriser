@@ -27,6 +27,11 @@
     NSLog(@"did become active notification");
 }
 
+-(NSString*) GetDatabasePath
+{
+    return self.databasePath;
+}
+
 -(void) createAndCheckDatabase
 {
     BOOL success;

@@ -1,0 +1,745 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8728113A190C5D0A005ABB06 /* FMDBDataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 87281139190C5D0A005ABB06 /* FMDBDataAccess.m */; };
+		8728113D190C5DE2005ABB06 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728113C190C5DE2005ABB06 /* Utility.m */; };
+		87281144191288DF005ABB06 /* ETSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 87281143191288DF005ABB06 /* ETSegmentedControl.m */; };
+		8728115C1914FF53005ABB06 /* ETInternetconnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728115B1914FF53005ABB06 /* ETInternetconnection.m */; };
+		87495548191C3FD800A4E95C /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 87495547191C3FD800A4E95C /* vino.db */; };
+		8749554E191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */; };
+		8749554F191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */; };
+		87495550191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */; };
+		87495551191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */; };
+		87495554191D26EA00A4E95C /* ETHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87495553191D26EA00A4E95C /* ETHelpViewController.m */; };
+		87495555191D26EA00A4E95C /* ETHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87495553191D26EA00A4E95C /* ETHelpViewController.m */; };
+		875740A61BA36406002F0150 /* ETStockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875740A51BA36406002F0150 /* ETStockViewController.m */; };
+		875740A71BA36406002F0150 /* ETStockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875740A51BA36406002F0150 /* ETStockViewController.m */; };
+		875B974319307AB900857C5A /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 87495547191C3FD800A4E95C /* vino.db */; };
+		87E39036191575E000CC728E /* ETAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728114E1912C828005ABB06 /* ETAlertView.m */; };
+		87E39037191575E000CC728E /* ETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF11E3190C511200FFE043 /* ETViewController.m */; };
+		87E39038191575E000CC728E /* ETSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 87281143191288DF005ABB06 /* ETSegmentedControl.m */; };
+		87E39039191575E000CC728E /* ETInternetconnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728115B1914FF53005ABB06 /* ETInternetconnection.m */; };
+		87E3903A191575E000CC728E /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF1208190C513000FFE043 /* FMDatabasePool.m */; };
+		87E3903B191575E000CC728E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF11D6190C511200FFE043 /* main.m */; };
+		87E3903C191575E000CC728E /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF120A190C513000FFE043 /* FMDatabaseQueue.m */; };
+		87E3903D191575E000CC728E /* ETAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF11DA190C511200FFE043 /* ETAppDelegate.m */; };
+		87E3903E191575E000CC728E /* FMDBDataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 87281139190C5D0A005ABB06 /* FMDBDataAccess.m */; };
+		87E3903F191575E000CC728E /* Wine.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF121C190C528300FFE043 /* Wine.m */; };
+		87E39040191575E000CC728E /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728113C190C5DE2005ABB06 /* Utility.m */; };
+		87E39041191575E000CC728E /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF1204190C513000FFE043 /* FMDatabase.m */; };
+		87E39042191575E000CC728E /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF120D190C513000FFE043 /* FMResultSet.m */; };
+		87E39043191575E000CC728E /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF1206190C513000FFE043 /* FMDatabaseAdditions.m */; };
+		87E39045191575E000CC728E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF1213190C51A700FFE043 /* libsqlite3.dylib */; };
+		87E39046191575E000CC728E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CC190C511200FFE043 /* CoreGraphics.framework */; };
+		87E39047191575E000CC728E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CE190C511200FFE043 /* UIKit.framework */; };
+		87E39048191575E000CC728E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CA190C511200FFE043 /* Foundation.framework */; };
+		87E3904A191575E000CC728E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87FF11DF190C511200FFE043 /* Main_iPad.storyboard */; };
+		87E3904C191575E000CC728E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87FF11DC190C511200FFE043 /* Main_iPhone.storyboard */; };
+		87E3904F191575E000CC728E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87FF11D3190C511200FFE043 /* InfoPlist.strings */; };
+		87E3905C1915954A00CC728E /* Images gratis.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87E3905B1915954900CC728E /* Images gratis.xcassets */; };
+		87E76DBE1B5936AF009D3314 /* PolpriserUserGuide.html in Resources */ = {isa = PBXBuildFile; fileRef = 87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */; };
+		87FF11CB190C511200FFE043 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CA190C511200FFE043 /* Foundation.framework */; };
+		87FF11CD190C511200FFE043 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CC190C511200FFE043 /* CoreGraphics.framework */; };
+		87FF11CF190C511200FFE043 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CE190C511200FFE043 /* UIKit.framework */; };
+		87FF11D5190C511200FFE043 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87FF11D3190C511200FFE043 /* InfoPlist.strings */; };
+		87FF11D7190C511200FFE043 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF11D6190C511200FFE043 /* main.m */; };
+		87FF11DB190C511200FFE043 /* ETAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF11DA190C511200FFE043 /* ETAppDelegate.m */; };
+		87FF11DE190C511200FFE043 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87FF11DC190C511200FFE043 /* Main_iPhone.storyboard */; };
+		87FF11E1190C511200FFE043 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87FF11DF190C511200FFE043 /* Main_iPad.storyboard */; };
+		87FF11E4190C511200FFE043 /* ETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF11E3190C511200FFE043 /* ETViewController.m */; };
+		87FF11E6190C511200FFE043 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87FF11E5190C511200FFE043 /* Images.xcassets */; };
+		87FF11ED190C511200FFE043 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11EC190C511200FFE043 /* XCTest.framework */; };
+		87FF11EE190C511200FFE043 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CA190C511200FFE043 /* Foundation.framework */; };
+		87FF11EF190C511200FFE043 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CE190C511200FFE043 /* UIKit.framework */; };
+		87FF11F7190C511200FFE043 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87FF11F5190C511200FFE043 /* InfoPlist.strings */; };
+		87FF11F9190C511200FFE043 /* winelistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF11F8190C511200FFE043 /* winelistTests.m */; };
+		87FF120E190C513000FFE043 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF1204190C513000FFE043 /* FMDatabase.m */; };
+		87FF120F190C513000FFE043 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF1206190C513000FFE043 /* FMDatabaseAdditions.m */; };
+		87FF1210190C513000FFE043 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF1208190C513000FFE043 /* FMDatabasePool.m */; };
+		87FF1211190C513000FFE043 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF120A190C513000FFE043 /* FMDatabaseQueue.m */; };
+		87FF1212190C513000FFE043 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF120D190C513000FFE043 /* FMResultSet.m */; };
+		87FF1214190C51A700FFE043 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF1213190C51A700FFE043 /* libsqlite3.dylib */; };
+		87FF121D190C528300FFE043 /* Wine.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF121C190C528300FFE043 /* Wine.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87FF11F0190C511200FFE043 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87FF11BF190C511200FFE043 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87FF11C6190C511200FFE043;
+			remoteInfo = winelist;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		87281138190C5D0A005ABB06 /* FMDBDataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBDataAccess.h; sourceTree = "<group>"; };
+		87281139190C5D0A005ABB06 /* FMDBDataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBDataAccess.m; sourceTree = "<group>"; };
+		8728113B190C5DE2005ABB06 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utility.h; path = ../Utility.h; sourceTree = "<group>"; };
+		8728113C190C5DE2005ABB06 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utility.m; path = ../Utility.m; sourceTree = "<group>"; };
+		87281142191288DF005ABB06 /* ETSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSegmentedControl.h; sourceTree = "<group>"; };
+		87281143191288DF005ABB06 /* ETSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSegmentedControl.m; sourceTree = "<group>"; };
+		8728114D1912C828005ABB06 /* ETAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETAlertView.h; sourceTree = "<group>"; };
+		8728114E1912C828005ABB06 /* ETAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETAlertView.m; sourceTree = "<group>"; };
+		8728115A1914FF53005ABB06 /* ETInternetconnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETInternetconnection.h; sourceTree = "<group>"; };
+		8728115B1914FF53005ABB06 /* ETInternetconnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETInternetconnection.m; sourceTree = "<group>"; };
+		87495547191C3FD800A4E95C /* vino.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = vino.db; path = ../../../ruby/vino.db; sourceTree = "<group>"; };
+		8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonRefresh_2x.png; sourceTree = "<group>"; };
+		8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonOrganize_2x.png; sourceTree = "<group>"; };
+		87495552191D26EA00A4E95C /* ETHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETHelpViewController.h; sourceTree = "<group>"; };
+		87495553191D26EA00A4E95C /* ETHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETHelpViewController.m; sourceTree = "<group>"; };
+		875740A41BA36406002F0150 /* ETStockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETStockViewController.h; sourceTree = "<group>"; };
+		875740A51BA36406002F0150 /* ETStockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETStockViewController.m; sourceTree = "<group>"; };
+		87E39053191575E000CC728E /* Polpriser Gratis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Polpriser Gratis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87E39054191575E000CC728E /* winelist copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "winelist copy-Info.plist"; path = "/Users/erlendthune/Desktop/XCODE/winelist/winelist copy-Info.plist"; sourceTree = "<absolute>"; };
+		87E390571915844000CC728E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		87E3905A1915846500CC728E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		87E3905B1915954900CC728E /* Images gratis.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images gratis.xcassets"; sourceTree = "<group>"; };
+		87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PolpriserUserGuide.html; sourceTree = "<group>"; };
+		87FF11C7190C511200FFE043 /* Polpriser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polpriser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		87FF11CA190C511200FFE043 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		87FF11CC190C511200FFE043 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		87FF11CE190C511200FFE043 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		87FF11D2190C511200FFE043 /* winelist-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "winelist-Info.plist"; sourceTree = "<group>"; };
+		87FF11D4190C511200FFE043 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		87FF11D6190C511200FFE043 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		87FF11D8190C511200FFE043 /* winelist-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "winelist-Prefix.pch"; sourceTree = "<group>"; };
+		87FF11D9190C511200FFE043 /* ETAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETAppDelegate.h; sourceTree = "<group>"; };
+		87FF11DA190C511200FFE043 /* ETAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETAppDelegate.m; sourceTree = "<group>"; };
+		87FF11E2190C511200FFE043 /* ETViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETViewController.h; sourceTree = "<group>"; };
+		87FF11E3190C511200FFE043 /* ETViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETViewController.m; sourceTree = "<group>"; };
+		87FF11E5190C511200FFE043 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		87FF11EB190C511200FFE043 /* winelistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = winelistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		87FF11EC190C511200FFE043 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		87FF11F4190C511200FFE043 /* winelistTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "winelistTests-Info.plist"; sourceTree = "<group>"; };
+		87FF11F6190C511200FFE043 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		87FF11F8190C511200FFE043 /* winelistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = winelistTests.m; sourceTree = "<group>"; };
+		87FF1203190C513000FFE043 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		87FF1204190C513000FFE043 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		87FF1205190C513000FFE043 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		87FF1206190C513000FFE043 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		87FF1207190C513000FFE043 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		87FF1208190C513000FFE043 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		87FF1209190C513000FFE043 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		87FF120A190C513000FFE043 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		87FF120B190C513000FFE043 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		87FF120C190C513000FFE043 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		87FF120D190C513000FFE043 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		87FF1213190C51A700FFE043 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		87FF121B190C528300FFE043 /* Wine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wine.h; sourceTree = SOURCE_ROOT; };
+		87FF121C190C528300FFE043 /* Wine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wine.m; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		87E39044191575E000CC728E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E39045191575E000CC728E /* libsqlite3.dylib in Frameworks */,
+				87E39046191575E000CC728E /* CoreGraphics.framework in Frameworks */,
+				87E39047191575E000CC728E /* UIKit.framework in Frameworks */,
+				87E39048191575E000CC728E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87FF11C4190C511200FFE043 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87FF1214190C51A700FFE043 /* libsqlite3.dylib in Frameworks */,
+				87FF11CD190C511200FFE043 /* CoreGraphics.framework in Frameworks */,
+				87FF11CF190C511200FFE043 /* UIKit.framework in Frameworks */,
+				87FF11CB190C511200FFE043 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87FF11E8190C511200FFE043 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87FF11ED190C511200FFE043 /* XCTest.framework in Frameworks */,
+				87FF11EF190C511200FFE043 /* UIKit.framework in Frameworks */,
+				87FF11EE190C511200FFE043 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		87FF11BE190C511200FFE043 = {
+			isa = PBXGroup;
+			children = (
+				87FF1202190C511D00FFE043 /* FMDB */,
+				87FF11D0190C511200FFE043 /* winelist */,
+				87FF11F2190C511200FFE043 /* winelistTests */,
+				87FF11C9190C511200FFE043 /* Frameworks */,
+				87FF11C8190C511200FFE043 /* Products */,
+				87E39054191575E000CC728E /* winelist copy-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		87FF11C8190C511200FFE043 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87FF11C7190C511200FFE043 /* Polpriser.app */,
+				87FF11EB190C511200FFE043 /* winelistTests.xctest */,
+				87E39053191575E000CC728E /* Polpriser Gratis.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87FF11C9190C511200FFE043 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87FF1213190C51A700FFE043 /* libsqlite3.dylib */,
+				87FF11CA190C511200FFE043 /* Foundation.framework */,
+				87FF11CC190C511200FFE043 /* CoreGraphics.framework */,
+				87FF11CE190C511200FFE043 /* UIKit.framework */,
+				87FF11EC190C511200FFE043 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		87FF11D0190C511200FFE043 /* winelist */ = {
+			isa = PBXGroup;
+			children = (
+				87E3905B1915954900CC728E /* Images gratis.xcassets */,
+				8728113B190C5DE2005ABB06 /* Utility.h */,
+				8728113C190C5DE2005ABB06 /* Utility.m */,
+				87281138190C5D0A005ABB06 /* FMDBDataAccess.h */,
+				87281139190C5D0A005ABB06 /* FMDBDataAccess.m */,
+				87FF121B190C528300FFE043 /* Wine.h */,
+				87FF121C190C528300FFE043 /* Wine.m */,
+				87FF11D9190C511200FFE043 /* ETAppDelegate.h */,
+				87FF11DA190C511200FFE043 /* ETAppDelegate.m */,
+				87FF11DC190C511200FFE043 /* Main_iPhone.storyboard */,
+				87FF11DF190C511200FFE043 /* Main_iPad.storyboard */,
+				87FF11E2190C511200FFE043 /* ETViewController.h */,
+				87FF11E3190C511200FFE043 /* ETViewController.m */,
+				87FF11E5190C511200FFE043 /* Images.xcassets */,
+				87FF11D1190C511200FFE043 /* Supporting Files */,
+				87281142191288DF005ABB06 /* ETSegmentedControl.h */,
+				87281143191288DF005ABB06 /* ETSegmentedControl.m */,
+				8728114D1912C828005ABB06 /* ETAlertView.h */,
+				8728114E1912C828005ABB06 /* ETAlertView.m */,
+				8728115A1914FF53005ABB06 /* ETInternetconnection.h */,
+				8728115B1914FF53005ABB06 /* ETInternetconnection.m */,
+				87495552191D26EA00A4E95C /* ETHelpViewController.h */,
+				87495553191D26EA00A4E95C /* ETHelpViewController.m */,
+				875740A41BA36406002F0150 /* ETStockViewController.h */,
+				875740A51BA36406002F0150 /* ETStockViewController.m */,
+			);
+			path = winelist;
+			sourceTree = "<group>";
+		};
+		87FF11D1190C511200FFE043 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */,
+				8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */,
+				8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */,
+				87495547191C3FD800A4E95C /* vino.db */,
+				87FF11D2190C511200FFE043 /* winelist-Info.plist */,
+				87FF11D3190C511200FFE043 /* InfoPlist.strings */,
+				87FF11D6190C511200FFE043 /* main.m */,
+				87FF11D8190C511200FFE043 /* winelist-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		87FF11F2190C511200FFE043 /* winelistTests */ = {
+			isa = PBXGroup;
+			children = (
+				87FF11F8190C511200FFE043 /* winelistTests.m */,
+				87FF11F3190C511200FFE043 /* Supporting Files */,
+			);
+			path = winelistTests;
+			sourceTree = "<group>";
+		};
+		87FF11F3190C511200FFE043 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				87FF11F4190C511200FFE043 /* winelistTests-Info.plist */,
+				87FF11F5190C511200FFE043 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		87FF1202190C511D00FFE043 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				87FF1203190C513000FFE043 /* FMDatabase.h */,
+				87FF1204190C513000FFE043 /* FMDatabase.m */,
+				87FF1205190C513000FFE043 /* FMDatabaseAdditions.h */,
+				87FF1206190C513000FFE043 /* FMDatabaseAdditions.m */,
+				87FF1207190C513000FFE043 /* FMDatabasePool.h */,
+				87FF1208190C513000FFE043 /* FMDatabasePool.m */,
+				87FF1209190C513000FFE043 /* FMDatabaseQueue.h */,
+				87FF120A190C513000FFE043 /* FMDatabaseQueue.m */,
+				87FF120B190C513000FFE043 /* FMDB.h */,
+				87FF120C190C513000FFE043 /* FMResultSet.h */,
+				87FF120D190C513000FFE043 /* FMResultSet.m */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		87E39034191575E000CC728E /* Polpriser Gratis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87E39050191575E000CC728E /* Build configuration list for PBXNativeTarget "Polpriser Gratis" */;
+			buildPhases = (
+				87E39035191575E000CC728E /* Sources */,
+				87E39044191575E000CC728E /* Frameworks */,
+				87E39049191575E000CC728E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Polpriser Gratis";
+			productName = winelist;
+			productReference = 87E39053191575E000CC728E /* Polpriser Gratis.app */;
+			productType = "com.apple.product-type.application";
+		};
+		87FF11C6190C511200FFE043 /* Polpriser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87FF11FC190C511200FFE043 /* Build configuration list for PBXNativeTarget "Polpriser" */;
+			buildPhases = (
+				87FF11C3190C511200FFE043 /* Sources */,
+				87FF11C4190C511200FFE043 /* Frameworks */,
+				87FF11C5190C511200FFE043 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Polpriser;
+			productName = winelist;
+			productReference = 87FF11C7190C511200FFE043 /* Polpriser.app */;
+			productType = "com.apple.product-type.application";
+		};
+		87FF11EA190C511200FFE043 /* winelistTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87FF11FF190C511200FFE043 /* Build configuration list for PBXNativeTarget "winelistTests" */;
+			buildPhases = (
+				87FF11E7190C511200FFE043 /* Sources */,
+				87FF11E8190C511200FFE043 /* Frameworks */,
+				87FF11E9190C511200FFE043 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87FF11F1190C511200FFE043 /* PBXTargetDependency */,
+			);
+			name = winelistTests;
+			productName = winelistTests;
+			productReference = 87FF11EB190C511200FFE043 /* winelistTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		87FF11BF190C511200FFE043 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ET;
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Erlend Thune";
+				TargetAttributes = {
+					87FF11EA190C511200FFE043 = {
+						TestTargetID = 87FF11C6190C511200FFE043;
+					};
+				};
+			};
+			buildConfigurationList = 87FF11C2190C511200FFE043 /* Build configuration list for PBXProject "Polet prisliste" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 87FF11BE190C511200FFE043;
+			productRefGroup = 87FF11C8190C511200FFE043 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				87FF11C6190C511200FFE043 /* Polpriser */,
+				87FF11EA190C511200FFE043 /* winelistTests */,
+				87E39034191575E000CC728E /* Polpriser Gratis */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		87E39049191575E000CC728E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				875B974319307AB900857C5A /* vino.db in Resources */,
+				87E3904A191575E000CC728E /* Main_iPad.storyboard in Resources */,
+				87495551191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */,
+				87E3904C191575E000CC728E /* Main_iPhone.storyboard in Resources */,
+				87E3905C1915954A00CC728E /* Images gratis.xcassets in Resources */,
+				87E3904F191575E000CC728E /* InfoPlist.strings in Resources */,
+				8749554F191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87FF11C5190C511200FFE043 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87FF11E1190C511200FFE043 /* Main_iPad.storyboard in Resources */,
+				87FF11E6190C511200FFE043 /* Images.xcassets in Resources */,
+				87FF11DE190C511200FFE043 /* Main_iPhone.storyboard in Resources */,
+				87495548191C3FD800A4E95C /* vino.db in Resources */,
+				87495550191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */,
+				8749554E191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */,
+				87FF11D5190C511200FFE043 /* InfoPlist.strings in Resources */,
+				87E76DBE1B5936AF009D3314 /* PolpriserUserGuide.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87FF11E9190C511200FFE043 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87FF11F7190C511200FFE043 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		87E39035191575E000CC728E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E39036191575E000CC728E /* ETAlertView.m in Sources */,
+				87E39037191575E000CC728E /* ETViewController.m in Sources */,
+				87E39038191575E000CC728E /* ETSegmentedControl.m in Sources */,
+				87E39039191575E000CC728E /* ETInternetconnection.m in Sources */,
+				87E3903A191575E000CC728E /* FMDatabasePool.m in Sources */,
+				87E3903B191575E000CC728E /* main.m in Sources */,
+				87E3903C191575E000CC728E /* FMDatabaseQueue.m in Sources */,
+				87E3903D191575E000CC728E /* ETAppDelegate.m in Sources */,
+				87E3903E191575E000CC728E /* FMDBDataAccess.m in Sources */,
+				87E3903F191575E000CC728E /* Wine.m in Sources */,
+				87E39040191575E000CC728E /* Utility.m in Sources */,
+				87E39041191575E000CC728E /* FMDatabase.m in Sources */,
+				87495555191D26EA00A4E95C /* ETHelpViewController.m in Sources */,
+				87E39042191575E000CC728E /* FMResultSet.m in Sources */,
+				875740A71BA36406002F0150 /* ETStockViewController.m in Sources */,
+				87E39043191575E000CC728E /* FMDatabaseAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87FF11C3190C511200FFE043 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87FF11E4190C511200FFE043 /* ETViewController.m in Sources */,
+				87281144191288DF005ABB06 /* ETSegmentedControl.m in Sources */,
+				8728115C1914FF53005ABB06 /* ETInternetconnection.m in Sources */,
+				875740A61BA36406002F0150 /* ETStockViewController.m in Sources */,
+				87FF1210190C513000FFE043 /* FMDatabasePool.m in Sources */,
+				87FF11D7190C511200FFE043 /* main.m in Sources */,
+				87FF1211190C513000FFE043 /* FMDatabaseQueue.m in Sources */,
+				87FF11DB190C511200FFE043 /* ETAppDelegate.m in Sources */,
+				8728113A190C5D0A005ABB06 /* FMDBDataAccess.m in Sources */,
+				87FF121D190C528300FFE043 /* Wine.m in Sources */,
+				8728113D190C5DE2005ABB06 /* Utility.m in Sources */,
+				87495554191D26EA00A4E95C /* ETHelpViewController.m in Sources */,
+				87FF120E190C513000FFE043 /* FMDatabase.m in Sources */,
+				87FF1212190C513000FFE043 /* FMResultSet.m in Sources */,
+				87FF120F190C513000FFE043 /* FMDatabaseAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87FF11E7190C511200FFE043 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87FF11F9190C511200FFE043 /* winelistTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		87FF11F1190C511200FFE043 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87FF11C6190C511200FFE043 /* Polpriser */;
+			targetProxy = 87FF11F0190C511200FFE043 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		87FF11D3190C511200FFE043 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87FF11D4190C511200FFE043 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		87FF11DC190C511200FFE043 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87E3905A1915846500CC728E /* en */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		87FF11DF190C511200FFE043 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87E390571915844000CC728E /* en */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		87FF11F5190C511200FFE043 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87FF11F6190C511200FFE043 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		87E39051191575E000CC728E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "winelist/winelist-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"GRATIS=1",
+				);
+				INFOPLIST_FILE = "winelist copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				New_Setting = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "Polpriser Gratis";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		87E39052191575E000CC728E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "winelist/winelist-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "GRATIS=1";
+				INFOPLIST_FILE = "winelist copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				New_Setting = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "Polpriser Gratis";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		87FF11FA190C511200FFE043 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		87FF11FB190C511200FFE043 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87FF11FD190C511200FFE043 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "winelist/winelist-Prefix.pch";
+				INFOPLIST_FILE = "winelist/winelist-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				New_Setting = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		87FF11FE190C511200FFE043 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "winelist/winelist-Prefix.pch";
+				INFOPLIST_FILE = "winelist/winelist-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				New_Setting = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		87FF1200190C511200FFE043 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/winelist.app/winelist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "winelist/winelist-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "winelistTests/winelistTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		87FF1201190C511200FFE043 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/winelist.app/winelist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "winelist/winelist-Prefix.pch";
+				INFOPLIST_FILE = "winelistTests/winelistTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		87E39050191575E000CC728E /* Build configuration list for PBXNativeTarget "Polpriser Gratis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E39051191575E000CC728E /* Debug */,
+				87E39052191575E000CC728E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87FF11C2190C511200FFE043 /* Build configuration list for PBXProject "Polet prisliste" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87FF11FA190C511200FFE043 /* Debug */,
+				87FF11FB190C511200FFE043 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87FF11FC190C511200FFE043 /* Build configuration list for PBXNativeTarget "Polpriser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87FF11FD190C511200FFE043 /* Debug */,
+				87FF11FE190C511200FFE043 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87FF11FF190C511200FFE043 /* Build configuration list for PBXNativeTarget "winelistTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87FF1200190C511200FFE043 /* Debug */,
+				87FF1201190C511200FFE043 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 87FF11BF190C511200FFE043 /* Project object */;
+}
