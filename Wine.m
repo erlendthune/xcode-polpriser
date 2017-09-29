@@ -10,7 +10,7 @@
 
 @implementation Wine
 
-@synthesize id,type,name,href,volume,price;
+@synthesize id,type,name,volume,price;
 
 -(NSString *) getName 
 {

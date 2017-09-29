@@ -149,6 +149,7 @@
 
 -(NSString*)CreatePrice:(NSString*)s
 {
+    NSLog(@"Price:%@", s);
     unsigned long dpos = [s length]-2;
     return [NSString stringWithFormat:@"%@,%@", [s substringToIndex:dpos], [s substringFromIndex:dpos]];
 }
@@ -165,7 +166,11 @@
      "5" => "fruktvin",
      "6" => "brennevin",
      "7" => "øl",
-     }
+     "8" => "perlendevin",
+     "9" => "aromatisertvin",
+     "10" => "sider",
+     "11" => "alkoholfritt",
+}
      */
     
     NSMutableString* sVinType;
@@ -194,6 +199,18 @@
         case 7:
             sVinType = [NSMutableString stringWithString:@"Øl"];
             break;
+        case 8:
+            sVinType = [NSMutableString stringWithString:@"Perlende vin"];
+            break;
+        case 9:
+            sVinType = [NSMutableString stringWithString:@"Aromatisert vin"];
+            break;
+        case 10:
+            sVinType = [NSMutableString stringWithString:@"Sider"];
+            break;
+        case 11:
+            sVinType = [NSMutableString stringWithString:@"Alkoholfritt"];
+            break;
         default:
             sVinType = [NSMutableString stringWithString:@""];
             break;
@@ -211,6 +228,10 @@
  "5" => "fruktvin",
  "6" => "brennevin",
  "7" => "øl",
+ "8" => "perlendevin",
+ "9" => "aromatisertvin",
+ "10" => "sider",
+ "11" => "alkoholfritt",
  }
  */
 
@@ -235,8 +256,12 @@
     NSMutableString *Brenn = [NSMutableString stringWithString:@"Brennevin"];
     NSMutableString *Frukt = [NSMutableString stringWithString:@"Fruktvin"];
     NSMutableString *Beer = [NSMutableString stringWithString:@"Øl"];
+    NSMutableString *Perlendevin = [NSMutableString stringWithString:@"Perlende vin"];
+    NSMutableString *Aromatisertvin = [NSMutableString stringWithString:@"Aromatisert vin"];
+    NSMutableString *Sider = [NSMutableString stringWithString:@"Sider"];
+    NSMutableString *Alkoholfritt = [NSMutableString stringWithString:@"Alkoholfritt"];
     
-    NSArray *filterArray = [NSArray arrayWithObjects:Alle,Red,White,Rose,Sterk,Muss,Frukt,Brenn,Beer,nil];
+    NSArray *filterArray = [NSArray arrayWithObjects:Alle,Red,White,Rose,Sterk,Muss,Frukt,Brenn,Beer,Perlendevin,Aromatisertvin,Sider,Alkoholfritt,nil];
     
     for (int i = 0; i < [filterArray count]; i++)
     {
@@ -261,6 +286,10 @@
                             Frukt,
                             Brenn,
                             Beer,
+                            Perlendevin,
+                            Aromatisertvin,
+                            Sider,
+                            Alkoholfritt,
                             nil];
     
 //    [popup showInView:[UIApplication sharedApplication].keyWindow];
@@ -283,7 +312,7 @@
         [self.filterButton setTintColor:[UIColor redColor]];
     }
 
-    if((self.filter == buttonIndex) || (buttonIndex > 8)) // The user pressed cancel or did not change the selection.
+    if((self.filter == buttonIndex) || (buttonIndex > 12)) // The user pressed cancel or did not change the selection.
     {
         return;
     }
@@ -449,7 +478,6 @@
                 wine.id = [results intForColumn:@"id"];
                 wine.type = [results intForColumn:@"type"];
                 wine.name = [results stringForColumn:@"name"];
-                wine.href = [results stringForColumn:@"href"];
                 wine.volume = [results stringForColumn:@"volume"];
                 wine.price = [self CreatePrice:[results stringForColumn:@"price"]];
                 
@@ -525,7 +553,7 @@
     self.internetView.frame = f;
     
     [self.view addSubview:self.internetView];
-    NSString *address = @"http://www.erlendthune.com/vin/vino.txt";
+    NSString *address = @"https://www-erlendthune-com.secure.domeneshop.no/vin/vino.txt";
     [self.internetView UpdateLabelText:@"Sjekker..."];
     
     [self Get:address];
@@ -548,7 +576,7 @@
         {
             if (buttonIndex == 1) {
                 self.downloadState = 1;
-                NSString* address = @"http://www.erlendthune.com/vin/vino.db";
+                NSString* address = @"https://www-erlendthune-com.secure.domeneshop.no/vin/vino.db";
                 [self.internetView UpdateLabelText:@"Laster ned..."];
                 [self Get:address];
             }

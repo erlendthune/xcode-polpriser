@@ -25,6 +25,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="IFq-lu-ehU"/>
                                     <barButtonItem id="UMI-hm-fw8">
                                         <color key="tintColor" red="0.0" green="5.1369033535575964e-05" blue="0.00010614809782605317" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="checkForDatabaseUpdates:" destination="vXZ-lx-hvc" id="VPT-Y8-MjL"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="JEE-aD-nhp"/>
                                     <barButtonItem title="?" id="WBu-zO-6kD">
@@ -32,10 +35,10 @@
                                             <segue destination="3p1-zz-muX" kind="modal" id="PCz-6m-Das"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="q6Q-Hv-y6T"/>
-                                    <barButtonItem systemItem="refresh" id="56G-Ga-Ykq" userLabel="Bar Button Item - Item">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ae4-pl-ICZ"/>
+                                    <barButtonItem systemItem="refresh" id="UBw-Xh-tUy" userLabel="Bar Button Item - Item">
                                         <connections>
-                                            <action selector="checkForDatabaseUpdates:" destination="vXZ-lx-hvc" id="fGR-1Y-E0i"/>
+                                            <action selector="checkForDatabaseUpdates:" destination="vXZ-lx-hvc" id="Qru-Ed-srx"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -72,14 +75,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ehk-en-o6s">
-                                                    <rect key="frame" x="10" y="24" width="37" height="24"/>
+                                                    <rect key="frame" x="0.0" y="24" width="39" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lCW-Vu-rLU">
-                                                    <rect key="frame" x="10" y="48" width="56" height="20"/>
+                                                    <rect key="frame" x="0.0" y="48" width="56" height="20"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
