@@ -16,7 +16,6 @@
 #import "ETInternetconnection.h"
 #import "ETStockViewController.h"
 
-
 @interface ETViewController ()
 
 @end
@@ -43,8 +42,8 @@
     [self GetDatabaseDate];
     self.dateRequestSource = 1;
     self.dbDateButton.tintColor = [UIColor blueColor];
-    [self.dbDateButton setTarget:nil];
-    [self.dbDateButton setAction:nil];
+//    [self.dbDateButton setTarget:nil];
+//    [self.dbDateButton setAction:nil];
 #ifdef GRATIS
     [self UpdateTimesUsedAndDisplayNagScreen];
     //Subscribe to events that application receives. This causes the nag screen to be activated when app is activated.
@@ -356,13 +355,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.searchBar resignFirstResponder];
+/*    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+        // here you go with iOS 7
+ 
+    }
+*/
+    NSLog(@"IOS version: %f", NSFoundationVersionNumber);
+
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.erlendthune.com/vin/forward.php?p=8016101"]];
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.fullWineList count];
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"winecell";
@@ -757,13 +765,11 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showRecipeDetail"]) {
-        NSIndexPath *indexPath = [self.wineTableView indexPathForSelectedRow];
-        ETStockViewController *destViewController = segue.destinationViewController;
-        Wine *wine;
-        wine = [self.fullWineList objectAtIndex:indexPath.row];
-        destViewController.sku = wine.id;
-    }
+    NSIndexPath *indexPath = [self.wineTableView indexPathForSelectedRow];
+    ETStockViewController *destViewController = segue.destinationViewController;
+    Wine *wine;
+    wine = [self.fullWineList objectAtIndex:indexPath.row];
+    destViewController.sku = wine.id;
 }
 
 
