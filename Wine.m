@@ -14,7 +14,7 @@
 
 -(NSString *) getName 
 {
-    return [NSString stringWithFormat:@"%d %@ %@ %@",self.id,self.name, self.volume, self.price];
+    return [NSString stringWithFormat:@"%d %@ %@ %d",self.id,self.name, self.volume, self.price];
 }
 
 @end

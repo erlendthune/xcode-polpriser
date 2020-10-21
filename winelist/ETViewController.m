@@ -11,10 +11,17 @@
 // http://makeappicon.com/
 //http://svg-edit.googlecode.com/svn/branches/stable/editor/svg-editor.html
 
+#define ORDER_BY_NAME 0
+#define ORDER_BY_PRICE 1
+#define ORDER_BY_PRICE_CHANGE 2
+
 #import "ETViewController.h"
+#import "HRMAPHelper.h"
+
 #import "ETAlertView.h"
 #import "ETInternetconnection.h"
 #import "ETStockViewController.h"
+#import "ETHelpViewController.h"
 
 @interface ETViewController ()
 
@@ -22,13 +29,27 @@
 
 @implementation ETViewController
 
+-(void)requestDidFinish:(SKRequest*)request{
+    if([request isKindOfClass:[SKReceiptRefreshRequest class]]){
+        NSLog(@"Found receipt.");
+        [[HRMAPHelper sharedInstance] validateReceipt:self];
+    }
+}
+
+- (void)request:(SKRequest*)request didFailWithError:(NSError *)error{
+    NSLog(@"Could not find receipt. Try to restore purchase.");
+    [[HRMAPHelper sharedInstance] restoreCompletedTransactions];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.buttonTintColor = self.filterButton.tintColor;
-    self.orderByName = true;
+    self.orderBy = ORDER_BY_PRICE;
     self.orderAscending = true;
     self.filter = 1;
+    self.menuButton.title = @"\u2630";
+    self.restorePurchaseStarted = false;
     self.bytesReceived = 0;
     self.activeSegment = 0;
     self.dateRequestSource = 0;
@@ -44,14 +65,177 @@
     self.dbDateButton.tintColor = [UIColor blueColor];
 //    [self.dbDateButton setTarget:nil];
 //    [self.dbDateButton setAction:nil];
-#ifdef GRATIS
-    [self UpdateTimesUsedAndDisplayNagScreen];
+
+    _purchased = [[HRMAPHelper sharedInstance] productPurchased:@"com.erlendthune.polpriser"];
+    
+    if(!_purchased)
+    {
+        [[HRMAPHelper sharedInstance] validateReceipt:self];
+    }
     //Subscribe to events that application receives. This causes the nag screen to be activated when app is activated.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UpdateTimesUsedAndDisplayNagScreen) name:UIApplicationWillEnterForegroundNotification object:nil];
-#else
-    [self performSelectorOnMainThread:@selector(ShowStartupDialog) withObject:nil waitUntilDone:NO];
-#endif
     [self getWines];
+}
+
+- (void)AppNotPurchased
+{
+    if(_restorePurchaseStarted)
+    {
+        [[HRMAPHelper sharedInstance] restoreCompletedTransactions];
+        _restorePurchaseStarted = false;
+    }
+    else
+    {
+        dispatch_async(dispatch_get_main_queue(),^ {
+            [self getPrice];
+        } );
+    }
+}
+
+
+- (void)AppPurchased
+{
+    dispatch_async(dispatch_get_main_queue(),^ {
+        [[HRMAPHelper sharedInstance] storePurchase:@"com.erlendthune.polpriser"];
+    } );
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restorePurchaseFailed:) name:IAPHelperProductRestorePurchaseError object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseFailed:) name:IAPHelperProductPurchasedError object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchasedAlready:) name:IAPHelperProductAlreadyPurchased object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transactionFinished:) name:IAPHelperTransactionFinished object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)getPrice
+{
+    _price = nil;
+    [[HRMAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success)
+        {
+            if([products count])
+            {
+                SKProduct* p = [products objectAtIndex:0]; //We only have one product.
+                if(p)
+                {
+                    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+                    [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+                    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+                    [numberFormatter setLocale:p.priceLocale];
+                    _price = [numberFormatter stringFromNumber:p.price];
+                }
+                else
+                {
+                    NSLog(@"getPrice no product at position 0.");
+                }
+            }
+            else
+            {
+                NSLog(@"getPrice no products.");
+            }
+        }
+        else
+        {
+            NSLog(@"getPrice failed to get products.");
+        }
+        dispatch_async(dispatch_get_main_queue(),^ {
+            [self UpdateTimesUsedAndDisplayNagScreen];
+        } );
+        dispatch_async(dispatch_get_main_queue(),^ {
+            [self GetNotifiedWhenAppEntersForeground];
+        } );
+    }];
+}
+
+- (void)purchase
+{
+    [_activityIndicator startAnimating];
+    [[HRMAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success)
+        {
+            if([products count])
+            {
+                SKProduct* p = [products objectAtIndex:0]; //We only have one product.
+                if(p)
+                {
+                    bool canMakePayments = [[HRMAPHelper sharedInstance] buyProduct:p];
+                    if(!canMakePayments)
+                    {
+                        [self alertMessage:@"Kjøp" s:@"Du har ikke lov til å foreta kjøp."];
+                    }
+                }
+                else
+                {
+                    [self alertMessage:@"Kjøp" s:@"Fant ingenting å kjøpe."];
+                    [_activityIndicator stopAnimating];
+                }
+            }
+            else
+            {
+                [self alertMessage:@"Kjøp" s:@"Fant ingenting å kjøpe."];
+                [_activityIndicator stopAnimating];
+            }
+        }
+        else
+        {
+            [self alertMessage:@"Kjøp" s:@"Kunne ikke koble til App store."];
+            [_activityIndicator stopAnimating];
+        }
+    }];
+}
+
+- (void)restoreReceipt
+{
+    SKReceiptRefreshRequest* request = [[SKReceiptRefreshRequest alloc] initWithReceiptProperties:nil];
+    request.delegate = self;
+    [request start];
+    
+}
+
+- (void)restorePurchase
+{
+    [_activityIndicator startAnimating];
+    
+    _restorePurchaseStarted = true;
+    
+    //First try to restore the receipt. If it fails it will try to restore the purchase.
+    [self restoreReceipt];
+}
+
+- (void)productPurchased:(NSNotification *)notification {
+    NSLog(@"Product purchased. Remove buy buttons");
+    _purchased = true;
+    [_activityIndicator stopAnimating];
+    [self alertMessage:@"Informasjon" s:@"Takk! App'en er nå låst opp."];
+}
+
+- (void)restorePurchaseFailed:(NSNotification *)notification
+{
+    [self alertMessage:@"Informasjon" s:@"Klarte ikke å koble til App store."];
+    [_activityIndicator stopAnimating];
+}
+
+- (void)purchasedAlready:(NSNotification *)notification
+{
+    [self alertMessage:@"Informasjon" s:@"Du har allerede kjøpt app'en."];
+}
+
+- (void)purchaseFailed:(NSNotification *)notification
+{
+    [self alertMessage:@"Informasjon" s:@"Klarte ikke å koble til App store."];
+    [_activityIndicator stopAnimating];
+}
+- (void)transactionFinished:(NSNotification *)notification
+{
+    if(!_purchased)
+    {
+        [self alertMessage:@"Informasjon" s:@"Du har ikke kjøpt app'en."];
+    }
+    [_activityIndicator stopAnimating];
 }
 
 //From http://stackoverflow.com/questions/2705865/change-uisearchbar-keyboard-search-button-title
@@ -74,15 +258,17 @@
     }
 }
 
+-(void) GetNotifiedWhenAppEntersForeground
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UpdateTimesUsedAndDisplayNagScreen) name:UIApplicationWillEnterForegroundNotification object:nil];
+}
 
-
-/////////////////////////////
-//Should be defined out in pay version BEGIN
-/////////////////////////////
-
-#ifdef GRATIS
 -(void)UpdateTimesUsedAndDisplayNagScreen
 {
+    if(_purchased)
+    {
+        return;
+    }
     if(self.nagscreenOnDisplay)
     {
         return;
@@ -96,10 +282,12 @@
         {
             self.usageCounter = [results intForColumn:@"noOfTimesUsed"] + 1;
             
+            NSLog(@"Times used:%d", self.usageCounter);
             if(self.usageCounter > 10)
             {
                 dispatch_async(dispatch_get_main_queue(),^ {
-                    [self DisplayAlertView:self.usageCounter];
+                    bool nag = true;
+                    [self DisplayAlertView:self.usageCounter nag:nag];
                 } );
             }
             else
@@ -121,35 +309,33 @@
     }];
 }
 
-- (void) DisplayAlertView:(int)noOfTimesUsed
+- (void) DisplayAlertView:(int)noOfTimesUsed  nag:(bool)nag
 {
     // Create the view
     
     int maxWidth = [[UIScreen mainScreen ]applicationFrame].size.width;
     int maxHeight = [[UIScreen mainScreen ]applicationFrame].size.height;
     int imgWidth = maxWidth-20;
-    int imgHeight = maxHeight/3;
+    int imgHeight = maxHeight-maxHeight/8;
     
-    self.alertView = [[ETAlertView alloc] init:imgWidth imgHeight:imgHeight noOfTimesUsed:noOfTimesUsed mvc:self];
+    self.alertView = [[ETAlertView alloc] init:imgWidth imgHeight:imgHeight noOfTimesUsed:noOfTimesUsed mvc:self nag:nag];
     
     CGRect f = self.alertView.frame;
     f.origin.x = 10;
-    f.origin.y = imgHeight;
+    f.origin.y = maxHeight/8;
     self.alertView.frame = f;
     
 //    self.view.userInteractionEnabled=NO;
     [self.view addSubview:self.alertView];
 }
-/////////////////////////////
-//Should be defined out in pay version END
-/////////////////////////////
 
-#endif
 
--(NSString*)CreatePrice:(NSString*)s
+-(NSString*)CreatePrice:(int)iPrice
 {
-    NSLog(@"Price:%@", s);
+    NSString *s = [NSString stringWithFormat:@"%d", iPrice];
+//    NSLog(@"Price:%@", s);
     unsigned long dpos = [s length]-2;
+    
     return [NSString stringWithFormat:@"%@,%@", [s substringToIndex:dpos], [s substringFromIndex:dpos]];
 }
 
@@ -244,6 +430,7 @@
     [self ShowFilterDialogEx];
 }
 
+/*
 -(void)ShowFilterDialogEx
 {
     NSMutableString *Alle = [NSMutableString stringWithString:@"Alle varer"];
@@ -294,13 +481,68 @@
 //    [popup showInView:[UIApplication sharedApplication].keyWindow];
     [popup showInView:self.view];
 }
+*/
 
-- (IBAction)ShowFilterDialog:(id)sender {
-    [self ShowFilterDialogEx];
+-(void)ShowFilterDialogEx
+{
+    NSMutableString *Alle = [NSMutableString stringWithString:@"Alle varer"];
+    NSMutableString *Red = [NSMutableString stringWithString:@"Rødvin"];
+    NSMutableString *White = [NSMutableString stringWithString:@"Hvitvin"];
+    NSMutableString *Rose = [NSMutableString stringWithString:@"Rosévin"];
+    NSMutableString *Muss = [NSMutableString stringWithString:@"Musserende vin"];
+    NSMutableString *Sterk = [NSMutableString stringWithString:@"Sterkvin"];
+    NSMutableString *Brenn = [NSMutableString stringWithString:@"Brennevin"];
+    NSMutableString *Frukt = [NSMutableString stringWithString:@"Fruktvin"];
+    NSMutableString *Beer = [NSMutableString stringWithString:@"Øl"];
+    NSMutableString *Perlendevin = [NSMutableString stringWithString:@"Perlende vin"];
+    NSMutableString *Aromatisertvin = [NSMutableString stringWithString:@"Aromatisert vin"];
+    NSMutableString *Sider = [NSMutableString stringWithString:@"Sider"];
+    NSMutableString *Alkoholfritt = [NSMutableString stringWithString:@"Alkoholfritt"];
+    
+    NSArray *filterArray = [NSArray arrayWithObjects:
+        Alle,
+        Red,White,Rose,
+        Sterk,Muss,Frukt,Brenn,
+        Beer,Perlendevin,Aromatisertvin,
+        Sider,Alkoholfritt,nil];
+    
+    UIAlertController* alert = [
+                                UIAlertController alertControllerWithTitle:nil
+                                message:nil
+                                preferredStyle:UIAlertControllerStyleActionSheet];
+
+    for (int i = 0; i < [filterArray count]; i++)
+    {
+        id object = [filterArray objectAtIndex:i];
+        if(i == self.filter)
+        {
+            [object insertString:@"✔ " atIndex:0];
+        }
+        else
+        {
+            [object insertString:@"  " atIndex:0];
+        }
+        UIAlertAction* filterAction = [UIAlertAction actionWithTitle:filterArray[i] style:UIAlertActionStyleDefault
+            handler:^(UIAlertAction * action) {
+                [self filterSelected:i];
+            }];
+        
+        [alert addAction:filterAction];
+    }
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Avbryt" style:UIAlertActionStyleCancel
+     handler:nil
+   ];
+    [alert addAction:cancelAction];
+
+    alert.popoverPresentationController.barButtonItem = _filterButton;
+    alert.popoverPresentationController.sourceView = self.view;
+    
+    [self presentViewController:alert animated:YES
+                     completion:nil];
+
 }
 
-
-- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)filterSelected:(int)buttonIndex
 {
     if(buttonIndex == 0)
     {
@@ -310,13 +552,67 @@
     {
         [self.filterButton setTintColor:[UIColor redColor]];
     }
-
+    
     if((self.filter == buttonIndex) || (buttonIndex > 12)) // The user pressed cancel or did not change the selection.
     {
         return;
     }
     self.filter = (int)buttonIndex;
     [self getWines];
+}
+
+- (IBAction)ShowFilterDialog:(id)sender {
+    [self ShowFilterDialogEx];
+}
+- (IBAction)showMenu:(id)sender {
+    [self ShowMenuEx];
+}
+
+-(void)ShowMenuEx
+{
+    UIAlertController* alert = [
+                                UIAlertController alertControllerWithTitle:nil
+                                message:nil
+                                preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction* helpAction = [UIAlertAction actionWithTitle:@"Hjelp" style:UIAlertActionStyleDefault
+         handler:^(UIAlertAction * action) {
+             ETHelpViewController *helpController = [self.storyboard instantiateViewControllerWithIdentifier:@"helpViewController"];
+             helpController.modalPresentationStyle = UIModalPresentationFullScreen;
+             [self presentViewController:helpController animated:YES completion:nil];
+         }];
+    
+    [alert addAction:helpAction];
+
+    UIAlertAction* databaseAction = [UIAlertAction actionWithTitle:@"Database" style:UIAlertActionStyleDefault
+        handler:^(UIAlertAction * action) {
+            [self GetDatabaseDate];
+   }];
+    
+    [alert addAction:databaseAction];
+
+    UIAlertAction* buyAction = [UIAlertAction actionWithTitle:@"Kjøp" style:UIAlertActionStyleDefault
+       handler:^(UIAlertAction * action) {
+           [self DisplayAlertView:self.usageCounter nag:false];
+       }];
+    if(_purchased)
+    {
+        buyAction.enabled = NO;
+    }
+    [alert addAction:buyAction];
+
+
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Avbryt" style:UIAlertActionStyleCancel
+         handler:nil
+       ];
+    [alert addAction:cancelAction];
+
+    alert.popoverPresentationController.barButtonItem = _menuButton;
+    alert.popoverPresentationController.sourceView = self.view;
+    
+    [self presentViewController:alert animated:YES
+                     completion:nil];
+    
 }
 
 -(void)CreateBusyIndicator
@@ -340,11 +636,15 @@
     
     if(newSegment == 0)
     {
-        self.orderByName = true;
+        self.orderBy = ORDER_BY_PRICE;
+    }
+    else if(newSegment == 1)
+    {
+        self.orderBy = ORDER_BY_PRICE;
     }
     else
     {
-        self.orderByName = false;
+        self.orderBy = ORDER_BY_PRICE_CHANGE;
     }
     self.activeSegment = newSegment;
     [self getWines];
@@ -360,10 +660,10 @@
  
     }
 */
-    NSLog(@"IOS version: %f", NSFoundationVersionNumber);
+//    NSLog(@"IOS version: %f", NSFoundationVersionNumber);
 
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.erlendthune.com/vin/forward.php?p=8016101"]];
-
+/*    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.erlendthune.com/vin/forward.php?p=8016101"]];
+*/
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -377,6 +677,10 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    if(cell == nil) {
+        NSLog(@"Cell is null");
+    }
+    
     long i = [indexPath row];
     
     Wine *wine;
@@ -385,10 +689,60 @@
     wine = [self.fullWineList objectAtIndex:i];
     cell.textLabel.text = wine.name;
     
+//    NSLog(@"%@", wine.name);
     NSString *sVinType = [self GetWineTypeAsString:wine.type];
 
-    NSString *s = [NSString stringWithFormat:@"%@ kr.%@ %@", sVinType, wine.price, wine.volume];
-    cell.detailTextLabel.text = s;
+    NSMutableAttributedString *s;
+
+    NSString *price = [self CreatePrice:wine.price];
+    NSString *oldprice = [self CreatePrice:wine.oldprice];
+
+    if(wine.price == wine.oldprice) {
+        NSString* stmp1 = [NSString stringWithFormat:@"%@ kr.%@ %@", sVinType, price, wine.volume];
+        s = [[NSMutableAttributedString alloc] initWithString:stmp1];
+    } else {
+        NSMutableAttributedString *s2;
+        NSMutableAttributedString *s3;
+        NSMutableAttributedString *s4;
+
+        NSString* stmp1 = [NSString stringWithFormat:@"%@ ", sVinType];
+        NSString* stmp2 = [NSString stringWithFormat:@"kr.%@ ", oldprice];
+        NSString* stmp3 = [NSString stringWithFormat:@"kr.%@ %.1f%% ", price, wine.pricechange];
+        NSString* stmp4 = [NSString stringWithFormat:@"%@", wine.volume];
+
+        s = [[NSMutableAttributedString alloc] initWithString:stmp1];
+
+        UIColor *oldPriceColor = [UIColor redColor];
+        //https://briangrinstead.com/blog/ios-uicolor-picker/
+        UIColor *newPriceColor = [UIColor colorWithRed:0.15 green:0.31 blue:0.07 alpha:1.0];
+
+        if(wine.price > wine.oldprice) {
+            oldPriceColor = [UIColor colorWithRed:0.15 green:0.31 blue:0.07 alpha:1.0];
+            newPriceColor = [UIColor redColor];
+        }
+        s2 = [[NSMutableAttributedString alloc] initWithString:stmp2 attributes:@{NSForegroundColorAttributeName:oldPriceColor}];
+        
+        [s2 addAttribute:NSBaselineOffsetAttributeName
+            value:[NSNumber numberWithInteger: NSUnderlineStyleNone]
+            range:NSMakeRange(0,s2.length)];
+        [s2 addAttribute:NSStrikethroughStyleAttributeName
+            value:[NSNumber numberWithInteger: NSUnderlineStyleDouble]
+            range:NSMakeRange(0,s2.length)];
+        
+        s3 = [[NSMutableAttributedString alloc] initWithString:stmp3
+                attributes:@{NSForegroundColorAttributeName:newPriceColor}];
+        
+        UIFont* boldFont = [UIFont boldSystemFontOfSize:[UIFont systemFontSize]];
+        
+        [s3 addAttribute:NSFontAttributeName value:boldFont range:NSMakeRange(0,s3.length)];
+        
+        s4 = [[NSMutableAttributedString alloc] initWithString:stmp4];
+
+        [s appendAttributedString:s2];
+        [s appendAttributedString:s3];
+        [s appendAttributedString:s4];
+    }
+    cell.detailTextLabel.attributedText = s;
     return cell;
 }
 
@@ -432,13 +786,17 @@
         [searchString appendFormat: @" type=%d", self.filter-1]; //-1 because 0 means all types in UI.
     }
     
-    if(self.orderByName)
+    if(self.orderBy == ORDER_BY_NAME)
     {
         [searchString appendString: @" ORDER BY name"];
     }
-    else
+    else if(self.orderBy == ORDER_BY_PRICE)
     {
         [searchString appendString: @" ORDER BY price"];
+    }
+    else
+    {
+        [searchString appendString: @" ORDER BY pricechange"];
     }
     if(self.orderAscending)
     {
@@ -487,8 +845,10 @@
                 wine.type = [results intForColumn:@"type"];
                 wine.name = [results stringForColumn:@"name"];
                 wine.volume = [results stringForColumn:@"volume"];
-                wine.price = [self CreatePrice:[results stringForColumn:@"price"]];
-                
+                wine.price = [results intForColumn:@"price"];
+                wine.oldprice = [results intForColumn:@"oldprice"];
+                wine.pricechange = [results doubleForColumn:@"pricechange"];
+
                 [arr addObject:wine];
             }
             [results close];
@@ -561,7 +921,7 @@
     self.internetView.frame = f;
     
     [self.view addSubview:self.internetView];
-    NSString *address = @"https://www-erlendthune-com.secure.domeneshop.no/vin/vino.txt";
+    NSString *address = @"https://www.erlendthune.com/vin/vino.txt";
     [self.internetView UpdateLabelText:@"Sjekker..."];
     
     [self Get:address];
@@ -584,7 +944,7 @@
         {
             if (buttonIndex == 1) {
                 self.downloadState = 1;
-                NSString* address = @"https://www-erlendthune-com.secure.domeneshop.no/vin/vino.db";
+                NSString* address = @"https://www.erlendthune.com/vin/vino.db";
                 [self.internetView UpdateLabelText:@"Laster ned..."];
                 [self Get:address];
             }
@@ -645,6 +1005,7 @@
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
 //            [dateFormat setDateFormat:@"dd. MMM yyyy"];
             [dateFormat setDateStyle:NSDateFormatterMediumStyle];
+            dateFormat.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"nb_NO"];
             NSString *newDate = [dateFormat stringFromDate:newdbdate];
             NSString *currentDate = [dateFormat stringFromDate:currentdbdate];
 
@@ -652,7 +1013,7 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Database"
                                                             message:msg
                                                            delegate:self
-                                                  cancelButtonTitle:@"Avbryt"
+                                                  cancelButtonTitle:@"Nei"
                                                   otherButtonTitles:@"Ja", nil];
             alert.tag = 2;
             [alert show];
@@ -701,6 +1062,7 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
 //    [dateFormat setDateFormat:@"dd. MMM yyyy"];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
+    dateFormat.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"nb_NO"];
     NSString *theDate = [dateFormat stringFromDate:dbdate];
     if(self.dateRequestSource == 0)
     {
@@ -714,7 +1076,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Database"
                                                         message:msg
                                                        delegate:self
-                                              cancelButtonTitle:@"Avbryt"
+                                              cancelButtonTitle:@"Nei"
                                               otherButtonTitles:@"Ja", nil];
         alert.tag = 1;
         [alert show];
@@ -765,11 +1127,15 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSIndexPath *indexPath = [self.wineTableView indexPathForSelectedRow];
-    ETStockViewController *destViewController = segue.destinationViewController;
-    Wine *wine;
-    wine = [self.fullWineList objectAtIndex:indexPath.row];
-    destViewController.sku = wine.id;
+/*    if([segue.identifier  isEqual: @"WineDetails"])
+    {
+        NSIndexPath *indexPath = [self.wineTableView indexPathForSelectedRow];
+        ETStockViewController *destViewController = segue.destinationViewController;
+        Wine *wine;
+        wine = [self.fullWineList objectAtIndex:indexPath.row];
+        destViewController.sku = wine.id;
+    }
+ */
 }
 
 

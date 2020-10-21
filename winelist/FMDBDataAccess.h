@@ -18,6 +18,4 @@
     
 }
 
--(NSMutableArray *) getWines;
-
 @end

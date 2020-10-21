@@ -24,7 +24,7 @@
 {
     [super viewDidLoad];
 //    NSString *fullURL = @"https://apple.com";
-    NSString *fullURL = [NSString stringWithFormat:@"https://www.vinmonopolet.no/vmpSite/p/%d",_sku];
+    NSString *fullURL = [NSString stringWithFormat:@"https://www.erlendthune.com/vin/forward.php?p=%d",_sku];
     NSURL *url = [NSURL URLWithString:fullURL];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [self.stockWebView loadRequest:requestObj];

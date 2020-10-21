@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <StoreKit/StoreKit.h>
 #import "FMDataBaseQueue.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
@@ -16,8 +17,12 @@
 @class ETAlertView;
 @class ETInternetconnection;
 
-@interface ETViewController : UIViewController<UIActionSheetDelegate, NSURLConnectionDelegate>
+@interface ETViewController : UIViewController<UIActionSheetDelegate, NSURLConnectionDelegate,  SKRequestDelegate>
 -(void)ShowStartupDialog;
+- (void)purchase;
+- (void)restorePurchase;
+- (void) AppNotPurchased;
+- (void) AppPurchased;
 
 @property (nonatomic,strong) NSMutableArray *fullWineList;
 //@property (strong, nonatomic) FMDBDataAccess *db;
@@ -31,17 +36,22 @@
 @property (nonatomic) bool orderAscending;
 @property (nonatomic) bool nagscreenOnDisplay;
 @property (nonatomic) bool filterMenuHasBeenDisplayed;
-@property (nonatomic) bool orderByName;
+@property (nonatomic) int orderBy;
 @property (nonatomic) long bytesReceived;
 @property (nonatomic) long activeSegment;
 @property (nonatomic) int filter;
+@property (weak, nonatomic) IBOutlet UIView *nagView;
 @property (nonatomic) int usageCounter;
 @property (nonatomic) int downloadState;
 @property (nonatomic) int dateRequestSource;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (nonatomic) NSTimeInterval databasedate;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *filterButton;
 @property (strong, nonatomic) UIColor *buttonTintColor;
 @property (strong, nonatomic) NSMutableData *responseData;
+@property (nonatomic, strong) NSString   *price;
+@property bool purchased;
+@property bool restorePurchaseStarted;
 
 @property (strong, nonatomic) IBOutlet ETAlertView *alertView;
 @property (strong, nonatomic) IBOutlet ETInternetconnection *internetView;
