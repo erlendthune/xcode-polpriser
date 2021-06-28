@@ -11,6 +11,7 @@
 		8728113D190C5DE2005ABB06 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728113C190C5DE2005ABB06 /* Utility.m */; };
 		87281144191288DF005ABB06 /* ETSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 87281143191288DF005ABB06 /* ETSegmentedControl.m */; };
 		8728115C1914FF53005ABB06 /* ETInternetconnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728115B1914FF53005ABB06 /* ETInternetconnection.m */; };
+		87397B902683CDC9008403E3 /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 87397B8F2683CDC9008403E3 /* vino.db */; };
 		8749554E191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */; };
 		8749554F191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */; };
 		87495550191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */; };
@@ -95,6 +96,7 @@
 		8728114E1912C828005ABB06 /* ETAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETAlertView.m; sourceTree = "<group>"; };
 		8728115A1914FF53005ABB06 /* ETInternetconnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETInternetconnection.h; sourceTree = "<group>"; };
 		8728115B1914FF53005ABB06 /* ETInternetconnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETInternetconnection.m; sourceTree = "<group>"; };
+		87397B8F2683CDC9008403E3 /* vino.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = vino.db; path = ../../polpriser/priser/priser23062021/vino.db; sourceTree = "<group>"; };
 		8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonRefresh_2x.png; sourceTree = "<group>"; };
 		8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonOrganize_2x.png; sourceTree = "<group>"; };
 		87495552191D26EA00A4E95C /* ETHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETHelpViewController.h; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		87FF11D1190C511200FFE043 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				87397B8F2683CDC9008403E3 /* vino.db */,
 				87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */,
 				8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */,
 				8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */,
@@ -439,6 +442,7 @@
 				87495550191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */,
 				8749554E191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */,
 				87FF11D5190C511200FFE043 /* InfoPlist.strings in Resources */,
+				87397B902683CDC9008403E3 /* vino.db in Resources */,
 				87E76DBE1B5936AF009D3314 /* PolpriserUserGuide.html in Resources */,
 				87D5AFDE1FE85C9600DC5441 /* vino.db in Resources */,
 			);
