@@ -13,7 +13,7 @@
 
 #define ORDER_BY_NAME 0
 #define ORDER_BY_PRICE 1
-#define ORDER_BY_PRICE_CHANGE 2
+#define ORDER_BY_PRICE_PER_VOLUME_UNIT 2
 
 #import "ETViewController.h"
 #import "HRMAPHelper.h"
@@ -330,12 +330,10 @@
 }
 
 
--(NSString*)CreatePrice:(int)iPrice
+-(NSString*)CreatePrice:(NSString*)s
 {
-    NSString *s = [NSString stringWithFormat:@"%d", iPrice];
-//    NSLog(@"Price:%@", s);
+    NSLog(@"Price:%@", s);
     unsigned long dpos = [s length]-2;
-    
     return [NSString stringWithFormat:@"%@,%@", [s substringToIndex:dpos], [s substringFromIndex:dpos]];
 }
 
@@ -644,7 +642,7 @@
     }
     else
     {
-        self.orderBy = ORDER_BY_PRICE_CHANGE;
+        self.orderBy = ORDER_BY_PRICE_PER_VOLUME_UNIT;
     }
     self.activeSegment = newSegment;
     [self getWines];
@@ -677,10 +675,6 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if(cell == nil) {
-        NSLog(@"Cell is null");
-    }
-    
     long i = [indexPath row];
     
     Wine *wine;
@@ -689,68 +683,25 @@
     wine = [self.fullWineList objectAtIndex:i];
     cell.textLabel.text = wine.name;
     
-//    NSLog(@"%@", wine.name);
     NSString *sVinType = [self GetWineTypeAsString:wine.type];
 
-    NSMutableAttributedString *s;
-
-    NSString *price = [self CreatePrice:wine.price];
-    NSString *oldprice = [self CreatePrice:wine.oldprice];
-
-    if(wine.price == wine.oldprice) {
-        NSString* stmp1 = [NSString stringWithFormat:@"%@ kr.%@ %@", sVinType, price, wine.volume];
-        s = [[NSMutableAttributedString alloc] initWithString:stmp1];
-    } else {
-        NSMutableAttributedString *s2;
-        NSMutableAttributedString *s3;
-        NSMutableAttributedString *s4;
-
-        NSString* stmp1 = [NSString stringWithFormat:@"%@ ", sVinType];
-        NSString* stmp2 = [NSString stringWithFormat:@"kr.%@ ", oldprice];
-        NSString* stmp3 = [NSString stringWithFormat:@"kr.%@ %.1f%% ", price, wine.pricechange];
-        NSString* stmp4 = [NSString stringWithFormat:@"%@", wine.volume];
-
-        s = [[NSMutableAttributedString alloc] initWithString:stmp1];
-
-        UIColor *oldPriceColor = [UIColor redColor];
-        //https://briangrinstead.com/blog/ios-uicolor-picker/
-        UIColor *newPriceColor = [UIColor colorWithRed:0.15 green:0.31 blue:0.07 alpha:1.0];
-
-        if(wine.price > wine.oldprice) {
-            oldPriceColor = [UIColor colorWithRed:0.15 green:0.31 blue:0.07 alpha:1.0];
-            newPriceColor = [UIColor redColor];
-        }
-        s2 = [[NSMutableAttributedString alloc] initWithString:stmp2 attributes:@{NSForegroundColorAttributeName:oldPriceColor}];
-        
-        [s2 addAttribute:NSBaselineOffsetAttributeName
-            value:[NSNumber numberWithInteger: NSUnderlineStyleNone]
-            range:NSMakeRange(0,s2.length)];
-        [s2 addAttribute:NSStrikethroughStyleAttributeName
-            value:[NSNumber numberWithInteger: NSUnderlineStyleDouble]
-            range:NSMakeRange(0,s2.length)];
-        
-        s3 = [[NSMutableAttributedString alloc] initWithString:stmp3
-                attributes:@{NSForegroundColorAttributeName:newPriceColor}];
-        
-        UIFont* boldFont = [UIFont boldSystemFontOfSize:[UIFont systemFontSize]];
-        
-        [s3 addAttribute:NSFontAttributeName value:boldFont range:NSMakeRange(0,s3.length)];
-        
-        s4 = [[NSMutableAttributedString alloc] initWithString:stmp4];
-
-        [s appendAttributedString:s2];
-        [s appendAttributedString:s3];
-        [s appendAttributedString:s4];
-    }
-    cell.detailTextLabel.attributedText = s;
+    NSString *s = [NSString stringWithFormat:@"%@ kr.%@ %@", sVinType, wine.price, wine.volume];
+    cell.detailTextLabel.text = s;
     return cell;
 }
 
 - (NSMutableString*) GetSearchString
 {
     NSMutableString *searchString;
-    searchString = [NSMutableString stringWithFormat:@"SELECT * FROM vino"];
-
+    searchString = [NSMutableString stringWithFormat:@"SELECT *"];
+    
+    if(self.orderBy == ORDER_BY_PRICE_PER_VOLUME_UNIT)
+    {
+        [searchString appendString:@", ROUND(price / CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL)) AS price_per_volume"];
+    }
+    
+    [searchString appendString:@" FROM vino"];
+         
     NSString* ss = [[self searchBar] text];
     bool bFirst = true;
     if ([ss length] != 0)
@@ -796,7 +747,7 @@
     }
     else
     {
-        [searchString appendString: @" ORDER BY pricechange"];
+        [searchString appendString: @" ORDER BY price_per_volume"];
     }
     if(self.orderAscending)
     {
@@ -845,9 +796,7 @@
                 wine.type = [results intForColumn:@"type"];
                 wine.name = [results stringForColumn:@"name"];
                 wine.volume = [results stringForColumn:@"volume"];
-                wine.price = [results intForColumn:@"price"];
-                wine.oldprice = [results intForColumn:@"oldprice"];
-                wine.pricechange = [results doubleForColumn:@"pricechange"];
+                wine.price = [self CreatePrice:[results stringForColumn:@"price"]];
 
                 [arr addObject:wine];
             }

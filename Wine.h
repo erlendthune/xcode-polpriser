@@ -16,10 +16,7 @@
 @property (nonatomic,assign) int id;
 @property (nonatomic,assign) int type;
 @property (nonatomic,strong) NSString *name;
-@property (nonatomic,strong) NSString *href;
 @property (nonatomic,strong) NSString *volume;
-@property (nonatomic,assign) int price;
-@property (nonatomic,assign) int oldprice;
-@property (nonatomic,assign) float pricechange;
+@property (nonatomic,strong) NSString *price;
 
 @end
