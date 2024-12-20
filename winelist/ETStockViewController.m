@@ -13,7 +13,9 @@
 @end
 
 @implementation ETStockViewController
-
+- (IBAction)vinDone:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -21,14 +23,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *thePath = [NSString stringWithFormat:@"%@?ShowShopsWithProdInStock=true&sku=%d&fylke_id=*",
-                         _url,_sku];
-    
-    
-    if (thePath)
-    {
-        [self.stockWebView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:thePath isDirectory:NO]]];
-    }
+//    NSString *fullURL = @"https://apple.com";
+    NSString *fullURL = [NSString stringWithFormat:@"https://www.erlendthune.com/vin/forward.php?p=%d",_sku];
+    NSURL *url = [NSURL URLWithString:fullURL];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    [self.stockWebView loadRequest:requestObj];
 }
 
 #pragma mark - Navigation

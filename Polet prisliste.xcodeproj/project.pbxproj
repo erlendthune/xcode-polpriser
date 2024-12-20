@@ -11,6 +11,7 @@
 		8728113D190C5DE2005ABB06 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728113C190C5DE2005ABB06 /* Utility.m */; };
 		87281144191288DF005ABB06 /* ETSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 87281143191288DF005ABB06 /* ETSegmentedControl.m */; };
 		8728115C1914FF53005ABB06 /* ETInternetconnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728115B1914FF53005ABB06 /* ETInternetconnection.m */; };
+		87397B902683CDC9008403E3 /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 87397B8F2683CDC9008403E3 /* vino.db */; };
 		8749554E191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */; };
 		8749554F191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */; };
 		87495550191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */; };
@@ -19,10 +20,15 @@
 		87495555191D26EA00A4E95C /* ETHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87495553191D26EA00A4E95C /* ETHelpViewController.m */; };
 		875740A61BA36406002F0150 /* ETStockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875740A51BA36406002F0150 /* ETStockViewController.m */; };
 		875740A71BA36406002F0150 /* ETStockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875740A51BA36406002F0150 /* ETStockViewController.m */; };
+		877D084D1FF63742008EC131 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 877D084C1FF63742008EC131 /* Security.framework */; };
 		877DF6CC1D9D9F22000CD2CC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 877DF6CB1D9D9F22000CD2CC /* libsqlite3.tbd */; };
-		877DF6CD1D9D9FD7000CD2CC /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 87D5733F1D821D2E00CCD362 /* vino.db */; };
+		87A420EA1FF37DB3009CF41A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A420E81FF37DB2009CF41A /* IAPHelper.m */; };
+		87A420EB1FF37FE4009CF41A /* ETAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728114E1912C828005ABB06 /* ETAlertView.m */; };
+		87A420EE1FF3828D009CF41A /* HRMAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A420EC1FF3828D009CF41A /* HRMAPHelper.m */; };
+		87A420F01FF4CCEE009CF41A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A420EF1FF4CCEE009CF41A /* StoreKit.framework */; };
 		87D5733E1D820B6900CCD362 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D5733D1D820B6900CCD362 /* libsqlite3.dylib */; };
-		87D573401D821D2E00CCD362 /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 87D5733F1D821D2E00CCD362 /* vino.db */; };
+		87D5AFDE1FE85C9600DC5441 /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 87D5AFDD1FE85C9500DC5441 /* vino.db */; };
+		87D5AFDF1FE85C9600DC5441 /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 87D5AFDD1FE85C9500DC5441 /* vino.db */; };
 		87E39036191575E000CC728E /* ETAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728114E1912C828005ABB06 /* ETAlertView.m */; };
 		87E39037191575E000CC728E /* ETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF11E3190C511200FFE043 /* ETViewController.m */; };
 		87E39038191575E000CC728E /* ETSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 87281143191288DF005ABB06 /* ETSegmentedControl.m */; };
@@ -90,15 +96,22 @@
 		8728114E1912C828005ABB06 /* ETAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETAlertView.m; sourceTree = "<group>"; };
 		8728115A1914FF53005ABB06 /* ETInternetconnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETInternetconnection.h; sourceTree = "<group>"; };
 		8728115B1914FF53005ABB06 /* ETInternetconnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETInternetconnection.m; sourceTree = "<group>"; };
+		87397B8F2683CDC9008403E3 /* vino.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = vino.db; path = ../../polpriser/priser/priser23062021/vino.db; sourceTree = "<group>"; };
 		8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonRefresh_2x.png; sourceTree = "<group>"; };
 		8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonOrganize_2x.png; sourceTree = "<group>"; };
 		87495552191D26EA00A4E95C /* ETHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETHelpViewController.h; sourceTree = "<group>"; };
 		87495553191D26EA00A4E95C /* ETHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETHelpViewController.m; sourceTree = "<group>"; };
 		875740A41BA36406002F0150 /* ETStockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETStockViewController.h; sourceTree = "<group>"; };
 		875740A51BA36406002F0150 /* ETStockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETStockViewController.m; sourceTree = "<group>"; };
+		877D084C1FF63742008EC131 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		877DF6CB1D9D9F22000CD2CC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		87A420E81FF37DB2009CF41A /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = SOURCE_ROOT; };
+		87A420E91FF37DB3009CF41A /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = SOURCE_ROOT; };
+		87A420EC1FF3828D009CF41A /* HRMAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMAPHelper.m; sourceTree = SOURCE_ROOT; };
+		87A420ED1FF3828D009CF41A /* HRMAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMAPHelper.h; sourceTree = SOURCE_ROOT; };
+		87A420EF1FF4CCEE009CF41A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		87D5733D1D820B6900CCD362 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
-		87D5733F1D821D2E00CCD362 /* vino.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = vino.db; path = "../../../ruby/polpriser v2/priser/priser20160908/vino.db"; sourceTree = "<group>"; };
+		87D5AFDD1FE85C9500DC5441 /* vino.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = vino.db; sourceTree = SOURCE_ROOT; };
 		87E39053191575E000CC728E /* Polpriser Gratis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Polpriser Gratis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E39054191575E000CC728E /* winelistInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = winelistInfo.plist; path = /Users/erlendthune/Desktop/XCODE/winelist/winelistInfo.plist; sourceTree = "<absolute>"; };
 		87E390571915844000CC728E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
@@ -154,8 +167,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				877D084D1FF63742008EC131 /* Security.framework in Frameworks */,
 				87D5733E1D820B6900CCD362 /* libsqlite3.dylib in Frameworks */,
 				87FF11CD190C511200FFE043 /* CoreGraphics.framework in Frameworks */,
+				87A420F01FF4CCEE009CF41A /* StoreKit.framework in Frameworks */,
 				87FF11CF190C511200FFE043 /* UIKit.framework in Frameworks */,
 				87FF11CB190C511200FFE043 /* Foundation.framework in Frameworks */,
 			);
@@ -199,6 +214,8 @@
 		87FF11C9190C511200FFE043 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				877D084C1FF63742008EC131 /* Security.framework */,
+				87A420EF1FF4CCEE009CF41A /* StoreKit.framework */,
 				877DF6CB1D9D9F22000CD2CC /* libsqlite3.tbd */,
 				87D5733D1D820B6900CCD362 /* libsqlite3.dylib */,
 				87FF11CA190C511200FFE043 /* Foundation.framework */,
@@ -212,6 +229,10 @@
 		87FF11D0190C511200FFE043 /* winelist */ = {
 			isa = PBXGroup;
 			children = (
+				87A420ED1FF3828D009CF41A /* HRMAPHelper.h */,
+				87A420EC1FF3828D009CF41A /* HRMAPHelper.m */,
+				87A420E91FF37DB3009CF41A /* IAPHelper.h */,
+				87A420E81FF37DB2009CF41A /* IAPHelper.m */,
 				87E3905B1915954900CC728E /* Images gratis.xcassets */,
 				8728113B190C5DE2005ABB06 /* Utility.h */,
 				8728113C190C5DE2005ABB06 /* Utility.m */,
@@ -244,11 +265,12 @@
 		87FF11D1190C511200FFE043 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				87D5733F1D821D2E00CCD362 /* vino.db */,
+				87397B8F2683CDC9008403E3 /* vino.db */,
 				87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */,
 				8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */,
 				8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */,
 				87FF11D2190C511200FFE043 /* winelist-Info.plist */,
+				87D5AFDD1FE85C9500DC5441 /* vino.db */,
 				87FF11D3190C511200FFE043 /* InfoPlist.strings */,
 				87FF11D6190C511200FFE043 /* main.m */,
 				87FF11D8190C511200FFE043 /* winelist-Prefix.pch */,
@@ -354,7 +376,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = ET;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Erlend Thune";
 				TargetAttributes = {
 					87E39034191575E000CC728E = {
@@ -362,6 +384,11 @@
 					};
 					87FF11C6190C511200FFE043 = {
 						DevelopmentTeam = 3B9MVBS2CK;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					87FF11EA190C511200FFE043 = {
 						TestTargetID = 87FF11C6190C511200FFE043;
@@ -373,6 +400,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -394,13 +422,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				87FF793B1D9DA245002F6D41 /* PolpriserUserGuide.html in Resources */,
-				877DF6CD1D9D9FD7000CD2CC /* vino.db in Resources */,
 				87E3904A191575E000CC728E /* Main_iPad.storyboard in Resources */,
 				87495551191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */,
 				87E3904C191575E000CC728E /* Main_iPhone.storyboard in Resources */,
 				87E3905C1915954A00CC728E /* Images gratis.xcassets in Resources */,
 				87E3904F191575E000CC728E /* InfoPlist.strings in Resources */,
 				8749554F191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */,
+				87D5AFDF1FE85C9600DC5441 /* vino.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,8 +442,9 @@
 				87495550191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */,
 				8749554E191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */,
 				87FF11D5190C511200FFE043 /* InfoPlist.strings in Resources */,
+				87397B902683CDC9008403E3 /* vino.db in Resources */,
 				87E76DBE1B5936AF009D3314 /* PolpriserUserGuide.html in Resources */,
-				87D573401D821D2E00CCD362 /* vino.db in Resources */,
+				87D5AFDE1FE85C9600DC5441 /* vino.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +486,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87A420EB1FF37FE4009CF41A /* ETAlertView.m in Sources */,
+				87A420EA1FF37DB3009CF41A /* IAPHelper.m in Sources */,
 				87FF11E4190C511200FFE043 /* ETViewController.m in Sources */,
 				87281144191288DF005ABB06 /* ETSegmentedControl.m in Sources */,
 				8728115C1914FF53005ABB06 /* ETInternetconnection.m in Sources */,
@@ -469,6 +500,7 @@
 				87FF121D190C528300FFE043 /* Wine.m in Sources */,
 				8728113D190C5DE2005ABB06 /* Utility.m in Sources */,
 				87495554191D26EA00A4E95C /* ETHelpViewController.m in Sources */,
+				87A420EE1FF3828D009CF41A /* HRMAPHelper.m in Sources */,
 				87FF120E190C513000FFE043 /* FMDatabase.m in Sources */,
 				87FF1212190C513000FFE043 /* FMResultSet.m in Sources */,
 				87FF120F190C513000FFE043 /* FMDatabaseAdditions.m in Sources */,
@@ -542,7 +574,7 @@
 					"$(inherited)",
 					"GRATIS=1",
 				);
-				INFOPLIST_FILE = "winelist copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/winelist/winelist-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				New_Setting = "";
 				ONLY_ACTIVE_ARCH = NO;
@@ -563,7 +595,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "winelist/winelist-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "GRATIS=1";
-				INFOPLIST_FILE = "winelist copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/winelist/winelist-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				New_Setting = "";
 				ONLY_ACTIVE_ARCH = NO;
@@ -582,14 +614,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -628,14 +666,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
