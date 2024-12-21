@@ -171,19 +171,19 @@
                 else
                 {
                     [self alertMessage:@"Kjøp" s:@"Fant ingenting å kjøpe."];
-                    [_activityIndicator stopAnimating];
+                    [self->_activityIndicator stopAnimating];
                 }
             }
             else
             {
                 [self alertMessage:@"Kjøp" s:@"Fant ingenting å kjøpe."];
-                [_activityIndicator stopAnimating];
+                [self->_activityIndicator stopAnimating];
             }
         }
         else
         {
             [self alertMessage:@"Kjøp" s:@"Kunne ikke koble til App store."];
-            [_activityIndicator stopAnimating];
+            [self->_activityIndicator stopAnimating];
         }
     }];
 }
@@ -313,10 +313,11 @@
 {
     // Create the view
     
-    int maxWidth = [[UIScreen mainScreen ]applicationFrame].size.width;
-    int maxHeight = [[UIScreen mainScreen ]applicationFrame].size.height;
+    CGRect screenBounds = [UIScreen mainScreen].bounds;
+    CGFloat maxWidth = screenBounds.size.width;
+    CGFloat maxHeight = screenBounds.size.height;
     int imgWidth = maxWidth-20;
-    int imgHeight = maxHeight-maxHeight/8;
+    int imgHeight = maxHeight-maxHeight/6;
     
     self.alertView = [[ETAlertView alloc] init:imgWidth imgHeight:imgHeight noOfTimesUsed:noOfTimesUsed mvc:self nag:nag];
     
@@ -615,10 +616,12 @@
 
 -(void)CreateBusyIndicator
 {
-    int maxWidth = [[UIScreen mainScreen ]applicationFrame].size.width;
-    int maxHeight = [[UIScreen mainScreen ]applicationFrame].size.height;
+    CGRect screenBounds = [UIScreen mainScreen].bounds;
+    CGFloat maxWidth = screenBounds.size.width;
+    CGFloat maxHeight = screenBounds.size.height;
+
     CGRect frame = CGRectMake(0,0,maxWidth,maxHeight);
-    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
     [self.activityIndicator setColor:[UIColor redColor]];
     self.activityIndicator.frame = frame;
     self.activityIndicator.hidesWhenStopped = YES;
@@ -853,8 +856,10 @@
     self.bytesReceived = 0;
     // Create the view
     
-    int maxWidth = [[UIScreen mainScreen ]applicationFrame].size.width;
-    int maxHeight = [[UIScreen mainScreen ]applicationFrame].size.height;
+    CGRect screenBounds = [UIScreen mainScreen].bounds;
+    CGFloat maxWidth = screenBounds.size.width;
+    CGFloat maxHeight = screenBounds.size.height;
+
     int imgWidth = maxWidth*6/8;
     int imgHeight = maxHeight/2;
     
@@ -875,35 +880,6 @@
     //This method will call GetDatabaseResult
     [self GetDatabaseDate];
 }
-
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    // the user clicked OK
-    switch (alertView.tag) {
-        case 1:
-            if (buttonIndex == 1) {
-                [self DisplayInternetView];
-            }
-            break;
-        case 2:
-        {
-            if (buttonIndex == 1) {
-                self.downloadState = 1;
-                NSString* address = @"https://www.erlendthune.com/vin/vino.db";
-                [self.internetView UpdateLabelText:@"Laster ned..."];
-                [self Get:address];
-            }
-            else
-            {
-                [self.internetView removeFromSuperview];
-            }
-        }
-            
-        default:
-            break;
-    }
-}
-
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     // A response has been received, this is where we initialize the instance var you created
@@ -955,13 +931,32 @@
             NSString *currentDate = [dateFormat stringFromDate:currentdbdate];
 
             NSString *msg = [NSString stringWithFormat:@"Din database er fra %@. En database fra %@ er tilgjengelig. Vil du laste den ned?", currentDate, newDate];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Database"
-                                                            message:msg
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Nei"
-                                                  otherButtonTitles:@"Ja", nil];
-            alert.tag = 2;
-            [alert show];
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Database"
+                                                                           message:msg
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+
+            // "Ja" Action
+            UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Ja"
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * _Nonnull action) {
+                                                                  self.downloadState = 1;
+                                                                  NSString *address = @"https://www.erlendthune.com/vin/vino.db";
+                                                                  [self.internetView UpdateLabelText:@"Laster ned..."];
+                                                                  [self Get:address];
+                                                              }];
+
+            // "Nei" Action
+            UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Nei"
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 [self.internetView removeFromSuperview];
+                                                             }];
+
+            [alert addAction:yesAction];
+            [alert addAction:noAction];
+
+            [self presentViewController:alert animated:YES completion:nil];
         }
     }
     else
@@ -1018,13 +1013,26 @@
     {
         NSString *msg = [NSString stringWithFormat:@"Din database er fra %@. Vil du undersøke om en nyere er tilgjengelig?", theDate];
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Database"
-                                                        message:msg
-                                                       delegate:self
-                                              cancelButtonTitle:@"Nei"
-                                              otherButtonTitles:@"Ja", nil];
-        alert.tag = 1;
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Oppdater Database"
+                                                                       message:msg
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+
+        // "Ja" Action
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Ja"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * _Nonnull action) {
+                                                              [self DisplayInternetView]; // Call the method to display internet view
+                                                          }];
+
+        // "Nei" Action
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Nei"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil]; // No additional action needed for "Nei"
+
+        [alert addAction:yesAction];
+        [alert addAction:noAction];
+
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -1049,15 +1057,17 @@
     }];
 }
 
--(void)alertMessage:(NSString*)t s:(NSString*)s
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:t
-                                                    message:s
-                                                   delegate:nil
-                                          cancelButtonTitle:@"Ok"
-                                          otherButtonTitles:nil];
-    alert.tag = 1;
-    [alert show];
+- (void)alertMessage:(NSString *)title s:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:message
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:nil]; // The handler is nil because no additional action is needed.
+    [alert addAction:okAction];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

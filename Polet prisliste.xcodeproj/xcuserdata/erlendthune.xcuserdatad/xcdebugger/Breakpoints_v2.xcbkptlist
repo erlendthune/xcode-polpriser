@@ -66,8 +66,8 @@
             timestampString = "537320310.355758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "617"
-            endingLineNumber = "617"
+            startingLineNumber = "618"
+            endingLineNumber = "618"
             landmarkName = "-CreateBusyIndicator"
             landmarkType = "7">
          </BreakpointContent>
@@ -83,8 +83,8 @@
             timestampString = "537320310.35584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "634"
-            endingLineNumber = "634"
+            startingLineNumber = "637"
+            endingLineNumber = "637"
             landmarkName = "-segmentChanged:"
             landmarkType = "7">
          </BreakpointContent>
@@ -100,8 +100,8 @@
             timestampString = "537320310.355893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "648"
-            endingLineNumber = "648"
+            startingLineNumber = "651"
+            endingLineNumber = "651"
             landmarkName = "-segmentChanged:"
             landmarkType = "7">
             <Locations>
@@ -149,8 +149,8 @@
             timestampString = "537320310.355942"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "632"
-            endingLineNumber = "632"
+            startingLineNumber = "635"
+            endingLineNumber = "635"
             landmarkName = "-segmentChanged:"
             landmarkType = "7">
          </BreakpointContent>
@@ -166,8 +166,8 @@
             timestampString = "537320310.355991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "616"
-            endingLineNumber = "616"
+            startingLineNumber = "617"
+            endingLineNumber = "617"
             landmarkName = "-CreateBusyIndicator"
             landmarkType = "7">
          </BreakpointContent>
@@ -183,8 +183,8 @@
             timestampString = "537320310.356037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "623"
-            endingLineNumber = "623"
+            startingLineNumber = "626"
+            endingLineNumber = "626"
             landmarkName = "-CreateBusyIndicator"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,8 +234,8 @@
             timestampString = "537320310.356109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "-CreatePrice:"
             landmarkType = "7">
          </BreakpointContent>
@@ -302,8 +302,8 @@
             timestampString = "537320310.3563401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "667"
-            endingLineNumber = "667"
+            startingLineNumber = "670"
+            endingLineNumber = "670"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -319,8 +319,8 @@
             timestampString = "537320310.3564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "736"
-            endingLineNumber = "736"
+            startingLineNumber = "739"
+            endingLineNumber = "739"
             landmarkName = "-GetSearchString"
             landmarkType = "7">
          </BreakpointContent>
@@ -353,8 +353,8 @@
             timestampString = "537320310.3564939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "734"
-            endingLineNumber = "734"
+            startingLineNumber = "737"
+            endingLineNumber = "737"
             landmarkName = "-GetSearchString"
             landmarkType = "7">
          </BreakpointContent>
@@ -370,8 +370,8 @@
             timestampString = "537320310.356541"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "636"
-            endingLineNumber = "636"
+            startingLineNumber = "639"
+            endingLineNumber = "639"
             landmarkName = "-segmentChanged:"
             landmarkType = "7">
          </BreakpointContent>
@@ -387,8 +387,8 @@
             timestampString = "537320310.356596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "741"
-            endingLineNumber = "741"
+            startingLineNumber = "744"
+            endingLineNumber = "744"
             landmarkName = "-GetSearchString"
             landmarkType = "7">
             <Locations>
@@ -438,8 +438,8 @@
             timestampString = "537320310.356652"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "739"
-            endingLineNumber = "739"
+            startingLineNumber = "742"
+            endingLineNumber = "742"
             landmarkName = "-GetSearchString"
             landmarkType = "7">
          </BreakpointContent>
@@ -455,8 +455,8 @@
             timestampString = "537320310.3566999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "750"
-            endingLineNumber = "750"
+            startingLineNumber = "753"
+            endingLineNumber = "753"
             landmarkName = "-GetSearchString"
             landmarkType = "7">
          </BreakpointContent>
@@ -472,8 +472,8 @@
             timestampString = "537320310.356746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "748"
-            endingLineNumber = "748"
+            startingLineNumber = "751"
+            endingLineNumber = "751"
             landmarkName = "-GetSearchString"
             landmarkType = "7">
          </BreakpointContent>
@@ -489,8 +489,8 @@
             timestampString = "537320310.356806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "743"
-            endingLineNumber = "743"
+            startingLineNumber = "746"
+            endingLineNumber = "746"
             landmarkName = "-GetSearchString"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,27 +506,10 @@
             timestampString = "537320310.356861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "459"
-            endingLineNumber = "459"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
             landmarkName = "ETViewController"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0002F931-2E34-4EF5-A668-A2B5175CA083"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "winelist/ETViewController.m"
-            timestampString = "537320310.35691"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "904"
-            endingLineNumber = "904"
-            landmarkName = "-alertView:didDismissWithButtonIndex:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -540,8 +523,8 @@
             timestampString = "537320310.356957"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "937"
-            endingLineNumber = "937"
+            startingLineNumber = "913"
+            endingLineNumber = "913"
             landmarkName = "-connectionDidFinishLoading:"
             landmarkType = "7">
          </BreakpointContent>
@@ -574,8 +557,8 @@
             timestampString = "537320310.357076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1001"
-            endingLineNumber = "1001"
+            startingLineNumber = "996"
+            endingLineNumber = "996"
             landmarkName = "-UpdateUsageCounterInDatabase"
             landmarkType = "7">
          </BreakpointContent>
@@ -591,8 +574,8 @@
             timestampString = "537320310.3571219"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "975"
-            endingLineNumber = "975"
+            startingLineNumber = "970"
+            endingLineNumber = "970"
             landmarkName = "-connectionDidFinishLoading:"
             landmarkType = "7">
          </BreakpointContent>
@@ -608,8 +591,8 @@
             timestampString = "537320310.357169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "939"
-            endingLineNumber = "939"
+            startingLineNumber = "915"
+            endingLineNumber = "915"
             landmarkName = "-connectionDidFinishLoading:"
             landmarkType = "7">
          </BreakpointContent>
@@ -625,8 +608,8 @@
             timestampString = "537320310.357213"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "762"
-            endingLineNumber = "762"
+            startingLineNumber = "765"
+            endingLineNumber = "765"
             landmarkName = "-UpdateWineList:"
             landmarkType = "7">
          </BreakpointContent>
@@ -642,8 +625,8 @@
             timestampString = "537320310.357257"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "726"
-            endingLineNumber = "726"
+            startingLineNumber = "729"
+            endingLineNumber = "729"
             landmarkName = "-GetSearchString"
             landmarkType = "7">
          </BreakpointContent>
@@ -659,8 +642,8 @@
             timestampString = "537320310.357313"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "ETViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -676,8 +659,8 @@
             timestampString = "537320310.35736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1006"
-            endingLineNumber = "1006"
+            startingLineNumber = "1001"
+            endingLineNumber = "1001"
             landmarkName = "-GetDatabasedateResult"
             landmarkType = "7">
          </BreakpointContent>
@@ -693,8 +676,8 @@
             timestampString = "537320310.357407"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "912"
-            endingLineNumber = "912"
+            startingLineNumber = "888"
+            endingLineNumber = "888"
             landmarkName = "-connection:didReceiveResponse:"
             landmarkType = "7">
          </BreakpointContent>
@@ -710,8 +693,8 @@
             timestampString = "537320310.3574539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "853"
-            endingLineNumber = "853"
+            startingLineNumber = "856"
+            endingLineNumber = "856"
             landmarkName = "-DisplayInternetView"
             landmarkType = "7">
          </BreakpointContent>
@@ -744,8 +727,8 @@
             timestampString = "537320310.357548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "752"
-            endingLineNumber = "752"
+            startingLineNumber = "755"
+            endingLineNumber = "755"
             landmarkName = "-GetSearchString"
             landmarkType = "7">
          </BreakpointContent>
@@ -761,8 +744,8 @@
             timestampString = "537320310.357595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "749"
-            endingLineNumber = "749"
+            startingLineNumber = "752"
+            endingLineNumber = "752"
             landmarkName = "-GetSearchString"
             landmarkType = "7">
          </BreakpointContent>
@@ -778,8 +761,8 @@
             timestampString = "537320310.35764"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "767"
-            endingLineNumber = "767"
+            startingLineNumber = "770"
+            endingLineNumber = "770"
             landmarkName = "-getWines"
             landmarkType = "7">
          </BreakpointContent>
@@ -931,8 +914,8 @@
             timestampString = "537320310.357778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "777"
-            endingLineNumber = "777"
+            startingLineNumber = "780"
+            endingLineNumber = "780"
             landmarkName = "-getWines"
             landmarkType = "7">
          </BreakpointContent>
@@ -948,8 +931,8 @@
             timestampString = "537320310.357872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "875"
-            endingLineNumber = "875"
+            startingLineNumber = "880"
+            endingLineNumber = "880"
             landmarkName = "-checkForDatabaseUpdates:"
             landmarkType = "7">
          </BreakpointContent>
@@ -965,8 +948,8 @@
             timestampString = "537320310.357917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "664"
-            endingLineNumber = "664"
+            startingLineNumber = "667"
+            endingLineNumber = "667"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -982,8 +965,8 @@
             timestampString = "537320310.357963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1077"
-            endingLineNumber = "1077"
+            startingLineNumber = "1087"
+            endingLineNumber = "1087"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "7">
          </BreakpointContent>
@@ -999,8 +982,8 @@
             timestampString = "537320310.358008"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1080"
-            endingLineNumber = "1080"
+            startingLineNumber = "1090"
+            endingLineNumber = "1090"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1016,8 +999,8 @@
             timestampString = "537320310.358052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1076"
-            endingLineNumber = "1076"
+            startingLineNumber = "1086"
+            endingLineNumber = "1086"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1050,8 +1033,8 @@
             timestampString = "537320310.358112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1074"
-            endingLineNumber = "1074"
+            startingLineNumber = "1084"
+            endingLineNumber = "1084"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1764,8 +1747,8 @@
             timestampString = "537320310.359706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "954"
-            endingLineNumber = "954"
+            startingLineNumber = "930"
+            endingLineNumber = "930"
             landmarkName = "-connectionDidFinishLoading:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1781,8 +1764,8 @@
             timestampString = "537320310.3597521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "594"
-            endingLineNumber = "594"
+            startingLineNumber = "595"
+            endingLineNumber = "595"
             landmarkName = "-ShowMenuEx"
             landmarkType = "7">
          </BreakpointContent>
@@ -1815,8 +1798,8 @@
             timestampString = "537320310.359814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "578"
-            endingLineNumber = "578"
+            startingLineNumber = "579"
+            endingLineNumber = "579"
             landmarkName = "-ShowMenuEx"
             landmarkType = "7">
          </BreakpointContent>
@@ -1930,8 +1913,8 @@
             filePath = "winelist/ETViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "774"
-            endingLineNumber = "774"
+            startingLineNumber = "777"
+            endingLineNumber = "777"
             landmarkName = "-getWines"
             landmarkType = "7">
          </BreakpointContent>
@@ -1946,8 +1929,8 @@
             filePath = "winelist/ETViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "797"
-            endingLineNumber = "797"
+            startingLineNumber = "800"
+            endingLineNumber = "800"
             landmarkName = "-getWines"
             landmarkType = "7">
          </BreakpointContent>
@@ -1962,43 +1945,13 @@
             filePath = "winelist/ETViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "995"
-            endingLineNumber = "995"
+            startingLineNumber = "990"
+            endingLineNumber = "990"
             landmarkName = "-UpdateUsageCounterInDatabase"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "EF1C9E64-8998-48F2-9E68-3AD03C4AD475 - 63976c5cea79671"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ETViewController connectionDidFinishLoading:]"
-                  moduleName = "Polpriser"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/erlendthune/github/xcode/xcode-polpriser/winelist/ETViewController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "995"
-                  endingLineNumber = "995"
-                  offsetFromSymbolStart = "1645">
-               </Location>
-               <Location
-                  uuid = "EF1C9E64-8998-48F2-9E68-3AD03C4AD475 - e563c0c94b4e0dc6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ETViewController UpdateUsageCounterInDatabase]"
-                  moduleName = "Polpriser"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/erlendthune/github/xcode/xcode-polpriser/winelist/ETViewController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "995"
-                  endingLineNumber = "995"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  uuid = "EF1C9E64-8998-48F2-9E68-3AD03C4AD475 - 1e9624ae3cdf4515"
+                  uuid = "EF1C9E64-8998-48F2-9E68-3AD03C4AD475 - 1e9624ae3cdf45b0"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -2008,8 +1961,38 @@
                   urlString = "file:///Users/erlendthune/github/xcode/xcode-polpriser/winelist/ETViewController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "996"
-                  endingLineNumber = "996"
+                  startingLineNumber = "991"
+                  endingLineNumber = "991"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "EF1C9E64-8998-48F2-9E68-3AD03C4AD475 - e563c0c94b4e0ca1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ETViewController UpdateUsageCounterInDatabase]"
+                  moduleName = "Polpriser"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erlendthune/github/xcode/xcode-polpriser/winelist/ETViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "990"
+                  endingLineNumber = "990"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "EF1C9E64-8998-48F2-9E68-3AD03C4AD475 - 1e9624ae3cdf45b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__48-[ETViewController UpdateUsageCounterInDatabase]_block_invoke"
+                  moduleName = "Polpriser"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erlendthune/github/xcode/xcode-polpriser/winelist/ETViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "991"
+                  endingLineNumber = "991"
                   offsetFromSymbolStart = "41">
                </Location>
             </Locations>
@@ -2025,8 +2008,8 @@
             filePath = "winelist/ETViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "799"
-            endingLineNumber = "799"
+            startingLineNumber = "802"
+            endingLineNumber = "802"
             landmarkName = "-getWines"
             landmarkType = "7">
          </BreakpointContent>
@@ -2057,8 +2040,8 @@
             filePath = "winelist/ETViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "559"
-            endingLineNumber = "559"
+            startingLineNumber = "560"
+            endingLineNumber = "560"
             landmarkName = "-filterSelected:"
             landmarkType = "7">
             <Locations>
@@ -2105,10 +2088,42 @@
             filePath = "winelist/ETViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "822"
-            endingLineNumber = "822"
+            startingLineNumber = "825"
+            endingLineNumber = "825"
             landmarkName = "-searchBar:textDidChange:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BA6DC4F8-9C9A-468E-8C1E-1F717C416E54 - 90583aed170ac7eb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ETViewController searchBarSearchButtonClicked:]"
+                  moduleName = "Polpriser"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erlendthune/github/xcode/xcode-polpriser/winelist/ETViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "827"
+                  endingLineNumber = "827"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "BA6DC4F8-9C9A-468E-8C1E-1F717C416E54 - 4d369a30494a2d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ETViewController searchBar:textDidChange:]"
+                  moduleName = "Polpriser"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erlendthune/github/xcode/xcode-polpriser/winelist/ETViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "825"
+                  endingLineNumber = "825"
+                  offsetFromSymbolStart = "69">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2121,13 +2136,13 @@
             filePath = "winelist/ETViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "977"
-            endingLineNumber = "977"
+            startingLineNumber = "972"
+            endingLineNumber = "972"
             landmarkName = "-connectionDidFinishLoading:"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "1712D7AA-3BDE-482A-B6CA-FEA95D23780C - 63976c5cea794a3"
+                  uuid = "1712D7AA-3BDE-482A-B6CA-FEA95D23780C - 63976c5cea79548"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -2137,12 +2152,12 @@
                   urlString = "file:///Users/erlendthune/github/xcode/xcode-polpriser/winelist/ETViewController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "977"
-                  endingLineNumber = "977"
-                  offsetFromSymbolStart = "1245">
+                  startingLineNumber = "972"
+                  endingLineNumber = "972"
+                  offsetFromSymbolStart = "1938">
                </Location>
                <Location
-                  uuid = "1712D7AA-3BDE-482A-B6CA-FEA95D23780C - 63976c5cea794a3"
+                  uuid = "1712D7AA-3BDE-482A-B6CA-FEA95D23780C - 63976c5cea79548"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -2152,11 +2167,27 @@
                   urlString = "file:///Users/erlendthune/github/xcode/xcode-polpriser/winelist/ETViewController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "977"
-                  endingLineNumber = "977"
-                  offsetFromSymbolStart = "1473">
+                  startingLineNumber = "972"
+                  endingLineNumber = "972"
+                  offsetFromSymbolStart = "1885">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3E11206-B324-4249-A3F2-B98D43AC5F4C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "winelist/ETViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1061"
+            endingLineNumber = "1061"
+            landmarkName = "-alertMessage:s:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

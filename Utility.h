@@ -15,6 +15,6 @@
 }
 
 +(NSString *) getDatabasePath; 
-+(void) showAlert:(NSString *) title message:(NSString *) msg; 
+//+(void) showAlert:(NSString *) title message:(NSString *) msg; 
 
 @end
