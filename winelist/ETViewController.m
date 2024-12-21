@@ -685,7 +685,7 @@
     
     NSString *sVinType = [self GetWineTypeAsString:wine.type];
 
-    NSString *s = [NSString stringWithFormat:@"%@ kr.%@ %@", sVinType, wine.price, wine.volume];
+    NSString *s = [NSString stringWithFormat:@"%@ kr.%@ %@ %@ kr/liter", sVinType, wine.price, wine.volume, wine.pricePerVolumeUnit];
     cell.detailTextLabel.text = s;
     return cell;
 }
@@ -693,13 +693,8 @@
 - (NSMutableString*) GetSearchString
 {
     NSMutableString *searchString;
-    searchString = [NSMutableString stringWithFormat:@"SELECT *"];
-    
-    if(self.orderBy == ORDER_BY_PRICE_PER_VOLUME_UNIT)
-    {
-        [searchString appendString:@", ROUND(price / CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL)) AS price_per_volume"];
-    }
-    
+    searchString = [NSMutableString stringWithFormat:@"SELECT *, CAST(price / CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL) AS INTEGER) AS price_per_volume"];
+        
     [searchString appendString:@" FROM vino"];
          
     NSString* ss = [[self searchBar] text];
@@ -797,6 +792,7 @@
                 wine.name = [results stringForColumn:@"name"];
                 wine.volume = [results stringForColumn:@"volume"];
                 wine.price = [self CreatePrice:[results stringForColumn:@"price"]];
+                wine.pricePerVolumeUnit = [results stringForColumn:@"price_per_volume"];
 
                 [arr addObject:wine];
             }

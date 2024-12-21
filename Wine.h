@@ -18,5 +18,5 @@
 @property (nonatomic,strong) NSString *name;
 @property (nonatomic,strong) NSString *volume;
 @property (nonatomic,strong) NSString *price;
-
+@property (nonatomic,strong) NSString *pricePerVolumeUnit;
 @end

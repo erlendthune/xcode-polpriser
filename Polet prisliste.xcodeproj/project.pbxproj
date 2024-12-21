@@ -85,7 +85,6 @@
 		87E39054191575E000CC728E /* winelistInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = winelistInfo.plist; path = /Users/erlendthune/Desktop/XCODE/winelist/winelistInfo.plist; sourceTree = "<absolute>"; };
 		87E390571915844000CC728E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		87E3905A1915846500CC728E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		87E3905B1915954900CC728E /* Images gratis.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images gratis.xcassets"; sourceTree = "<group>"; };
 		87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PolpriserUserGuide.html; sourceTree = "<group>"; };
 		87FF11C7190C511200FFE043 /* Polpriser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polpriser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87FF11CA190C511200FFE043 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -190,7 +189,6 @@
 				87A420EC1FF3828D009CF41A /* HRMAPHelper.m */,
 				87A420E91FF37DB3009CF41A /* IAPHelper.h */,
 				87A420E81FF37DB2009CF41A /* IAPHelper.m */,
-				87E3905B1915954900CC728E /* Images gratis.xcassets */,
 				8728113B190C5DE2005ABB06 /* Utility.h */,
 				8728113C190C5DE2005ABB06 /* Utility.m */,
 				87281138190C5D0A005ABB06 /* FMDBDataAccess.h */,
