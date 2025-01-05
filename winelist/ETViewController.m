@@ -67,6 +67,7 @@
 //    [self.dbDateButton setAction:nil];
 
     _purchased = [[HRMAPHelper sharedInstance] productPurchased:@"com.erlendthune.polpriser"];
+    _purchased = true;
     
     if(!_purchased)
     {
@@ -839,23 +840,26 @@
 }
 -(void)Get:(NSString*)address
 {
-    // Create the request.
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:address]];
-    
-    // Create url connection and fire request
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    if(!conn)
+    NSURL *url = [NSURL URLWithString:address];
+    if(!url)
     {
         [self alertMessage:@"Feil" s:@"Klarte ikke opprette forbindelse til serveren."];
     }
+    
+    // Create the URLSession with a default configuration
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+    
+    // Create the data task to fetch the data from the URL
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url];
+    
+    // Start the data task
+    [dataTask resume];
 }
 
 #pragma mark NSURLConnection Delegate Methods
 - (void) DisplayInternetView
 {
-    self.bytesReceived = 0;
-    // Create the view
-    
     CGRect screenBounds = [UIScreen mainScreen].bounds;
     CGFloat maxWidth = screenBounds.size.width;
     CGFloat maxHeight = screenBounds.size.height;
@@ -881,108 +885,43 @@
     [self GetDatabaseDate];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    // A response has been received, this is where we initialize the instance var you created
-    // so that we can append data to it in the didReceiveData method
-    // Furthermore, this method is called each time there is a redirect so reinitializing it
-    // also serves to clear it
-    [self.internetView UpdateLabelText:@"Mottar data..."];
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveResponse:(NSURLResponse *)response
+ completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
+    NSLog(@"Received response: %@", response.URL);
+
+    // Initialize your response data and reset bytesReceived
     self.responseData = [[NSMutableData alloc] init];
+    self.bytesReceived = 0;
+
+    // Allow the session to continue
+    completionHandler(NSURLSessionResponseAllow);
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    // Append the new data to the instance variable you declared
-    self.bytesReceived++;
-    NSString *s =[[NSString alloc] initWithFormat:@"Mottar data: %ld", self.bytesReceived];
-    [self.internetView UpdateLabelText:s];
+
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data {
+    self.bytesReceived += data.length;
     [self.responseData appendData:data];
+
+    NSLog(@"Current thread: %@", [NSThread currentThread]);
+
+    // Update UI on the main thread
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString *status = [NSString stringWithFormat:@"Mottar data: %ld bytes", self.bytesReceived];
+        [self.internetView UpdateLabelText:status];
+    });
 }
 
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
-                  willCacheResponse:(NSCachedURLResponse*)cachedResponse {
-    // Return nil to indicate not necessary to store a cached response for this connection
-    return nil;
-}
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    // The request is complete and data has been received
-    // You can parse the stuff in your instance variable now
-    NSLog(@"Internetconnection finish.");
-    if(self.downloadState == 0)
-    {
-        [self.internetView UpdateLabelText:@""];
-        
-        NSString * s = [[NSString alloc] initWithBytes:self.responseData.bytes length:self.responseData.length encoding:NSASCIIStringEncoding];
-        int newdatabasedate = [s intValue];
-        if(newdatabasedate == self.databasedate)
-        {
-            [self.internetView removeFromSuperview];
-            [self alertMessage:@"Database" s:@"Du har den nyeste databasen."];
-        }
-        else
-        {
-            NSDate *newdbdate = [[NSDate alloc] initWithTimeIntervalSince1970:newdatabasedate];
-            NSDate *currentdbdate = [[NSDate alloc] initWithTimeIntervalSince1970:self.databasedate];
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-//            [dateFormat setDateFormat:@"dd. MMM yyyy"];
-            [dateFormat setDateStyle:NSDateFormatterMediumStyle];
-            dateFormat.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"nb_NO"];
-            NSString *newDate = [dateFormat stringFromDate:newdbdate];
-            NSString *currentDate = [dateFormat stringFromDate:currentdbdate];
+// Delegate method for completion (when all data has been downloaded)
+- (void)URLSession:(NSURLSession *)session
+  dataTask:(NSURLSessionDataTask *)dataTask
+  didFinishDownloadingToURL:(NSURL *)location {
+    NSLog(@"All data is downloaded");
 
-            NSString *msg = [NSString stringWithFormat:@"Din database er fra %@. En database fra %@ er tilgjengelig. Vil du laste den ned?", currentDate, newDate];
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Database"
-                                                                           message:msg
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-
-            // "Ja" Action
-            UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Ja"
-                                                                style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                                  self.downloadState = 1;
-                                                                  NSString *address = @"https://www.erlendthune.com/vin/vino.db";
-                                                                  [self.internetView UpdateLabelText:@"Laster ned..."];
-                                                                  [self Get:address];
-                                                              }];
-
-            // "Nei" Action
-            UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Nei"
-                                                               style:UIAlertActionStyleCancel
-                                                             handler:^(UIAlertAction * _Nonnull action) {
-                                                                 [self.internetView removeFromSuperview];
-                                                             }];
-
-            [alert addAction:yesAction];
-            [alert addAction:noAction];
-
-            [self presentViewController:alert animated:YES completion:nil];
-        }
-    }
-    else
-    {
-        self.downloadState = 0;
-        [self.internetView UpdateLabelText:@"Lagrer database"];
-        NSString* databasePath = [Utility getDatabasePath];
-        [self.internetView removeFromSuperview];
-        if([self.responseData writeToFile:databasePath atomically:YES])
-        {
-            [self.queue close];
-            self.queue = [FMDatabaseQueue databaseQueueWithPath:databasePath];
-            [self getWines];
-            self.dateRequestSource = 0;
-            [self GetDatabaseDate];
-            self.dateRequestSource = 1;
-            
-            [self UpdateUsageCounterInDatabase];
-
-            [self alertMessage:@"Database" s:@"Du har nå den nyeste utgaven av databasen."];
-        }
-        else
-        {
-            [self alertMessage:@"Database" s:@"Klarte ikke å lagre den nye databasen."];
-        }
-    }
 }
 
 -(void)UpdateUsageCounterInDatabase
@@ -1020,9 +959,12 @@
         // "Ja" Action
         UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Ja"
                                                             style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * _Nonnull action) {
-                                                              [self DisplayInternetView]; // Call the method to display internet view
-                                                          }];
+                                                          handler:^(UIAlertAction * _Nonnull action)
+        {
+            dispatch_async(dispatch_get_main_queue(),^ {
+                [self DisplayInternetView]; // Call the method to display internet view
+            } );
+        }];
 
         // "Nei" Action
         UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Nei"
@@ -1075,9 +1017,114 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     // The request has failed for some reason!
     // Check the error var
-    [self.internetView removeFromSuperview];
     NSLog(@"Internetconnection error:%@", error.description);
     [self alertMessage:@"Feil" s:error.localizedDescription];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.internetView removeFromSuperview];
+    });
+}
+
+- (void)URLSession:(NSURLSession *)session
+  task:(NSURLSessionTask *)task
+  didCompleteWithError:(NSError *)error {
+    if (error) {
+        // Handle the error
+        NSLog(@"Internet connection error: %@", error.description);
+        [self alertMessage:@"Feil" s:error.localizedDescription];
+    } else {
+        NSLog(@"Internetconnection finish.");
+        if(self.downloadState == 0)
+        {
+            NSLog(@"Current thread: %@", [NSThread currentThread]);
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.internetView UpdateLabelText:@""];
+            });
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self displayDownloadDialog];
+            });
+        }
+        else
+        {
+            self.downloadState = 0;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.internetView UpdateLabelText:@"Lagrer database"];
+            });
+
+            NSString* databasePath = [Utility getDatabasePath];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.internetView removeFromSuperview];
+            });
+            if([self.responseData writeToFile:databasePath atomically:YES])
+            {
+                [self.queue close];
+                self.queue = [FMDatabaseQueue databaseQueueWithPath:databasePath];
+                [self getWines];
+                self.dateRequestSource = 0;
+                [self GetDatabaseDate];
+                self.dateRequestSource = 1;
+                
+                [self UpdateUsageCounterInDatabase];
+
+                [self alertMessage:@"Database" s:@"Du har nå den nyeste utgaven av databasen."];
+            }
+            else
+            {
+                [self alertMessage:@"Database" s:@"Klarte ikke å lagre den nye databasen."];
+            }
+        }
+    }
+}
+
+- (void)displayDownloadDialog {
+    NSString * s = [[NSString alloc] initWithBytes:self.responseData.bytes length:self.responseData.length encoding:NSASCIIStringEncoding];
+    int newdatabasedate = [s intValue];
+    if(newdatabasedate == self.databasedate)
+    {
+        [self.internetView removeFromSuperview];
+        [self alertMessage:@"Database" s:@"Du har den nyeste databasen."];
+    }
+    else
+    {
+        NSDate *newdbdate = [[NSDate alloc] initWithTimeIntervalSince1970:newdatabasedate];
+        NSDate *currentdbdate = [[NSDate alloc] initWithTimeIntervalSince1970:self.databasedate];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        
+        [dateFormat setDateStyle:NSDateFormatterMediumStyle];
+        dateFormat.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"nb_NO"];
+        NSString *newDate = [dateFormat stringFromDate:newdbdate];
+        NSString *currentDate = [dateFormat stringFromDate:currentdbdate];
+        
+        NSString *msg = [NSString stringWithFormat:@"Din database er fra %@. En database fra %@ er tilgjengelig. Vil du laste den ned?", currentDate, newDate];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Database"
+                                                                       message:msg
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        // "Ja" Action
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Ja"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * _Nonnull action) {
+            self.downloadState = 1;
+            NSString *address = @"https://www.erlendthune.com/vin/vino.db";
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.internetView UpdateLabelText:@"Laster ned..."];
+            });
+            
+            [self Get:address];
+        }];
+        
+        // "Nei" Action
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"Nei"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+            [self.internetView removeFromSuperview];
+        }];
+        
+        [alert addAction:yesAction];
+        [alert addAction:noAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -17,7 +17,7 @@
 @class ETAlertView;
 @class ETInternetconnection;
 
-@interface ETViewController : UIViewController<UIActionSheetDelegate, NSURLConnectionDelegate,  SKRequestDelegate>
+@interface ETViewController : UIViewController<UIActionSheetDelegate,  NSURLSessionDelegate, NSURLSessionDataDelegate,  SKRequestDelegate>
 -(void)ShowStartupDialog;
 - (void)purchase;
 - (void)restorePurchase;
