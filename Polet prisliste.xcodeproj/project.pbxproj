@@ -11,6 +11,7 @@
 		8728113D190C5DE2005ABB06 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728113C190C5DE2005ABB06 /* Utility.m */; };
 		87281144191288DF005ABB06 /* ETSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 87281143191288DF005ABB06 /* ETSegmentedControl.m */; };
 		8728115C1914FF53005ABB06 /* ETInternetconnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728115B1914FF53005ABB06 /* ETInternetconnection.m */; };
+		872E5E632D2C4F13007A9D74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 872E5E622D2C4F13007A9D74 /* LaunchScreen.storyboard */; };
 		873A8B4D2D15F7F6003983EF /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 873A8B4C2D15F7F6003983EF /* vino.db */; };
 		8749554E191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */; };
 		87495550191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */; };
@@ -67,6 +68,7 @@
 		8728114E1912C828005ABB06 /* ETAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETAlertView.m; sourceTree = "<group>"; };
 		8728115A1914FF53005ABB06 /* ETInternetconnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETInternetconnection.h; sourceTree = "<group>"; };
 		8728115B1914FF53005ABB06 /* ETInternetconnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETInternetconnection.m; sourceTree = "<group>"; };
+		872E5E622D2C4F13007A9D74 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873A8B4C2D15F7F6003983EF /* vino.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = vino.db; sourceTree = "<group>"; };
 		8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonRefresh_2x.png; sourceTree = "<group>"; };
 		8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonOrganize_2x.png; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				87495553191D26EA00A4E95C /* ETHelpViewController.m */,
 				875740A41BA36406002F0150 /* ETStockViewController.h */,
 				875740A51BA36406002F0150 /* ETStockViewController.m */,
+				872E5E622D2C4F13007A9D74 /* LaunchScreen.storyboard */,
 			);
 			path = winelist;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				872E5E632D2C4F13007A9D74 /* LaunchScreen.storyboard in Resources */,
 				87FF11E1190C511200FFE043 /* Main_iPad.storyboard in Resources */,
 				87FF11E6190C511200FFE043 /* Images.xcassets in Resources */,
 				87FF11DE190C511200FFE043 /* Main_iPhone.storyboard in Resources */,
@@ -564,7 +568,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3B9MVBS2CK;
@@ -585,7 +589,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3B9MVBS2CK;
