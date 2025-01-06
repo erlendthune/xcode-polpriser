@@ -69,9 +69,10 @@ NSString *const IAPHelperTransactionFinished = @"IAPHelperTransactionFinished";
     
     // Make a connection to the iTunes Store on a background queue.
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [NSURLConnection sendAsynchronousRequest:storeRequest queue:queue
-       completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
-    {
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:storeRequest
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *connectionError) {
        if (connectionError)
        {
            NSLog(@"alidateReceipt:Failed to communicate with apple server.");

@@ -29,10 +29,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    // Replace the UIView (helpView) with a WKWebView
+     WKWebView *webView = [[WKWebView alloc] initWithFrame:self.helpView.bounds];
+     webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+     // Add the WKWebView to the helpView
+     [self.helpView addSubview:webView];
+
+     // Retain a reference to the WKWebView if needed
+     self.helpView = webView;
+
     NSString *thePath = [[NSBundle mainBundle] pathForResource:@"PolpriserUserGuide" ofType:@"html"];
     
-    if (thePath) {
-        
+    if (thePath) {        
         [self.helpView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:thePath isDirectory:NO]]];
     }
 }

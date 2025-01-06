@@ -120,7 +120,13 @@
     [button2 addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(buyMethod:)]];
     [button2 setTitle:@"Kjøp" forState:UIControlStateNormal];
     button2.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    button2.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    // Opprett en konfigurasjon
+    UIButtonConfiguration *config = [UIButtonConfiguration plainButtonConfiguration];
+    config.contentInsets = NSDirectionalEdgeInsetsMake(0, 10, 0, 0);
+
+    // Bruk konfigurasjonen på knappen
+    [button2 setConfiguration:config];
+
     float x2 = fontSize;
     float y2 = self.label.frame.size.height+fontSize*BUTTON_Y_POS;
   
@@ -137,8 +143,8 @@
     button3.layer.borderColor = [UIColor blackColor].CGColor;
     button3.titleLabel.font = [UIFont fontWithName: @"Helvetica" size: fontSize];
     button3.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    button3.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-    
+    [button3 setConfiguration:config];
+
     //    [button2 addTarget:self action:@selector(buyMethod:) forControlEvents:UIControlEventTouchUpInside];
     [button3 addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(restorePurchaseMethod:)]];
     [button3 setTitle:@"Gjenopprett kjøp" forState:UIControlStateNormal];

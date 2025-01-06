@@ -127,7 +127,7 @@
                     [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
                     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
                     [numberFormatter setLocale:p.priceLocale];
-                    _price = [numberFormatter stringFromNumber:p.price];
+                    self->_price = [numberFormatter stringFromNumber:p.price];
                 }
                 else
                 {

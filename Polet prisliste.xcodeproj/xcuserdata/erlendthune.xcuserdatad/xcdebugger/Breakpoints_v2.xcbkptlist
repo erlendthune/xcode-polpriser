@@ -1016,8 +1016,8 @@
             timestampString = "537056821.6269341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-initWithProductIdentifiers:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1059,23 +1059,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EB87A5E1-77D0-4B1E-8947-663955B27979"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IAPHelper.m"
-            timestampString = "537056821.627862"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-validateReceipt:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D7713247-5C2B-4631-801A-C2CD85A40605"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1084,8 +1067,8 @@
             timestampString = "537056821.627936"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "-completeTransaction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1152,8 +1135,8 @@
             timestampString = "537818762.805366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "-buyMethod:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1220,8 +1203,8 @@
             timestampString = "537056821.630015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "-validateReceipt:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1254,8 +1237,8 @@
             timestampString = "537056821.630179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "-requestProductsWithCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1288,8 +1271,8 @@
             timestampString = "537056821.6307631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-initWithProductIdentifiers:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1305,8 +1288,8 @@
             timestampString = "537056821.630844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "-productPurchased:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1322,10 +1305,42 @@
             timestampString = "537056821.630923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
             landmarkName = "-paymentQueueRestoreCompletedTransactionsFinished:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "421E0F40-E8DC-4169-99D7-80BC9CCC049E - c0c0116185158626"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[IAPHelper paymentQueueRestoreCompletedTransactionsFinished:]"
+                  moduleName = "Polpriser"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erlendthune/github/xcode/xcode-polpriser/IAPHelper.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "294"
+                  endingLineNumber = "294"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "421E0F40-E8DC-4169-99D7-80BC9CCC049E - c0c0116185158645"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[IAPHelper paymentQueueRestoreCompletedTransactionsFinished:]"
+                  moduleName = "Polpriser"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erlendthune/github/xcode/xcode-polpriser/IAPHelper.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "295"
+                  endingLineNumber = "295"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1339,8 +1354,8 @@
             timestampString = "537056821.631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "-validateReceipt:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1611,8 +1626,8 @@
             timestampString = "537056821.63739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "-validateReceipt:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1662,8 +1677,8 @@
             timestampString = "537056821.638142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-validateReceipt:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1705,23 +1720,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FA51F1AF-263E-4A52-ACB0-8B1F01F21492"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "winelist/ETHelpViewController.m"
-            timestampString = "536968018.023827"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "-initWithNibName:bundle:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "78D86A55-363A-4B63-A232-87817997D2EA"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1747,8 +1745,8 @@
             timestampString = "537818762.806864"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "-UpdateLabelText"
             landmarkType = "7">
          </BreakpointContent>
@@ -1781,8 +1779,8 @@
             timestampString = "537819382.923907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "-UpdateLabelText"
             landmarkType = "7">
          </BreakpointContent>
@@ -1797,8 +1795,8 @@
             filePath = "IAPHelper.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "-productsRequest:didReceiveResponse:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1813,8 +1811,8 @@
             filePath = "IAPHelper.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
             landmarkName = "-paymentQueue:restoreCompletedTransactionsFailedWithError:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1829,8 +1827,8 @@
             filePath = "IAPHelper.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "-request:didFailWithError:"
             landmarkType = "7">
          </BreakpointContent>
