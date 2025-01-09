@@ -67,7 +67,6 @@
 //    [self.dbDateButton setAction:nil];
 
     _purchased = [[HRMAPHelper sharedInstance] productPurchased:@"com.erlendthune.polpriser"];
-    _purchased = true;
     
     if(!_purchased)
     {

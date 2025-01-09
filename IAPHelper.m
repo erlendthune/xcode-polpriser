@@ -67,9 +67,6 @@ NSString *const IAPHelperTransactionFinished = @"IAPHelperTransactionFinished";
     [storeRequest setHTTPMethod:@"POST"];
     [storeRequest setHTTPBody:requestData];
     
-    // Make a connection to the iTunes Store on a background queue.
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:storeRequest
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *connectionError) {
