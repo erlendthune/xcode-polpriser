@@ -12,7 +12,6 @@
 		87281144191288DF005ABB06 /* ETSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 87281143191288DF005ABB06 /* ETSegmentedControl.m */; };
 		8728115C1914FF53005ABB06 /* ETInternetconnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728115B1914FF53005ABB06 /* ETInternetconnection.m */; };
 		872E5E632D2C4F13007A9D74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 872E5E622D2C4F13007A9D74 /* LaunchScreen.storyboard */; };
-		873A8B4D2D15F7F6003983EF /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 873A8B4C2D15F7F6003983EF /* vino.db */; };
 		8749554E191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */; };
 		87495550191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */; };
 		87495554191D26EA00A4E95C /* ETHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87495553191D26EA00A4E95C /* ETHelpViewController.m */; };
@@ -24,6 +23,7 @@
 		87A420F01FF4CCEE009CF41A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A420EF1FF4CCEE009CF41A /* StoreKit.framework */; };
 		87D5733E1D820B6900CCD362 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D5733D1D820B6900CCD362 /* libsqlite3.dylib */; };
 		87E76DBE1B5936AF009D3314 /* PolpriserUserGuide.html in Resources */ = {isa = PBXBuildFile; fileRef = 87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */; };
+		87F366092D3323EA00832DE2 /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 87F366082D3323EA00832DE2 /* vino.db */; };
 		87FF11CB190C511200FFE043 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CA190C511200FFE043 /* Foundation.framework */; };
 		87FF11CD190C511200FFE043 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CC190C511200FFE043 /* CoreGraphics.framework */; };
 		87FF11CF190C511200FFE043 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CE190C511200FFE043 /* UIKit.framework */; };
@@ -69,7 +69,6 @@
 		8728115A1914FF53005ABB06 /* ETInternetconnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETInternetconnection.h; sourceTree = "<group>"; };
 		8728115B1914FF53005ABB06 /* ETInternetconnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETInternetconnection.m; sourceTree = "<group>"; };
 		872E5E622D2C4F13007A9D74 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		873A8B4C2D15F7F6003983EF /* vino.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = vino.db; sourceTree = "<group>"; };
 		8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonRefresh_2x.png; sourceTree = "<group>"; };
 		8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonOrganize_2x.png; sourceTree = "<group>"; };
 		87495552191D26EA00A4E95C /* ETHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETHelpViewController.h; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		87E390571915844000CC728E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		87E3905A1915846500CC728E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PolpriserUserGuide.html; sourceTree = "<group>"; };
+		87F366082D3323EA00832DE2 /* vino.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = vino.db; path = ../../../../git/polpriser/vino.db; sourceTree = "<group>"; };
 		87FF11C7190C511200FFE043 /* Polpriser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polpriser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87FF11CA190C511200FFE043 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		87FF11CC190C511200FFE043 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -223,7 +223,7 @@
 		87FF11D1190C511200FFE043 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				873A8B4C2D15F7F6003983EF /* vino.db */,
+				87F366082D3323EA00832DE2 /* vino.db */,
 				87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */,
 				8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */,
 				8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */,
@@ -317,7 +317,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = ET;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1520;
 				ORGANIZATIONNAME = "Erlend Thune";
 				TargetAttributes = {
 					87FF11C6190C511200FFE043 = {
@@ -363,9 +363,9 @@
 				87FF11DE190C511200FFE043 /* Main_iPhone.storyboard in Resources */,
 				87495550191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */,
 				8749554E191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */,
+				87F366092D3323EA00832DE2 /* vino.db in Resources */,
 				87FF11D5190C511200FFE043 /* InfoPlist.strings in Resources */,
 				87E76DBE1B5936AF009D3314 /* PolpriserUserGuide.html in Resources */,
-				873A8B4D2D15F7F6003983EF /* vino.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +493,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -508,7 +509,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -549,6 +550,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -557,7 +559,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

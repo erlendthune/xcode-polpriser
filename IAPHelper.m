@@ -68,7 +68,7 @@ NSString *const IAPHelperTransactionFinished = @"IAPHelperTransactionFinished";
     [storeRequest setHTTPBody:requestData];
     
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:storeRequest
+    [session dataTaskWithRequest:storeRequest
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *connectionError) {
        if (connectionError)
        {

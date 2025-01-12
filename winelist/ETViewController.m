@@ -14,6 +14,7 @@
 #define ORDER_BY_NAME 0
 #define ORDER_BY_PRICE 1
 #define ORDER_BY_PRICE_PER_VOLUME_UNIT 2
+#define ORDER_BY_PRICE_PER_ALCOHOL_UNIT 2
 
 #import "ETViewController.h"
 #import "HRMAPHelper.h"
@@ -44,10 +45,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.wineSegment.apportionsSegmentWidthsByContent = YES;
     self.buttonTintColor = self.filterButton.tintColor;
     self.orderBy = ORDER_BY_PRICE;
     self.orderAscending = true;
-    self.filter = 1;
+    self.filter = 0;
     self.menuButton.title = @"\u2630";
     self.restorePurchaseStarted = false;
     self.bytesReceived = 0;
@@ -333,7 +335,6 @@
 
 -(NSString*)CreatePrice:(NSString*)s
 {
-    NSLog(@"Price:%@", s);
     unsigned long dpos = [s length]-2;
     return [NSString stringWithFormat:@"%@,%@", [s substringToIndex:dpos], [s substringFromIndex:dpos]];
 }
@@ -354,6 +355,8 @@
      "9" => "aromatisertvin",
      "10" => "sider",
      "11" => "alkoholfritt",
+     "12" => "sake",
+     "13" => "mjød"
 }
      */
     
@@ -394,6 +397,12 @@
             break;
         case 11:
             sVinType = [NSMutableString stringWithString:@"Alkoholfritt"];
+            break;
+        case 12:
+            sVinType = [NSMutableString stringWithString:@"Sake"];
+            break;
+        case 13:
+            sVinType = [NSMutableString stringWithString:@"Mjød"];
             break;
         default:
             sVinType = [NSMutableString stringWithString:@""];
@@ -497,17 +506,19 @@
     NSMutableString *Aromatisertvin = [NSMutableString stringWithString:@"Aromatisert vin"];
     NSMutableString *Sider = [NSMutableString stringWithString:@"Sider"];
     NSMutableString *Alkoholfritt = [NSMutableString stringWithString:@"Alkoholfritt"];
-    
+    NSMutableString *Sake = [NSMutableString stringWithString:@"Sake"];
+    NSMutableString *Mjød = [NSMutableString stringWithString:@"Mjød"];
+
     NSArray *filterArray = [NSArray arrayWithObjects:
         Alle,
         Red,White,Rose,
         Sterk,Muss,Frukt,Brenn,
         Beer,Perlendevin,Aromatisertvin,
-        Sider,Alkoholfritt,nil];
+        Sider,Alkoholfritt,Sake,Mjød,nil];
     
     UIAlertController* alert = [
                                 UIAlertController alertControllerWithTitle:nil
-                                message:nil
+                                message:@"Scroll down to see more options"
                                 preferredStyle:UIAlertControllerStyleActionSheet];
 
     for (int i = 0; i < [filterArray count]; i++)
@@ -538,7 +549,6 @@
     
     [self presentViewController:alert animated:YES
                      completion:nil];
-
 }
 
 - (void)filterSelected:(int)buttonIndex
@@ -552,10 +562,12 @@
         [self.filterButton setTintColor:[UIColor redColor]];
     }
     
-    if((self.filter == buttonIndex) || (buttonIndex > 12)) // The user pressed cancel or did not change the selection.
-    {
+    if(self.filter == buttonIndex) // The user pressed cancel or did not change the selection.
         return;
-    }
+
+    if(buttonIndex > 14)
+        return;
+    
     self.filter = (int)buttonIndex;
     [self getWines];
 }
@@ -643,9 +655,13 @@
     {
         self.orderBy = ORDER_BY_PRICE;
     }
-    else
+    else if(newSegment == 2)
     {
         self.orderBy = ORDER_BY_PRICE_PER_VOLUME_UNIT;
+    }
+    else if(newSegment == 3)
+    {
+        self.orderBy = ORDER_BY_PRICE_PER_ALCOHOL_UNIT;
     }
     self.activeSegment = newSegment;
     [self getWines];
@@ -688,7 +704,15 @@
     
     NSString *sVinType = [self GetWineTypeAsString:wine.type];
 
-    NSString *s = [NSString stringWithFormat:@"%@ kr.%@ %@ %@ kr/liter", sVinType, wine.price, wine.volume, wine.pricePerVolumeUnit];
+    NSString *s;
+    if(wine.type == 11)  {
+        s = [NSString stringWithFormat:@"%@ kr.%@ %@ %@ %% %@ kr/liter ", sVinType, wine.price, wine.volume, wine.alcohol, wine.pricePerVolumeUnit];
+    }
+    else
+    {
+        s = [NSString stringWithFormat:@"%@ kr.%@ %@ %@ %% %@ kr/liter %@ kr/liter alkohol", sVinType, wine.price, wine.volume, wine.alcohol, wine.pricePerVolumeUnit,
+                       wine.pricePerAlcoholPerVolumeUnit];
+    }
     cell.detailTextLabel.text = s;
     return cell;
 }
@@ -696,10 +720,11 @@
 - (NSMutableString*) GetSearchString
 {
     NSMutableString *searchString;
-    searchString = [NSMutableString stringWithFormat:@"SELECT *, CAST(price / CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL) AS INTEGER) AS price_per_volume"];
-        
-    [searchString appendString:@" FROM vino"];
-         
+    searchString = [NSMutableString stringWithFormat:@"SELECT *,\
+                    CAST(ROUND(price / CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL)) AS INTEGER) AS price_per_volume,\
+                    CAST(ROUND(price / ((CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL) / 100) * alcohol)) AS INTEGER) AS price_per_alcohol_per_liter\
+                    FROM vino"];
+                
     NSString* ss = [[self searchBar] text];
     bool bFirst = true;
     if ([ss length] != 0)
@@ -734,27 +759,44 @@
         }
         [searchString appendFormat: @" type=%d", self.filter-1]; //-1 because 0 means all types in UI.
     }
+
+    if(self.orderBy == ORDER_BY_PRICE_PER_ALCOHOL_UNIT)
+    {
+        if(self.orderAscending)
+        {
+            [searchString appendString: @" ORDER BY (alcohol = 0) ASC, price_per_alcohol_per_liter ASC"];
+        }
+        else
+        {
+            [searchString appendString: @" ORDER BY (alcohol = 0) ASC, price_per_alcohol_per_liter DESC"];
+        }
+    }
+    else
+    {
+        if(self.orderBy == ORDER_BY_NAME)
+        {
+            [searchString appendString: @" ORDER BY name"];
+        }
+        else if(self.orderBy == ORDER_BY_PRICE)
+        {
+            [searchString appendString: @" ORDER BY price"];
+        }
+        else if(self.orderBy == ORDER_BY_PRICE_PER_VOLUME_UNIT)
+        {
+            [searchString appendString: @" ORDER BY price_per_volume"];
+        }
+        if(self.orderAscending)
+        {
+            [searchString appendString: @" ASC"];
+        }
+        else
+        {
+            [searchString appendString: @" DESC"];
+        }
+    }
     
-    if(self.orderBy == ORDER_BY_NAME)
-    {
-        [searchString appendString: @" ORDER BY name"];
-    }
-    else if(self.orderBy == ORDER_BY_PRICE)
-    {
-        [searchString appendString: @" ORDER BY price"];
-    }
-    else
-    {
-        [searchString appendString: @" ORDER BY price_per_volume"];
-    }
-    if(self.orderAscending)
-    {
-        [searchString appendString: @" ASC"];
-    }
-    else
-    {
-        [searchString appendString: @" DESC"];
-    }
+    NSLog(@"%@", searchString);
+
     return searchString;
 }
 
@@ -796,6 +838,8 @@
                 wine.volume = [results stringForColumn:@"volume"];
                 wine.price = [self CreatePrice:[results stringForColumn:@"price"]];
                 wine.pricePerVolumeUnit = [results stringForColumn:@"price_per_volume"];
+                wine.alcohol = [results stringForColumn:@"alcohol"];
+                wine.pricePerAlcoholPerVolumeUnit = [results stringForColumn:@"price_per_alcohol_per_liter"];
 
                 [arr addObject:wine];
             }
