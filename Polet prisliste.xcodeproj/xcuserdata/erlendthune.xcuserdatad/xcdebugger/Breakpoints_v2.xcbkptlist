@@ -746,8 +746,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1187"
             endingLineNumber = "1187"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "ETViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -814,8 +814,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1184"
             endingLineNumber = "1184"
-            landmarkName = "ETViewController"
-            landmarkType = "3">
+            landmarkName = "-prepareForSegue:sender:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1231,8 +1231,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
             endingLineNumber = "94"
-            landmarkName = "ETViewController"
-            landmarkType = "3">
+            landmarkName = "-AppNotPurchased"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1987,8 +1987,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "945"
             endingLineNumber = "945"
-            landmarkName = "-URLSession:dataTask:didReceiveData:"
-            landmarkType = "7">
+            landmarkName = "ETViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "29B27513-3612-4302-A42A-E661D1C65696 - 7c31d580b958e460"
@@ -2948,6 +2948,22 @@
             startingLineNumber = "556"
             endingLineNumber = "556"
             landmarkName = "-filterSelected:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1E769FE9-E34B-4D73-B41E-D1D844F0513A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "winelist/ETViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "763"
+            endingLineNumber = "763"
+            landmarkName = "-GetSearchString"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

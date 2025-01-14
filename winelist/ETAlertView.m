@@ -114,7 +114,7 @@
     [button2 setTitleColor:[UIColor colorWithRed:0.0 green:0.5 blue:0.0 alpha:1.0] forState:UIControlStateNormal];
     [[button2 layer] setBorderWidth:2.0f];
     button2.layer.borderColor = [UIColor blackColor].CGColor;
-    button2.titleLabel.font = [UIFont fontWithName: @"Helvetica" size: fontSize];
+//    button2.titleLabel.font = [UIFont fontWithName: @"Helvetica" size: fontSize];
     
     //    [button2 addTarget:self action:@selector(buyMethod:) forControlEvents:UIControlEventTouchUpInside];
     [button2 addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(buyMethod:)]];
@@ -141,7 +141,7 @@
     //    button2.backgroundColor = [UIColor yellowColor];
     [[button3 layer] setBorderWidth:2.0f];
     button3.layer.borderColor = [UIColor blackColor].CGColor;
-    button3.titleLabel.font = [UIFont fontWithName: @"Helvetica" size: fontSize];
+    //button3.titleLabel.font = [UIFont fontWithName: @"Helvetica" size: fontSize];
     button3.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [button3 setConfiguration:config];
 

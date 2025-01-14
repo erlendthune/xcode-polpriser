@@ -14,7 +14,7 @@
 #define ORDER_BY_NAME 0
 #define ORDER_BY_PRICE 1
 #define ORDER_BY_PRICE_PER_VOLUME_UNIT 2
-#define ORDER_BY_PRICE_PER_ALCOHOL_UNIT 2
+#define ORDER_BY_PRICE_PER_ALCOHOL_UNIT 3
 
 #import "ETViewController.h"
 #import "HRMAPHelper.h"
@@ -518,7 +518,7 @@
     
     UIAlertController* alert = [
                                 UIAlertController alertControllerWithTitle:nil
-                                message:@"Scroll down to see more options"
+                                message:nil
                                 preferredStyle:UIAlertControllerStyleActionSheet];
 
     for (int i = 0; i < [filterArray count]; i++)
@@ -710,7 +710,7 @@
     }
     else
     {
-        s = [NSString stringWithFormat:@"%@ kr.%@ %@ %@ %% %@ kr/liter %@ kr/liter alkohol", sVinType, wine.price, wine.volume, wine.alcohol, wine.pricePerVolumeUnit,
+        s = [NSString stringWithFormat:@"%@ kr.%@ %@ %@%% %@ kr/liter %@ kr/liter alkohol", sVinType, wine.price, wine.volume, wine.alcohol, wine.pricePerVolumeUnit,
                        wine.pricePerAlcoholPerVolumeUnit];
     }
     cell.detailTextLabel.text = s;

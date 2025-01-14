@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2hr-MF-ICB" customClass="ETSegmentedControl">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2hr-MF-ICB" customClass="ETSegmentedControl">
                                 <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="bKB-XB-S44"/>
@@ -24,6 +24,7 @@
                                     <segment title="Navn"/>
                                     <segment title="Pris"/>
                                     <segment title="Pris/volum"/>
+                                    <segment title="Pris/alkohol"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentChanged:" destination="SHC-lL-6DI" eventType="valueChanged" id="llX-LY-2uu"/>
@@ -138,9 +139,9 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZ8-p4-4Be">
-                                <rect key="frame" x="0.0" y="20" width="56" height="18"/>
+                                <rect key="frame" x="0.0" y="20" width="44" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="oej-yX-UeQ"/>
+                                    <constraint firstAttribute="height" constant="18" id="94o-DV-xFu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Ferdig">
@@ -155,13 +156,13 @@
                         <viewLayoutGuide key="safeArea" id="vIM-cB-dmg"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qZa-MZ-fwL" firstAttribute="top" secondItem="mZ8-p4-4Be" secondAttribute="bottom" constant="8" id="2ru-k3-Kgz"/>
-                            <constraint firstItem="vIM-cB-dmg" firstAttribute="trailing" secondItem="mZ8-p4-4Be" secondAttribute="trailing" constant="712" id="6LP-0R-Lhs"/>
                             <constraint firstItem="vIM-cB-dmg" firstAttribute="bottom" secondItem="qZa-MZ-fwL" secondAttribute="bottom" id="IRX-5u-maA"/>
                             <constraint firstItem="vIM-cB-dmg" firstAttribute="trailing" secondItem="qZa-MZ-fwL" secondAttribute="trailing" id="Kj8-1M-vWL"/>
-                            <constraint firstItem="mZ8-p4-4Be" firstAttribute="leading" secondItem="vIM-cB-dmg" secondAttribute="leading" id="PfM-y4-Bbc"/>
-                            <constraint firstItem="mZ8-p4-4Be" firstAttribute="top" secondItem="vIM-cB-dmg" secondAttribute="top" id="bm0-wh-fI0"/>
-                            <constraint firstItem="mZ8-p4-4Be" firstAttribute="leading" secondItem="qZa-MZ-fwL" secondAttribute="leading" id="xw8-fD-cuk"/>
+                            <constraint firstItem="vIM-cB-dmg" firstAttribute="trailing" secondItem="mZ8-p4-4Be" secondAttribute="trailing" constant="724" id="YsJ-qm-7gc"/>
+                            <constraint firstItem="mZ8-p4-4Be" firstAttribute="leading" secondItem="vIM-cB-dmg" secondAttribute="leading" id="hKL-UE-wOr"/>
+                            <constraint firstItem="qZa-MZ-fwL" firstAttribute="top" secondItem="mZ8-p4-4Be" secondAttribute="bottom" constant="8" id="kJ3-Tj-Kz9"/>
+                            <constraint firstItem="mZ8-p4-4Be" firstAttribute="top" secondItem="vIM-cB-dmg" secondAttribute="top" id="sd8-aF-a1W"/>
+                            <constraint firstItem="mZ8-p4-4Be" firstAttribute="leading" secondItem="qZa-MZ-fwL" secondAttribute="leading" id="yJp-ZE-xgI"/>
                         </constraints>
                     </view>
                     <connections>
@@ -171,51 +172,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLH-Qp-x5i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1165.625" y="138.28125"/>
-        </scene>
-        <!--Stock View Controller-->
-        <scene sceneID="NkF-Fp-imL">
-            <objects>
-                <viewController id="Q1q-5m-iAW" customClass="ETStockViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Mx4-Bv-tQe">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IqR-iO-agw">
-                                <rect key="frame" x="0.0" y="49" width="768" height="975"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="975" id="LYn-9m-nyt"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnU-wI-ZFm">
-                                <rect key="frame" x="0.0" y="14" width="56" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Ferdig">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="vinDone:" destination="Q1q-5m-iAW" eventType="touchUpInside" id="CX0-PG-x1a"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Aap-Ge-7ql"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="IqR-iO-agw" firstAttribute="bottom" secondItem="Mx4-Bv-tQe" secondAttribute="bottomMargin" id="00j-82-tge"/>
-                            <constraint firstItem="IqR-iO-agw" firstAttribute="leading" secondItem="VnU-wI-ZFm" secondAttribute="leading" id="186-JR-TAI"/>
-                            <constraint firstItem="IqR-iO-agw" firstAttribute="centerX" secondItem="Aap-Ge-7ql" secondAttribute="centerX" id="Lky-3E-gPd"/>
-                            <constraint firstItem="IqR-iO-agw" firstAttribute="leading" secondItem="Mx4-Bv-tQe" secondAttribute="leadingMargin" constant="-20" id="fuV-wD-fZy"/>
-                            <constraint firstItem="IqR-iO-agw" firstAttribute="top" secondItem="VnU-wI-ZFm" secondAttribute="bottom" constant="5" id="gzs-SK-T4J"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="stockWebView" destination="IqR-iO-agw" id="m9X-zy-h5M"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ohl-df-cUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="776.5625" y="871.875"/>
         </scene>
     </scenes>
     <resources>

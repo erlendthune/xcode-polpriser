@@ -41,7 +41,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="i0h-vs-cJY" customClass="ETSegmentedControl">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="i0h-vs-cJY" customClass="ETSegmentedControl">
                                 <rect key="frame" x="0.0" y="20" width="375" height="32"/>
                                 <segments>
                                     <segment title="Navn"/>
@@ -50,6 +50,7 @@
                                     <segment title="Pris/alkohol"/>
                                 </segments>
                                 <connections>
+                                    <action selector="ShowFilterDialog:" destination="vXZ-lx-hvc" eventType="valueChanged" id="fYH-83-T05"/>
                                     <action selector="segmentChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Hhd-3p-1u8"/>
                                 </connections>
                             </segmentedControl>
@@ -78,7 +79,7 @@
                                                     <color key="textColor" systemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lCW-Vu-rLU">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lCW-Vu-rLU">
                                                     <rect key="frame" x="16" y="52" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <attributedString key="attributedText">
@@ -134,44 +135,6 @@
             </objects>
             <point key="canvasLocation" x="448.80000000000001" y="169.56521739130437"/>
         </scene>
-        <!--detaljertInformasjon-->
-        <scene sceneID="ZL3-gc-VgX">
-            <objects>
-                <viewController title="detaljertInformasjon" id="q4n-w0-a9D" customClass="ETStockViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CxN-tH-r6o">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z87-Xg-zms">
-                                <rect key="frame" x="0.0" y="49" width="375" height="618"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4B-zZ-EBB">
-                                <rect key="frame" x="0.0" y="14" width="56" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Ferdig">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="helpDone:" destination="3p1-zz-muX" eventType="touchUpInside" id="qN0-PQ-UHf"/>
-                                    <action selector="vinDone:" destination="q4n-w0-a9D" eventType="touchUpInside" id="0yr-An-xzs"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="el3-fB-1Fm"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <connections>
-                        <outlet property="stockWebView" destination="z87-Xg-zms" id="1zu-TK-6xk"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gJP-rI-Re6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="953.62318840579712" y="358.25892857142856"/>
-        </scene>
         <!--Help View Controller-->
         <scene sceneID="dS8-ZL-6B4">
             <objects>
@@ -187,7 +150,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NG3-0e-uFd">
                                 <rect key="frame" x="0.0" y="23" width="56" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="Lwu-Th-PZ0"/>
+                                    <constraint firstAttribute="height" constant="18" id="O4c-uo-WDQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Ferdig">
@@ -202,12 +165,12 @@
                         <viewLayoutGuide key="safeArea" id="7Tz-aa-alk"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7b1-cb-zHW" firstAttribute="top" secondItem="NG3-0e-uFd" secondAttribute="bottom" constant="8" id="AOu-ck-reG"/>
-                            <constraint firstItem="7b1-cb-zHW" firstAttribute="leading" secondItem="NG3-0e-uFd" secondAttribute="leading" id="Max-2q-FSx"/>
-                            <constraint firstItem="NG3-0e-uFd" firstAttribute="leading" secondItem="7Tz-aa-alk" secondAttribute="leading" id="Pd3-Q0-ACM"/>
-                            <constraint firstItem="NG3-0e-uFd" firstAttribute="top" secondItem="7Tz-aa-alk" secondAttribute="top" constant="3" id="akc-2e-rT0"/>
-                            <constraint firstItem="7Tz-aa-alk" firstAttribute="trailing" secondItem="NG3-0e-uFd" secondAttribute="trailing" constant="319" id="cGT-Mk-vQn"/>
+                            <constraint firstItem="NG3-0e-uFd" firstAttribute="leading" secondItem="7b1-cb-zHW" secondAttribute="leading" id="060-oN-oML"/>
+                            <constraint firstItem="NG3-0e-uFd" firstAttribute="top" secondItem="7Tz-aa-alk" secondAttribute="top" constant="3" id="1pM-ua-ppt"/>
+                            <constraint firstItem="7b1-cb-zHW" firstAttribute="top" secondItem="NG3-0e-uFd" secondAttribute="bottom" constant="8" id="PmT-NQ-rYT"/>
                             <constraint firstItem="7b1-cb-zHW" firstAttribute="bottom" secondItem="7Tz-aa-alk" secondAttribute="bottom" id="dw6-GK-vk5"/>
+                            <constraint firstItem="7Tz-aa-alk" firstAttribute="trailing" secondItem="NG3-0e-uFd" secondAttribute="trailing" constant="319" id="fNM-nW-Zbi"/>
+                            <constraint firstItem="NG3-0e-uFd" firstAttribute="leading" secondItem="7Tz-aa-alk" secondAttribute="leading" id="guT-pL-wWa"/>
                             <constraint firstItem="7Tz-aa-alk" firstAttribute="trailing" secondItem="7b1-cb-zHW" secondAttribute="trailing" id="udV-HY-Vnv"/>
                         </constraints>
                     </view>
