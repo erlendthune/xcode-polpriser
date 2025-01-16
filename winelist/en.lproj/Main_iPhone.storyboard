@@ -46,11 +46,12 @@
                                 <segments>
                                     <segment title="Navn"/>
                                     <segment title="Pris"/>
-                                    <segment title="Pris/volum"/>
-                                    <segment title="Pris/alkohol"/>
+                                    <segment title="Volum"/>
+                                    <segment title="%"/>
+                                    <segment title="Pris/l"/>
+                                    <segment title="Pris/%"/>
                                 </segments>
                                 <connections>
-                                    <action selector="ShowFilterDialog:" destination="vXZ-lx-hvc" eventType="valueChanged" id="fYH-83-T05"/>
                                     <action selector="segmentChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Hhd-3p-1u8"/>
                                 </connections>
                             </segmentedControl>

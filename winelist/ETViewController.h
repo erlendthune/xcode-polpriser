@@ -36,7 +36,11 @@
 @property (nonatomic) bool orderAscending;
 @property (nonatomic) bool nagscreenOnDisplay;
 @property (nonatomic) bool filterMenuHasBeenDisplayed;
-@property (nonatomic) int orderBy;
+@property (nonatomic) long orderBy;
+@property (nonatomic) bool primaryOrderKeyActive;
+@property (nonatomic) long primaryOrderKey;
+@property (nonatomic) bool primaryOrderAscending;
+
 @property (nonatomic) long bytesReceived;
 @property (nonatomic) long activeSegment;
 @property (nonatomic) int filter;

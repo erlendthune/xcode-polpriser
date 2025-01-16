@@ -24,6 +24,7 @@
 		87D5733E1D820B6900CCD362 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D5733D1D820B6900CCD362 /* libsqlite3.dylib */; };
 		87E76DBE1B5936AF009D3314 /* PolpriserUserGuide.html in Resources */ = {isa = PBXBuildFile; fileRef = 87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */; };
 		87F366092D3323EA00832DE2 /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 87F366082D3323EA00832DE2 /* vino.db */; };
+		87F3660B2D370B6C00832DE2 /* ETColumnOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F3660A2D370B6C00832DE2 /* ETColumnOrderViewController.m */; };
 		87FF11CB190C511200FFE043 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CA190C511200FFE043 /* Foundation.framework */; };
 		87FF11CD190C511200FFE043 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CC190C511200FFE043 /* CoreGraphics.framework */; };
 		87FF11CF190C511200FFE043 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CE190C511200FFE043 /* UIKit.framework */; };
@@ -88,6 +89,8 @@
 		87E3905A1915846500CC728E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PolpriserUserGuide.html; sourceTree = "<group>"; };
 		87F366082D3323EA00832DE2 /* vino.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = vino.db; path = ../../../../git/polpriser/vino.db; sourceTree = "<group>"; };
+		87F3660A2D370B6C00832DE2 /* ETColumnOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETColumnOrderViewController.m; sourceTree = "<group>"; };
+		87F3660E2D3713A300832DE2 /* ETColumnOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETColumnOrderViewController.h; sourceTree = "<group>"; };
 		87FF11C7190C511200FFE043 /* Polpriser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polpriser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87FF11CA190C511200FFE043 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		87FF11CC190C511200FFE043 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -216,6 +219,8 @@
 				875740A41BA36406002F0150 /* ETStockViewController.h */,
 				875740A51BA36406002F0150 /* ETStockViewController.m */,
 				872E5E622D2C4F13007A9D74 /* LaunchScreen.storyboard */,
+				87F3660A2D370B6C00832DE2 /* ETColumnOrderViewController.m */,
+				87F3660E2D3713A300832DE2 /* ETColumnOrderViewController.h */,
 			);
 			path = winelist;
 			sourceTree = "<group>";
@@ -394,6 +399,7 @@
 				87FF11D7190C511200FFE043 /* main.m in Sources */,
 				87FF1211190C513000FFE043 /* FMDatabaseQueue.m in Sources */,
 				87FF11DB190C511200FFE043 /* ETAppDelegate.m in Sources */,
+				87F3660B2D370B6C00832DE2 /* ETColumnOrderViewController.m in Sources */,
 				8728113A190C5D0A005ABB06 /* FMDBDataAccess.m in Sources */,
 				87FF121D190C528300FFE043 /* Wine.m in Sources */,
 				8728113D190C5DE2005ABB06 /* Utility.m in Sources */,

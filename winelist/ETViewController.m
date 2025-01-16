@@ -13,8 +13,10 @@
 
 #define ORDER_BY_NAME 0
 #define ORDER_BY_PRICE 1
-#define ORDER_BY_PRICE_PER_VOLUME_UNIT 2
-#define ORDER_BY_PRICE_PER_ALCOHOL_UNIT 3
+#define ORDER_BY_VOLUME 2
+#define ORDER_BY_ALCOHOL_CONTENT 3
+#define ORDER_BY_PRICE_PER_VOLUME_UNIT 4
+#define ORDER_BY_PRICE_PER_ALCOHOL_UNIT 5
 
 #import "ETViewController.h"
 #import "HRMAPHelper.h"
@@ -23,6 +25,7 @@
 #import "ETInternetconnection.h"
 #import "ETStockViewController.h"
 #import "ETHelpViewController.h"
+#import "ETColumnOrderViewController.h"
 
 @interface ETViewController ()
 
@@ -49,11 +52,12 @@
     self.buttonTintColor = self.filterButton.tintColor;
     self.orderBy = ORDER_BY_PRICE;
     self.orderAscending = true;
+    self.primaryOrderAscending = true;
+    self.primaryOrderKeyActive = false;
     self.filter = 0;
     self.menuButton.title = @"\u2630";
     self.restorePurchaseStarted = false;
     self.bytesReceived = 0;
-    self.activeSegment = 0;
     self.dateRequestSource = 0;
     self.nagscreenOnDisplay = false;
     self.downloadState = 0;
@@ -68,7 +72,8 @@
 //    [self.dbDateButton setTarget:nil];
 //    [self.dbDateButton setAction:nil];
 
-    _purchased = [[HRMAPHelper sharedInstance] productPurchased:@"com.erlendthune.polpriser"];
+    _purchased = true;
+//    _purchased = [[HRMAPHelper sharedInstance] productPurchased:@"com.erlendthune.polpriser"];
     
     if(!_purchased)
     {
@@ -76,6 +81,64 @@
     }
     //Subscribe to events that application receives. This causes the nag screen to be activated when app is activated.
     [self getWines];
+    [self updateSortArrows];
+
+    
+     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+     [self.wineSegment addGestureRecognizer:longPress];
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        CGPoint touchPoint = [gesture locationInView:self.wineSegment];
+        NSInteger segmentIndex = [self indexOfSegmentAtPoint:touchPoint];
+        
+        if(self.primaryOrderKeyActive && segmentIndex == self.primaryOrderKey)
+        {
+            self.primaryOrderKeyActive = false;
+            [self removePrimaryKeySymbolFromSegment];
+            [self updateSortArrows];
+        }
+        else if (!self.primaryOrderKeyActive && self.orderBy == segmentIndex)
+        {
+            self.primaryOrderKey = segmentIndex;
+            self.primaryOrderKeyActive = true;
+            [self updatePrimaryKeySegment];
+            [self updateSortArrows];
+        }
+    }
+}
+
+- (NSInteger)indexOfSegmentAtPoint:(CGPoint)point {
+    CGFloat totalWidth = self.wineSegment.bounds.size.width;
+    NSInteger numberOfSegments = self.wineSegment.numberOfSegments;
+    CGFloat segmentWidth = totalWidth / numberOfSegments;
+
+    for (NSInteger i = 0; i < numberOfSegments; i++) {
+        CGRect segmentRect = CGRectMake(i * segmentWidth, 0, segmentWidth, self.wineSegment.bounds.size.height);
+        if (CGRectContainsPoint(segmentRect, point)) {
+            return i;
+        }
+    }
+    return NSNotFound;
+}
+
+- (void) removePrimaryKeySymbolFromSegment
+{
+    NSString *originalTitle = [self.wineSegment titleForSegmentAtIndex:self.primaryOrderKey];
+    
+    NSString *newTitle = [originalTitle stringByReplacingOccurrencesOfString:@"🔑" withString:@""];
+    
+    [self.wineSegment setTitle:newTitle forSegmentAtIndex:self.primaryOrderKey];
+}
+
+- (void) updatePrimaryKeySegment {
+    NSString *selectedTitle = [self.wineSegment titleForSegmentAtIndex:self.primaryOrderKey];
+    NSString *updatedTitle = [NSString stringWithFormat:@"%@🔑", selectedTitle];
+    [self.wineSegment setTitle:updatedTitle forSegmentAtIndex:self.primaryOrderKey];
+
+    NSDictionary *boldAttributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:14]};
+    [self.wineSegment setTitleTextAttributes:boldAttributes forState:UIControlStateNormal];
 }
 
 - (void)AppNotPurchased
@@ -640,35 +703,76 @@
     [self.view addSubview:self.activityIndicator];
 }
 
-- (IBAction)segmentChanged:(id)sender {
+- (void)removeArrowsFromSegmentTitleAtIndex:(NSInteger)index
+{
+    NSString *originalTitle = [self.wineSegment titleForSegmentAtIndex:index];
+    
+    originalTitle = [originalTitle stringByReplacingOccurrencesOfString:@"▲" withString:@""];
+    originalTitle = [originalTitle stringByReplacingOccurrencesOfString:@"▼" withString:@""];
+    [self.wineSegment setTitle:originalTitle forSegmentAtIndex:index];
+}
+
+- (void)updateSegmentTitleWithArrowAtIndex:(NSInteger)index ascending:(BOOL)ascending {
+    [self removeArrowsFromSegmentTitleAtIndex:index];
+
+    NSString *originalTitle = [self.wineSegment titleForSegmentAtIndex:index];
+
+    // Append the correct arrow
+    NSString *newTitle = ascending ? [originalTitle stringByAppendingString:@"▲"] : [originalTitle stringByAppendingString:@"▼"];
+    [self.wineSegment setTitle:newTitle forSegmentAtIndex:index];
+}
+
+- (bool)isSecondaryOrderKeyActive
+{
+    if(!self.primaryOrderKeyActive)
+        return true;
+    
+    return self.orderBy != self.primaryOrderKey;
+}
+
+- (void) setSortDirection
+{
     long newSegment = self.wineSegment.selectedSegmentIndex;
-    if(newSegment == self.activeSegment)
+
+    if(newSegment == self.primaryOrderKey && _primaryOrderKeyActive)
+    {
+        self.primaryOrderAscending = !self.primaryOrderAscending;
+    }
+    else if(newSegment == self.orderBy)
     {
         self.orderAscending = !self.orderAscending;
     }
-    
-    if(newSegment == 0)
+    else
     {
-        self.orderBy = ORDER_BY_PRICE;
+        self.orderAscending = true;
     }
-    else if(newSegment == 1)
-    {
-        self.orderBy = ORDER_BY_PRICE;
-    }
-    else if(newSegment == 2)
-    {
-        self.orderBy = ORDER_BY_PRICE_PER_VOLUME_UNIT;
-    }
-    else if(newSegment == 3)
-    {
-        self.orderBy = ORDER_BY_PRICE_PER_ALCOHOL_UNIT;
-    }
-    self.activeSegment = newSegment;
-    [self getWines];
 }
 
+- (void) updateSortArrows
+{
+    for(int i = 0; i < self.wineSegment.numberOfSegments; i++)
+    {
+        if(self.primaryOrderKeyActive && i == self.primaryOrderKey)
+        {
+            [self updateSegmentTitleWithArrowAtIndex:i ascending:self.primaryOrderAscending];
+        }
+        else if([self isSecondaryOrderKeyActive] && i == self.orderBy)
+        {
+            [self updateSegmentTitleWithArrowAtIndex:i ascending:self.orderAscending];
+        }
+        else
+        {
+            [self removeArrowsFromSegmentTitleAtIndex:i];
+        }
+    }
+}
+- (IBAction)segmentChanged:(id)sender {
+    [self setSortDirection];
+    self.orderBy = self.wineSegment.selectedSegmentIndex;
+    [self updateSortArrows];
 
-
+    [self getWines];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -720,10 +824,7 @@
 - (NSMutableString*) GetSearchString
 {
     NSMutableString *searchString;
-    searchString = [NSMutableString stringWithFormat:@"SELECT *,\
-                    CAST(ROUND(price / CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL)) AS INTEGER) AS price_per_volume,\
-                    CAST(ROUND(price / ((CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL) / 100) * alcohol)) AS INTEGER) AS price_per_alcohol_per_liter\
-                    FROM vino"];
+    searchString = [NSMutableString stringWithFormat:@"SELECT *, CAST(ROUND(price / CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL)) AS INTEGER) AS price_per_volume, CAST(ROUND(price / ((CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL) / 100) * alcohol)) AS INTEGER) AS price_per_alcohol_per_liter FROM vino"];
                 
     NSString* ss = [[self searchBar] text];
     bool bFirst = true;
@@ -760,44 +861,76 @@
         [searchString appendFormat: @" type=%d", self.filter-1]; //-1 because 0 means all types in UI.
     }
 
-    if(self.orderBy == ORDER_BY_PRICE_PER_ALCOHOL_UNIT)
+    if(self.primaryOrderKeyActive || [self isSecondaryOrderKeyActive])
     {
-        if(self.orderAscending)
+        [searchString appendString:@" ORDER BY "];
+        
+        if(self.primaryOrderKeyActive)
         {
-            [searchString appendString: @" ORDER BY (alcohol = 0) ASC, price_per_alcohol_per_liter ASC"];
+            [searchString appendString:[self getOrderBy:self.primaryOrderKey ascending:self.primaryOrderAscending]];
         }
-        else
+        if(self.isSecondaryOrderKeyActive)
         {
-            [searchString appendString: @" ORDER BY (alcohol = 0) ASC, price_per_alcohol_per_liter DESC"];
-        }
-    }
-    else
-    {
-        if(self.orderBy == ORDER_BY_NAME)
-        {
-            [searchString appendString: @" ORDER BY name"];
-        }
-        else if(self.orderBy == ORDER_BY_PRICE)
-        {
-            [searchString appendString: @" ORDER BY price"];
-        }
-        else if(self.orderBy == ORDER_BY_PRICE_PER_VOLUME_UNIT)
-        {
-            [searchString appendString: @" ORDER BY price_per_volume"];
-        }
-        if(self.orderAscending)
-        {
-            [searchString appendString: @" ASC"];
-        }
-        else
-        {
-            [searchString appendString: @" DESC"];
+            if(self.primaryOrderKeyActive)
+            {
+                [searchString appendString:@","];
+            }
+            [searchString appendString:[self getOrderBy:self.orderBy ascending:self.orderAscending]];
         }
     }
     
     NSLog(@"%@", searchString);
 
     return searchString;
+}
+
+- (NSString*) getOrderBy:(long)key ascending:(BOOL)ascending
+{
+    NSMutableString *orderByString = [[NSMutableString alloc] init];
+        
+    if(key == ORDER_BY_PRICE_PER_ALCOHOL_UNIT)
+    {
+        if(ascending)
+        {
+            [orderByString appendString: @" (alcohol = 0) ASC, price_per_alcohol_per_liter ASC"];
+        }
+        else
+        {
+            [orderByString appendString: @" (alcohol = 0) ASC, price_per_alcohol_per_liter DESC"];
+        }
+    }
+    else
+    {
+        if(key == ORDER_BY_NAME)
+        {
+            [orderByString appendString: @" name"];
+        }
+        else if(key == ORDER_BY_PRICE)
+        {
+            [orderByString appendString: @" price"];
+        }
+        else if(key == ORDER_BY_VOLUME)
+        {
+            [orderByString appendString: @" volume"];
+        }
+        else if(key == ORDER_BY_ALCOHOL_CONTENT)
+        {
+            [orderByString appendString: @" alcohol"];
+        }
+        else if(key == ORDER_BY_PRICE_PER_VOLUME_UNIT)
+        {
+            [orderByString appendString: @" price_per_volume"];
+        }
+        if(ascending)
+        {
+            [orderByString appendString: @" ASC"];
+        }
+        else
+        {
+            [orderByString appendString: @" DESC"];
+        }
+    }
+    return orderByString;
 }
 
 -(void)UpdateWineList:(NSMutableArray*)arr
