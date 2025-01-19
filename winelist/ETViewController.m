@@ -25,7 +25,6 @@
 #import "ETInternetconnection.h"
 #import "ETStockViewController.h"
 #import "ETHelpViewController.h"
-#import "ETColumnOrderViewController.h"
 
 @interface ETViewController ()
 
@@ -50,7 +49,7 @@
     [super viewDidLoad];
     self.wineSegment.apportionsSegmentWidthsByContent = YES;
     self.buttonTintColor = self.filterButton.tintColor;
-    self.orderBy = ORDER_BY_PRICE;
+    self.orderBy = ORDER_BY_NAME;
     self.orderAscending = true;
     self.primaryOrderAscending = true;
     self.primaryOrderKeyActive = false;
@@ -72,8 +71,7 @@
 //    [self.dbDateButton setTarget:nil];
 //    [self.dbDateButton setAction:nil];
 
-    _purchased = true;
-//    _purchased = [[HRMAPHelper sharedInstance] productPurchased:@"com.erlendthune.polpriser"];
+    _purchased = [[HRMAPHelper sharedInstance] productPurchased:@"com.erlendthune.polpriser"];
     
     if(!_purchased)
     {
@@ -83,44 +81,30 @@
     [self getWines];
     [self updateSortArrows];
 
-    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12]};
+    [self.wineSegment setTitleTextAttributes:attributes forState:UIControlStateNormal];
+
      UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
      [self.wineSegment addGestureRecognizer:longPress];
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {
-        CGPoint touchPoint = [gesture locationInView:self.wineSegment];
-        NSInteger segmentIndex = [self indexOfSegmentAtPoint:touchPoint];
-        
-        if(self.primaryOrderKeyActive && segmentIndex == self.primaryOrderKey)
+        if(self.primaryOrderKeyActive)
         {
             self.primaryOrderKeyActive = false;
             [self removePrimaryKeySymbolFromSegment];
-            [self updateSortArrows];
         }
-        else if (!self.primaryOrderKeyActive && self.orderBy == segmentIndex)
+        else
         {
-            self.primaryOrderKey = segmentIndex;
             self.primaryOrderKeyActive = true;
+            self.primaryOrderKey = self.orderBy;
+            self.primaryOrderAscending = self.orderAscending;
             [self updatePrimaryKeySegment];
-            [self updateSortArrows];
         }
+        [self updateSortArrows];
+        [self getWines];
     }
-}
-
-- (NSInteger)indexOfSegmentAtPoint:(CGPoint)point {
-    CGFloat totalWidth = self.wineSegment.bounds.size.width;
-    NSInteger numberOfSegments = self.wineSegment.numberOfSegments;
-    CGFloat segmentWidth = totalWidth / numberOfSegments;
-
-    for (NSInteger i = 0; i < numberOfSegments; i++) {
-        CGRect segmentRect = CGRectMake(i * segmentWidth, 0, segmentWidth, self.wineSegment.bounds.size.height);
-        if (CGRectContainsPoint(segmentRect, point)) {
-            return i;
-        }
-    }
-    return NSNotFound;
 }
 
 - (void) removePrimaryKeySymbolFromSegment
@@ -474,23 +458,6 @@
     return sVinType;
 }
 
-/*
- vintyper = {
- "0" => "rødvin",
- "1" => "hvitvin",
- "2" => "rosevin",
- "3" => "sterkvin",
- "4" => "musserendevin",
- "5" => "fruktvin",
- "6" => "brennevin",
- "7" => "øl",
- "8" => "perlendevin",
- "9" => "aromatisertvin",
- "10" => "sider",
- "11" => "alkoholfritt",
- }
- */
-
 -(void)ShowStartupDialog
 {
     if(self.filterMenuHasBeenDisplayed)
@@ -500,59 +467,6 @@
     self.filterMenuHasBeenDisplayed = true;
     [self ShowFilterDialogEx];
 }
-
-/*
--(void)ShowFilterDialogEx
-{
-    NSMutableString *Alle = [NSMutableString stringWithString:@"Alle varer"];
-    NSMutableString *Red = [NSMutableString stringWithString:@"Rødvin"];
-    NSMutableString *White = [NSMutableString stringWithString:@"Hvitvin"];
-    NSMutableString *Rose = [NSMutableString stringWithString:@"Rosévin"];
-    NSMutableString *Muss = [NSMutableString stringWithString:@"Musserende vin"];
-    NSMutableString *Sterk = [NSMutableString stringWithString:@"Sterkvin"];
-    NSMutableString *Brenn = [NSMutableString stringWithString:@"Brennevin"];
-    NSMutableString *Frukt = [NSMutableString stringWithString:@"Fruktvin"];
-    NSMutableString *Beer = [NSMutableString stringWithString:@"Øl"];
-    NSMutableString *Perlendevin = [NSMutableString stringWithString:@"Perlende vin"];
-    NSMutableString *Aromatisertvin = [NSMutableString stringWithString:@"Aromatisert vin"];
-    NSMutableString *Sider = [NSMutableString stringWithString:@"Sider"];
-    NSMutableString *Alkoholfritt = [NSMutableString stringWithString:@"Alkoholfritt"];
-    
-    NSArray *filterArray = [NSArray arrayWithObjects:Alle,Red,White,Rose,Sterk,Muss,Frukt,Brenn,Beer,Perlendevin,Aromatisertvin,Sider,Alkoholfritt,nil];
-    
-    for (int i = 0; i < [filterArray count]; i++)
-    {
-        id object = [filterArray objectAtIndex:i];
-        if(i == self.filter)
-        {
-            [object insertString:@"✔ " atIndex:0];
-        }
-        else
-        {
-            [object insertString:@"  " atIndex:0];
-        }
-    }
-    
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Vis" delegate:self cancelButtonTitle:@"Ok" destructiveButtonTitle:nil otherButtonTitles:
-                            Alle,
-                            Red,
-                            White,
-                            Rose,
-                            Sterk,
-                            Muss,
-                            Frukt,
-                            Brenn,
-                            Beer,
-                            Perlendevin,
-                            Aromatisertvin,
-                            Sider,
-                            Alkoholfritt,
-                            nil];
-    
-//    [popup showInView:[UIApplication sharedApplication].keyWindow];
-    [popup showInView:self.view];
-}
-*/
 
 -(void)ShowFilterDialogEx
 {
@@ -765,6 +679,8 @@
             [self removeArrowsFromSegmentTitleAtIndex:i];
         }
     }
+    [self.wineSegment setNeedsLayout];
+    [self.wineSegment layoutIfNeeded];
 }
 - (IBAction)segmentChanged:(id)sender {
     [self setSortDirection];
@@ -776,15 +692,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-/*    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
-        // here you go with iOS 7
- 
-    }
-*/
-//    NSLog(@"IOS version: %f", NSFoundationVersionNumber);
-
-/*    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.erlendthune.com/vin/forward.php?p=8016101"]];
-*/
+        // Open a dialog with more product details?
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -824,7 +732,12 @@
 - (NSMutableString*) GetSearchString
 {
     NSMutableString *searchString;
-    searchString = [NSMutableString stringWithFormat:@"SELECT *, CAST(ROUND(price / CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL)) AS INTEGER) AS price_per_volume, CAST(ROUND(price / ((CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL) / 100) * alcohol)) AS INTEGER) AS price_per_alcohol_per_liter FROM vino"];
+    searchString = [NSMutableString stringWithFormat:@"SELECT \
+*,\
+CAST(ROUND(price / numeric_volume) AS INTEGER) AS price_per_volume,\
+CAST(ROUND(price / ((numeric_volume / 100) * alcohol)) AS INTEGER) AS price_per_alcohol_per_liter \
+FROM (SELECT *,\
+CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl', '') AS REAL) AS numeric_volume FROM VINO "];
                 
     NSString* ss = [[self searchBar] text];
     bool bFirst = true;
@@ -858,8 +771,9 @@
         {
             [searchString appendString:@" AND "];
         }
-        [searchString appendFormat: @" type=%d", self.filter-1]; //-1 because 0 means all types in UI.
+        [searchString appendFormat: @" type=%ld", self.filter-1]; //-1 because 0 means all types in UI.
     }
+    [searchString appendString:@")"];
 
     if(self.primaryOrderKeyActive || [self isSecondaryOrderKeyActive])
     {
@@ -911,7 +825,7 @@
         }
         else if(key == ORDER_BY_VOLUME)
         {
-            [orderByString appendString: @" volume"];
+            [orderByString appendString: @" numeric_volume"];
         }
         else if(key == ORDER_BY_ALCOHOL_CONTENT)
         {
@@ -996,7 +910,6 @@
     });
 }
 
-
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
 	[self getWines];
@@ -1005,9 +918,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
 	[searchBar resignFirstResponder];
-//	[self getWines];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -1033,7 +944,6 @@
     [dataTask resume];
 }
 
-#pragma mark NSURLConnection Delegate Methods
 - (void) DisplayInternetView
 {
     CGRect screenBounds = [UIScreen mainScreen].bounds;
@@ -1051,7 +961,7 @@
     self.internetView.frame = f;
     
     [self.view addSubview:self.internetView];
-    NSString *address = @"https://www.erlendthune.com/vin/vino.txt";
+    NSString *address = @"https://polpriser.github.io/vino13.txt";
     [self.internetView UpdateLabelText:@"Sjekker..."];
     
     [self Get:address];
@@ -1059,45 +969,6 @@
 - (IBAction)checkForDatabaseUpdates:(id)sender {
     //This method will call GetDatabaseResult
     [self GetDatabaseDate];
-}
-
-- (void)URLSession:(NSURLSession *)session
-          dataTask:(NSURLSessionDataTask *)dataTask
-    didReceiveResponse:(NSURLResponse *)response
- completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
-    NSLog(@"Received response: %@", response.URL);
-
-    // Initialize your response data and reset bytesReceived
-    self.responseData = [[NSMutableData alloc] init];
-    self.bytesReceived = 0;
-
-    // Allow the session to continue
-    completionHandler(NSURLSessionResponseAllow);
-}
-
-
-- (void)URLSession:(NSURLSession *)session
-          dataTask:(NSURLSessionDataTask *)dataTask
-    didReceiveData:(NSData *)data {
-    self.bytesReceived += data.length;
-    [self.responseData appendData:data];
-
-    NSLog(@"Current thread: %@", [NSThread currentThread]);
-
-    // Update UI on the main thread
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSString *status = [NSString stringWithFormat:@"Mottar data: %ld bytes", self.bytesReceived];
-        [self.internetView UpdateLabelText:status];
-    });
-}
-
-
-// Delegate method for completion (when all data has been downloaded)
-- (void)URLSession:(NSURLSession *)session
-  dataTask:(NSURLSessionDataTask *)dataTask
-  didFinishDownloadingToURL:(NSURL *)location {
-    NSLog(@"All data is downloaded");
-
 }
 
 -(void)UpdateUsageCounterInDatabase
@@ -1188,15 +1059,34 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+#pragma mark NSURLConnection Delegate Methods
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveResponse:(NSURLResponse *)response
+ completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
+    NSLog(@"Received response: %@", response.URL);
+
+    // Initialize your response data and reset bytesReceived
+    self.responseData = [[NSMutableData alloc] init];
+    self.bytesReceived = 0;
+
+    // Allow the session to continue
+    completionHandler(NSURLSessionResponseAllow);
+}
 
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    // The request has failed for some reason!
-    // Check the error var
-    NSLog(@"Internetconnection error:%@", error.description);
-    [self alertMessage:@"Feil" s:error.localizedDescription];
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data {
+    self.bytesReceived += data.length;
+    [self.responseData appendData:data];
+
+    NSLog(@"Current thread: %@", [NSThread currentThread]);
+
+    // Update UI on the main thread
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.internetView removeFromSuperview];
+        NSString *status = [NSString stringWithFormat:@"Mottar data: %ld bytes", self.bytesReceived];
+        [self.internetView UpdateLabelText:status];
     });
 }
 
@@ -1206,48 +1096,48 @@
     if (error) {
         // Handle the error
         NSLog(@"Internet connection error: %@", error.description);
-        [self alertMessage:@"Feil" s:error.localizedDescription];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.internetView removeFromSuperview];
+            [self alertMessage:@"Feil" s:error.localizedDescription];
+        });
     } else {
-        NSLog(@"Internetconnection finish.");
-        if(self.downloadState == 0)
-        {
+        NSLog(@"Internet connection finish.");
+        if (self.downloadState == 0) {
             NSLog(@"Current thread: %@", [NSThread currentThread]);
 
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.internetView UpdateLabelText:@""];
-            });
-            dispatch_async(dispatch_get_main_queue(), ^{
                 [self displayDownloadDialog];
             });
-        }
-        else
-        {
+        } else {
             self.downloadState = 0;
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.internetView UpdateLabelText:@"Lagrer database"];
             });
 
-            NSString* databasePath = [Utility getDatabasePath];
+            NSString *databasePath = [Utility getDatabasePath];
+
+            BOOL success = [self.responseData writeToFile:databasePath atomically:YES];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.internetView removeFromSuperview];
-            });
-            if([self.responseData writeToFile:databasePath atomically:YES])
-            {
-                [self.queue close];
-                self.queue = [FMDatabaseQueue databaseQueueWithPath:databasePath];
-                [self getWines];
-                self.dateRequestSource = 0;
-                [self GetDatabaseDate];
-                self.dateRequestSource = 1;
-                
-                [self UpdateUsageCounterInDatabase];
+                if (success) {
+                    [self.queue close];
+                    self.queue = [FMDatabaseQueue databaseQueueWithPath:databasePath];
 
-                [self alertMessage:@"Database" s:@"Du har nå den nyeste utgaven av databasen."];
-            }
-            else
-            {
-                [self alertMessage:@"Database" s:@"Klarte ikke å lagre den nye databasen."];
-            }
+                    // Perform database-related updates
+                    [self getWines];
+                    self.dateRequestSource = 0;
+                    [self GetDatabaseDate];
+                    self.dateRequestSource = 1;
+
+                    [self UpdateUsageCounterInDatabase];
+
+                    [self alertMessage:@"Database" s:@"Du har nå den nyeste utgaven av databasen."];
+                } else {
+                    [self alertMessage:@"Database" s:@"Klarte ikke å lagre den nye databasen."];
+                }
+            });
         }
     }
 }
@@ -1281,7 +1171,7 @@
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * _Nonnull action) {
             self.downloadState = 1;
-            NSString *address = @"https://www.erlendthune.com/vin/vino.db";
+            NSString *address = @"https://polpriser.github.io/vino13.db";
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.internetView UpdateLabelText:@"Laster ned..."];
             });
@@ -1302,6 +1192,57 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
 }
+
+- (void) save
+{
+    // Store the data
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setBool:self.primaryOrderKeyActive forKey:@"primaryOrderKeyActive"];
+    [defaults setBool:self.primaryOrderAscending forKey:@"primaryOrderAscending"];
+    [defaults setInteger:self.primaryOrderKey forKey:@"primaryOrderKey"];
+
+    [defaults setBool:self.orderAscending forKey:@"orderAscending"];
+    [defaults setInteger:self.orderBy forKey:@"orderBy"];
+    [defaults setInteger:self.filter forKey:@"filter"];
+
+    [defaults synchronize];
+    
+    NSLog(@"Data saved");
+}
+
+- (void)load
+{
+    // Get the stored data before the view loads
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    if ([defaults objectForKey:@"primaryOrderKeyActive"] != nil)
+    {
+        self.primaryOrderKeyActive = [defaults boolForKey:@"primaryOrderKeyActive"];
+    }
+    if ([defaults objectForKey:@"primaryOrderAscending"] != nil)
+    {
+        self.primaryOrderAscending = [defaults boolForKey:@"primaryOrderAscending"];
+    }
+    if ([defaults objectForKey:@"primaryOrderKey"] != nil)
+    {
+        self.primaryOrderKey = [defaults integerForKey:@"primaryOrderKey"];
+    }
+
+    if ([defaults objectForKey:@"orderAscending"] != nil)
+    {
+        self.primaryOrderKeyActive = [defaults boolForKey:@"orderAscending"];
+    }
+    if ([defaults objectForKey:@"orderBy"] != nil)
+    {
+        self.orderBy = [defaults integerForKey:@"orderBy"];
+    }
+    if ([defaults objectForKey:@"filter"] != nil)
+    {
+        self.filter = [defaults integerForKey:@"filter"];
+    }
+}
+
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

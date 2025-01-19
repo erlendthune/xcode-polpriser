@@ -21,10 +21,8 @@
 		87A420EB1FF37FE4009CF41A /* ETAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728114E1912C828005ABB06 /* ETAlertView.m */; };
 		87A420EE1FF3828D009CF41A /* HRMAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A420EC1FF3828D009CF41A /* HRMAPHelper.m */; };
 		87A420F01FF4CCEE009CF41A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A420EF1FF4CCEE009CF41A /* StoreKit.framework */; };
-		87D5733E1D820B6900CCD362 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D5733D1D820B6900CCD362 /* libsqlite3.dylib */; };
 		87E76DBE1B5936AF009D3314 /* PolpriserUserGuide.html in Resources */ = {isa = PBXBuildFile; fileRef = 87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */; };
-		87F366092D3323EA00832DE2 /* vino.db in Resources */ = {isa = PBXBuildFile; fileRef = 87F366082D3323EA00832DE2 /* vino.db */; };
-		87F3660B2D370B6C00832DE2 /* ETColumnOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F3660A2D370B6C00832DE2 /* ETColumnOrderViewController.m */; };
+		87F366102D3BC1EC00832DE2 /* vino13.db in Resources */ = {isa = PBXBuildFile; fileRef = 87F3660F2D3BC1EC00832DE2 /* vino13.db */; };
 		87FF11CB190C511200FFE043 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CA190C511200FFE043 /* Foundation.framework */; };
 		87FF11CD190C511200FFE043 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CC190C511200FFE043 /* CoreGraphics.framework */; };
 		87FF11CF190C511200FFE043 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CE190C511200FFE043 /* UIKit.framework */; };
@@ -35,7 +33,6 @@
 		87FF11E1190C511200FFE043 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87FF11DF190C511200FFE043 /* Main_iPad.storyboard */; };
 		87FF11E4190C511200FFE043 /* ETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF11E3190C511200FFE043 /* ETViewController.m */; };
 		87FF11E6190C511200FFE043 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87FF11E5190C511200FFE043 /* Images.xcassets */; };
-		87FF11ED190C511200FFE043 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11EC190C511200FFE043 /* XCTest.framework */; };
 		87FF11EE190C511200FFE043 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CA190C511200FFE043 /* Foundation.framework */; };
 		87FF11EF190C511200FFE043 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FF11CE190C511200FFE043 /* UIKit.framework */; };
 		87FF11F7190C511200FFE043 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87FF11F5190C511200FFE043 /* InfoPlist.strings */; };
@@ -83,14 +80,10 @@
 		87A420EC1FF3828D009CF41A /* HRMAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMAPHelper.m; sourceTree = SOURCE_ROOT; };
 		87A420ED1FF3828D009CF41A /* HRMAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMAPHelper.h; sourceTree = SOURCE_ROOT; };
 		87A420EF1FF4CCEE009CF41A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		87D5733D1D820B6900CCD362 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
-		87E39054191575E000CC728E /* winelistInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = winelistInfo.plist; path = /Users/erlendthune/Desktop/XCODE/winelist/winelistInfo.plist; sourceTree = "<absolute>"; };
 		87E390571915844000CC728E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		87E3905A1915846500CC728E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PolpriserUserGuide.html; sourceTree = "<group>"; };
-		87F366082D3323EA00832DE2 /* vino.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = vino.db; path = ../../../../git/polpriser/vino.db; sourceTree = "<group>"; };
-		87F3660A2D370B6C00832DE2 /* ETColumnOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETColumnOrderViewController.m; sourceTree = "<group>"; };
-		87F3660E2D3713A300832DE2 /* ETColumnOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETColumnOrderViewController.h; sourceTree = "<group>"; };
+		87F3660F2D3BC1EC00832DE2 /* vino13.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = vino13.db; path = ../../../../git/polpriser/vino13.db; sourceTree = "<group>"; };
 		87FF11C7190C511200FFE043 /* Polpriser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polpriser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87FF11CA190C511200FFE043 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		87FF11CC190C511200FFE043 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -105,7 +98,6 @@
 		87FF11E3190C511200FFE043 /* ETViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETViewController.m; sourceTree = "<group>"; };
 		87FF11E5190C511200FFE043 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		87FF11EB190C511200FFE043 /* winelistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = winelistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		87FF11EC190C511200FFE043 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		87FF11F4190C511200FFE043 /* winelistTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "winelistTests-Info.plist"; sourceTree = "<group>"; };
 		87FF11F6190C511200FFE043 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		87FF11F8190C511200FFE043 /* winelistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = winelistTests.m; sourceTree = "<group>"; };
@@ -130,7 +122,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				877D084D1FF63742008EC131 /* Security.framework in Frameworks */,
-				87D5733E1D820B6900CCD362 /* libsqlite3.dylib in Frameworks */,
 				87FF11CD190C511200FFE043 /* CoreGraphics.framework in Frameworks */,
 				87A420F01FF4CCEE009CF41A /* StoreKit.framework in Frameworks */,
 				87FF11CF190C511200FFE043 /* UIKit.framework in Frameworks */,
@@ -142,7 +133,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87FF11ED190C511200FFE043 /* XCTest.framework in Frameworks */,
 				87FF11EF190C511200FFE043 /* UIKit.framework in Frameworks */,
 				87FF11EE190C511200FFE043 /* Foundation.framework in Frameworks */,
 			);
@@ -159,7 +149,6 @@
 				87FF11F2190C511200FFE043 /* winelistTests */,
 				87FF11C9190C511200FFE043 /* Frameworks */,
 				87FF11C8190C511200FFE043 /* Products */,
-				87E39054191575E000CC728E /* winelistInfo.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,11 +167,9 @@
 				877D084C1FF63742008EC131 /* Security.framework */,
 				87A420EF1FF4CCEE009CF41A /* StoreKit.framework */,
 				877DF6CB1D9D9F22000CD2CC /* libsqlite3.tbd */,
-				87D5733D1D820B6900CCD362 /* libsqlite3.dylib */,
 				87FF11CA190C511200FFE043 /* Foundation.framework */,
 				87FF11CC190C511200FFE043 /* CoreGraphics.framework */,
 				87FF11CE190C511200FFE043 /* UIKit.framework */,
-				87FF11EC190C511200FFE043 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -219,8 +206,6 @@
 				875740A41BA36406002F0150 /* ETStockViewController.h */,
 				875740A51BA36406002F0150 /* ETStockViewController.m */,
 				872E5E622D2C4F13007A9D74 /* LaunchScreen.storyboard */,
-				87F3660A2D370B6C00832DE2 /* ETColumnOrderViewController.m */,
-				87F3660E2D3713A300832DE2 /* ETColumnOrderViewController.h */,
 			);
 			path = winelist;
 			sourceTree = "<group>";
@@ -228,7 +213,7 @@
 		87FF11D1190C511200FFE043 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				87F366082D3323EA00832DE2 /* vino.db */,
+				87F3660F2D3BC1EC00832DE2 /* vino13.db */,
 				87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */,
 				8749554C191D23A800A4E95C /* UIBarButtonRefresh_2x.png */,
 				8749554D191D23A800A4E95C /* UIBarButtonOrganize_2x.png */,
@@ -367,8 +352,8 @@
 				87FF11E6190C511200FFE043 /* Images.xcassets in Resources */,
 				87FF11DE190C511200FFE043 /* Main_iPhone.storyboard in Resources */,
 				87495550191D23A800A4E95C /* UIBarButtonOrganize_2x.png in Resources */,
+				87F366102D3BC1EC00832DE2 /* vino13.db in Resources */,
 				8749554E191D23A800A4E95C /* UIBarButtonRefresh_2x.png in Resources */,
-				87F366092D3323EA00832DE2 /* vino.db in Resources */,
 				87FF11D5190C511200FFE043 /* InfoPlist.strings in Resources */,
 				87E76DBE1B5936AF009D3314 /* PolpriserUserGuide.html in Resources */,
 			);
@@ -399,7 +384,6 @@
 				87FF11D7190C511200FFE043 /* main.m in Sources */,
 				87FF1211190C513000FFE043 /* FMDatabaseQueue.m in Sources */,
 				87FF11DB190C511200FFE043 /* ETAppDelegate.m in Sources */,
-				87F3660B2D370B6C00832DE2 /* ETColumnOrderViewController.m in Sources */,
 				8728113A190C5D0A005ABB06 /* FMDBDataAccess.m in Sources */,
 				87FF121D190C528300FFE043 /* Wine.m in Sources */,
 				8728113D190C5DE2005ABB06 /* Utility.m in Sources */,
@@ -566,6 +550,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -579,16 +564,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.3.2;
+				CURRENT_PROJECT_VERSION = 1.3.9;
 				DEVELOPMENT_TEAM = 3B9MVBS2CK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "winelist/winelist-Prefix.pch";
 				INFOPLIST_FILE = "winelist/winelist-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Polpriser;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.3;
 				New_Setting = "";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.erlendthune.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -603,16 +589,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.3.2;
+				CURRENT_PROJECT_VERSION = 1.3.9;
 				DEVELOPMENT_TEAM = 3B9MVBS2CK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "winelist/winelist-Prefix.pch";
 				INFOPLIST_FILE = "winelist/winelist-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Polpriser;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.3;
 				New_Setting = "";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.erlendthune.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

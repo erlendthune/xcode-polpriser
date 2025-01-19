@@ -43,7 +43,7 @@
 
 @property (nonatomic) long bytesReceived;
 @property (nonatomic) long activeSegment;
-@property (nonatomic) int filter;
+@property (nonatomic) long filter;
 @property (weak, nonatomic) IBOutlet UIView *nagView;
 @property (nonatomic) int usageCounter;
 @property (nonatomic) int downloadState;

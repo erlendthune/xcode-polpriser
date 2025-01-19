@@ -23,8 +23,10 @@
                                 <segments>
                                     <segment title="Navn"/>
                                     <segment title="Pris"/>
-                                    <segment title="Pris/volum"/>
-                                    <segment title="Pris/alkohol"/>
+                                    <segment title="Volum"/>
+                                    <segment title="%"/>
+                                    <segment title="Pris/l"/>
+                                    <segment title="Pris/%"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentChanged:" destination="SHC-lL-6DI" eventType="valueChanged" id="llX-LY-2uu"/>

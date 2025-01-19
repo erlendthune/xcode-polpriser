@@ -155,7 +155,6 @@
     
 }
 
-
 - (void)buyMethod:(UIButton*)button
 {
     NSLog(@"Button  clicked.");
@@ -171,8 +170,6 @@
     [self removeFromSuperview];
 }
 
-
-
 - (void)aMethod:(UIButton*)button
 {
     NSLog(@"Button  clicked.");
@@ -185,7 +182,6 @@
 {
     //    [self.mvc answerQuestion:self];
 }
-
 
 -(void)setFont:(NSMutableAttributedString*)s fontSize:(int)fontSize
 {
