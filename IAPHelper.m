@@ -72,7 +72,7 @@ NSString *const IAPHelperTransactionFinished = @"IAPHelperTransactionFinished";
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *connectionError) {
        if (connectionError)
        {
-           NSLog(@"alidateReceipt:Failed to communicate with apple server.");
+           NSLog(@"ValidateReceipt:Failed to communicate with apple server.");
            [mvc AppNotPurchased];
            return;
        }
@@ -83,14 +83,14 @@ NSString *const IAPHelperTransactionFinished = @"IAPHelperTransactionFinished";
            if (!jsonResponse)
            {
                /* ... Handle error ...*/
-               NSLog(@"alidateReceipt:Failed to obtain response.");
+               NSLog(@"ValidateReceipt:Failed to obtain response.");
                [mvc AppNotPurchased];
                return;
            }
            else
            {
                NSString *datePurchasedString = jsonResponse[@"receipt"][@"original_purchase_date"];
-               NSLog(@"alidateReceipt:Found date purchased:%@", datePurchasedString);
+               NSLog(@"ValidateReceipt:Found date purchased:%@", datePurchasedString);
                
                datePurchasedString = [datePurchasedString stringByReplacingOccurrencesOfString:@"Etc/GMT" withString:@"GMT"];
                NSDateFormatter *dateFormat=[[NSDateFormatter alloc] init];

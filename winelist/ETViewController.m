@@ -72,7 +72,7 @@
 //    [self.dbDateButton setAction:nil];
 
     _purchased = [[HRMAPHelper sharedInstance] productPurchased:@"com.erlendthune.polpriser"];
-    
+    _purchased = false;
     if(!_purchased)
     {
         [[HRMAPHelper sharedInstance] validateReceipt:self];
