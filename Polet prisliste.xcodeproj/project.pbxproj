@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		872125192D45188E0048C057 /* IAPLocalizedPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 872125182D45188E0048C057 /* IAPLocalizedPrice.m */; };
+		8721251D2D46E38A0048C057 /* IAPManagerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721251C2D46E38A0048C057 /* IAPManagerSwift.swift */; };
 		8728113A190C5D0A005ABB06 /* FMDBDataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 87281139190C5D0A005ABB06 /* FMDBDataAccess.m */; };
 		8728113D190C5DE2005ABB06 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728113C190C5DE2005ABB06 /* Utility.m */; };
 		87281144191288DF005ABB06 /* ETSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 87281143191288DF005ABB06 /* ETSegmentedControl.m */; };
@@ -17,9 +19,7 @@
 		87495554191D26EA00A4E95C /* ETHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87495553191D26EA00A4E95C /* ETHelpViewController.m */; };
 		875740A61BA36406002F0150 /* ETStockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875740A51BA36406002F0150 /* ETStockViewController.m */; };
 		877D084D1FF63742008EC131 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 877D084C1FF63742008EC131 /* Security.framework */; };
-		87A420EA1FF37DB3009CF41A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A420E81FF37DB2009CF41A /* IAPHelper.m */; };
 		87A420EB1FF37FE4009CF41A /* ETAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728114E1912C828005ABB06 /* ETAlertView.m */; };
-		87A420EE1FF3828D009CF41A /* HRMAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A420EC1FF3828D009CF41A /* HRMAPHelper.m */; };
 		87A420F01FF4CCEE009CF41A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A420EF1FF4CCEE009CF41A /* StoreKit.framework */; };
 		87E76DBE1B5936AF009D3314 /* PolpriserUserGuide.html in Resources */ = {isa = PBXBuildFile; fileRef = 87E76DBD1B5936AF009D3314 /* PolpriserUserGuide.html */; };
 		87F366102D3BC1EC00832DE2 /* vino13.db in Resources */ = {isa = PBXBuildFile; fileRef = 87F3660F2D3BC1EC00832DE2 /* vino13.db */; };
@@ -56,6 +56,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		872125152D4517DD0048C057 /* IAPManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IAPManager.h; sourceTree = "<group>"; };
+		872125182D45188E0048C057 /* IAPLocalizedPrice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IAPLocalizedPrice.m; sourceTree = "<group>"; };
+		8721251A2D451AB50048C057 /* IAPLocalizedPrice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IAPLocalizedPrice.h; sourceTree = "<group>"; };
+		8721251B2D46E3890048C057 /* Polpriser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Polpriser-Bridging-Header.h"; sourceTree = "<group>"; };
+		8721251C2D46E38A0048C057 /* IAPManagerSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManagerSwift.swift; sourceTree = "<group>"; };
 		87281138190C5D0A005ABB06 /* FMDBDataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBDataAccess.h; sourceTree = "<group>"; };
 		87281139190C5D0A005ABB06 /* FMDBDataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBDataAccess.m; sourceTree = "<group>"; };
 		8728113B190C5DE2005ABB06 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utility.h; path = ../Utility.h; sourceTree = "<group>"; };
@@ -75,10 +80,6 @@
 		875740A51BA36406002F0150 /* ETStockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETStockViewController.m; sourceTree = "<group>"; };
 		877D084C1FF63742008EC131 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		877DF6CB1D9D9F22000CD2CC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		87A420E81FF37DB2009CF41A /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = SOURCE_ROOT; };
-		87A420E91FF37DB3009CF41A /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = SOURCE_ROOT; };
-		87A420EC1FF3828D009CF41A /* HRMAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMAPHelper.m; sourceTree = SOURCE_ROOT; };
-		87A420ED1FF3828D009CF41A /* HRMAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMAPHelper.h; sourceTree = SOURCE_ROOT; };
 		87A420EF1FF4CCEE009CF41A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		87E390571915844000CC728E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		87E3905A1915846500CC728E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -177,10 +178,6 @@
 		87FF11D0190C511200FFE043 /* winelist */ = {
 			isa = PBXGroup;
 			children = (
-				87A420ED1FF3828D009CF41A /* HRMAPHelper.h */,
-				87A420EC1FF3828D009CF41A /* HRMAPHelper.m */,
-				87A420E91FF37DB3009CF41A /* IAPHelper.h */,
-				87A420E81FF37DB2009CF41A /* IAPHelper.m */,
 				8728113B190C5DE2005ABB06 /* Utility.h */,
 				8728113C190C5DE2005ABB06 /* Utility.m */,
 				87281138190C5D0A005ABB06 /* FMDBDataAccess.h */,
@@ -206,6 +203,11 @@
 				875740A41BA36406002F0150 /* ETStockViewController.h */,
 				875740A51BA36406002F0150 /* ETStockViewController.m */,
 				872E5E622D2C4F13007A9D74 /* LaunchScreen.storyboard */,
+				872125152D4517DD0048C057 /* IAPManager.h */,
+				872125182D45188E0048C057 /* IAPLocalizedPrice.m */,
+				8721251A2D451AB50048C057 /* IAPLocalizedPrice.h */,
+				8721251C2D46E38A0048C057 /* IAPManagerSwift.swift */,
+				8721251B2D46E3890048C057 /* Polpriser-Bridging-Header.h */,
 			);
 			path = winelist;
 			sourceTree = "<group>";
@@ -312,6 +314,7 @@
 				TargetAttributes = {
 					87FF11C6190C511200FFE043 = {
 						DevelopmentTeam = 3B9MVBS2CK;
+						LastSwiftMigration = 1520;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -375,7 +378,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				87A420EB1FF37FE4009CF41A /* ETAlertView.m in Sources */,
-				87A420EA1FF37DB3009CF41A /* IAPHelper.m in Sources */,
+				872125192D45188E0048C057 /* IAPLocalizedPrice.m in Sources */,
+				8721251D2D46E38A0048C057 /* IAPManagerSwift.swift in Sources */,
 				87FF11E4190C511200FFE043 /* ETViewController.m in Sources */,
 				87281144191288DF005ABB06 /* ETSegmentedControl.m in Sources */,
 				8728115C1914FF53005ABB06 /* ETInternetconnection.m in Sources */,
@@ -388,7 +392,6 @@
 				87FF121D190C528300FFE043 /* Wine.m in Sources */,
 				8728113D190C5DE2005ABB06 /* Utility.m in Sources */,
 				87495554191D26EA00A4E95C /* ETHelpViewController.m in Sources */,
-				87A420EE1FF3828D009CF41A /* HRMAPHelper.m in Sources */,
 				87FF120E190C513000FFE043 /* FMDatabase.m in Sources */,
 				87FF1212190C513000FFE043 /* FMResultSet.m in Sources */,
 				87FF120F190C513000FFE043 /* FMDatabaseAdditions.m in Sources */,
@@ -499,7 +502,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -549,7 +552,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -562,9 +565,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.3.9;
+				CURRENT_PROJECT_VERSION = 1.3.13;
 				DEVELOPMENT_TEAM = 3B9MVBS2CK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "winelist/winelist-Prefix.pch";
@@ -578,6 +582,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.erlendthune.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "winelist/Polpriser-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -587,9 +594,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.3.9;
+				CURRENT_PROJECT_VERSION = 1.3.13;
 				DEVELOPMENT_TEAM = 3B9MVBS2CK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "winelist/winelist-Prefix.pch";
@@ -603,6 +611,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.erlendthune.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "winelist/Polpriser-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -610,6 +620,7 @@
 		87FF1200190C511200FFE043 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/winelist.app/winelist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -633,6 +644,7 @@
 		87FF1201190C511200FFE043 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/winelist.app/winelist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SHC-lL-6DI">
     <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -158,13 +159,13 @@
                         <viewLayoutGuide key="safeArea" id="vIM-cB-dmg"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="qZa-MZ-fwL" firstAttribute="leading" secondItem="vIM-cB-dmg" secondAttribute="leading" id="38z-be-EW6"/>
                             <constraint firstItem="vIM-cB-dmg" firstAttribute="bottom" secondItem="qZa-MZ-fwL" secondAttribute="bottom" id="IRX-5u-maA"/>
                             <constraint firstItem="vIM-cB-dmg" firstAttribute="trailing" secondItem="qZa-MZ-fwL" secondAttribute="trailing" id="Kj8-1M-vWL"/>
                             <constraint firstItem="vIM-cB-dmg" firstAttribute="trailing" secondItem="mZ8-p4-4Be" secondAttribute="trailing" constant="724" id="YsJ-qm-7gc"/>
                             <constraint firstItem="mZ8-p4-4Be" firstAttribute="leading" secondItem="vIM-cB-dmg" secondAttribute="leading" id="hKL-UE-wOr"/>
                             <constraint firstItem="qZa-MZ-fwL" firstAttribute="top" secondItem="mZ8-p4-4Be" secondAttribute="bottom" constant="8" id="kJ3-Tj-Kz9"/>
                             <constraint firstItem="mZ8-p4-4Be" firstAttribute="top" secondItem="vIM-cB-dmg" secondAttribute="top" id="sd8-aF-a1W"/>
-                            <constraint firstItem="mZ8-p4-4Be" firstAttribute="leading" secondItem="qZa-MZ-fwL" secondAttribute="leading" id="yJp-ZE-xgI"/>
                         </constraints>
                     </view>
                     <connections>

@@ -21,11 +21,11 @@
 -(void)ShowStartupDialog;
 - (void)purchase;
 - (void)restorePurchase;
-- (void) AppNotPurchased;
-- (void) AppPurchased;
+
+- (void) productPurchased;
+- (void) purchaseFailed:(NSString *)errorMessage;
 
 @property (nonatomic,strong) NSMutableArray *fullWineList;
-//@property (strong, nonatomic) FMDBDataAccess *db;
 @property (copy, nonatomic) NSString *currentSearchString;
 @property (weak, nonatomic) IBOutlet UITableView *wineTableView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *wineSegment;

@@ -19,30 +19,18 @@
 #define ORDER_BY_PRICE_PER_ALCOHOL_UNIT 5
 
 #import "ETViewController.h"
-#import "HRMAPHelper.h"
 
 #import "ETAlertView.h"
 #import "ETInternetconnection.h"
 #import "ETStockViewController.h"
 #import "ETHelpViewController.h"
+#import "Polpriser-Swift.h"
 
 @interface ETViewController ()
 
 @end
 
 @implementation ETViewController
-
--(void)requestDidFinish:(SKRequest*)request{
-    if([request isKindOfClass:[SKReceiptRefreshRequest class]]){
-        NSLog(@"Found receipt.");
-        [[HRMAPHelper sharedInstance] validateReceipt:self];
-    }
-}
-
-- (void)request:(SKRequest*)request didFailWithError:(NSError *)error{
-    NSLog(@"Could not find receipt. Try to restore purchase.");
-    [[HRMAPHelper sharedInstance] restoreCompletedTransactions];
-}
 
 - (void)viewDidLoad
 {
@@ -68,18 +56,24 @@
     [self GetDatabaseDate];
     self.dateRequestSource = 1;
     self.dbDateButton.tintColor = [UIColor blueColor];
-//    [self.dbDateButton setTarget:nil];
-//    [self.dbDateButton setAction:nil];
 
-    _purchased = [[HRMAPHelper sharedInstance] productPurchased:@"com.erlendthune.polpriser"];
-    _purchased = false;
-    if(!_purchased)
-    {
-        [[HRMAPHelper sharedInstance] validateReceipt:self];
-    }
+    [self load];
+    
+    [[IAPManagerSwift sharedManager] configureWith:self];
+    [[IAPManagerSwift sharedManager] fetchProducts];
+
+    _purchased = [[NSUserDefaults standardUserDefaults] boolForKey:@"com.erlendthune.polpriser"];
+    
+    [self getPrice];
+    [self UpdateTimesUsedAndDisplayNagScreen];
+
     //Subscribe to events that application receives. This causes the nag screen to be activated when app is activated.
     [self getWines];
     [self updateSortArrows];
+    if(_primaryOrderKeyActive)
+    {
+        [self updatePrimaryKeySegment];
+    }
 
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12]};
     [self.wineSegment setTitleTextAttributes:attributes forState:UIControlStateNormal];
@@ -104,6 +98,7 @@
         }
         [self updateSortArrows];
         [self getWines];
+        [self save];
     }
 }
 
@@ -125,166 +120,60 @@
     [self.wineSegment setTitleTextAttributes:boldAttributes forState:UIControlStateNormal];
 }
 
-- (void)AppNotPurchased
-{
-    if(_restorePurchaseStarted)
-    {
-        [[HRMAPHelper sharedInstance] restoreCompletedTransactions];
-        _restorePurchaseStarted = false;
-    }
-    else
-    {
-        dispatch_async(dispatch_get_main_queue(),^ {
-            [self getPrice];
-        } );
-    }
-}
-
-
-- (void)AppPurchased
-{
-    dispatch_async(dispatch_get_main_queue(),^ {
-        [[HRMAPHelper sharedInstance] storePurchase:@"com.erlendthune.polpriser"];
-    } );
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restorePurchaseFailed:) name:IAPHelperProductRestorePurchaseError object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseFailed:) name:IAPHelperProductPurchasedError object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchasedAlready:) name:IAPHelperProductAlreadyPurchased object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transactionFinished:) name:IAPHelperTransactionFinished object:nil];
-}
-
 - (void)viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)getPrice
-{
-    _price = nil;
-    [[HRMAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-        if (success)
-        {
-            if([products count])
-            {
-                SKProduct* p = [products objectAtIndex:0]; //We only have one product.
-                if(p)
-                {
-                    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-                    [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-                    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-                    [numberFormatter setLocale:p.priceLocale];
-                    self->_price = [numberFormatter stringFromNumber:p.price];
-                }
-                else
-                {
-                    NSLog(@"getPrice no product at position 0.");
-                }
-            }
-            else
-            {
-                NSLog(@"getPrice no products.");
-            }
+- (void)getPrice {
+    self.price = nil;
+    
+    [[IAPManagerSwift sharedManager] fetchPriceFor:@"com.erlendthune.polpriser" completion:^(NSString *price) {
+        if (price) {
+            self->_price = price;
+        } else {
+            NSLog(@"getPrice: Failed to fetch price.");
         }
-        else
-        {
-            NSLog(@"getPrice failed to get products.");
-        }
-        dispatch_async(dispatch_get_main_queue(),^ {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
             [self UpdateTimesUsedAndDisplayNagScreen];
-        } );
-        dispatch_async(dispatch_get_main_queue(),^ {
+        });
+        dispatch_async(dispatch_get_main_queue(), ^{
             [self GetNotifiedWhenAppEntersForeground];
-        } );
+        });
     }];
 }
-
-- (void)purchase
-{
-    [_activityIndicator startAnimating];
-    [[HRMAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-        if (success)
-        {
-            if([products count])
-            {
-                SKProduct* p = [products objectAtIndex:0]; //We only have one product.
-                if(p)
-                {
-                    bool canMakePayments = [[HRMAPHelper sharedInstance] buyProduct:p];
-                    if(!canMakePayments)
-                    {
-                        [self alertMessage:@"Kjøp" s:@"Du har ikke lov til å foreta kjøp."];
-                    }
-                }
-                else
-                {
-                    [self alertMessage:@"Kjøp" s:@"Fant ingenting å kjøpe."];
-                    [self->_activityIndicator stopAnimating];
-                }
-            }
-            else
-            {
-                [self alertMessage:@"Kjøp" s:@"Fant ingenting å kjøpe."];
-                [self->_activityIndicator stopAnimating];
-            }
-        }
-        else
-        {
-            [self alertMessage:@"Kjøp" s:@"Kunne ikke koble til App store."];
-            [self->_activityIndicator stopAnimating];
-        }
-    }];
-}
-
-- (void)restoreReceipt
-{
-    SKReceiptRefreshRequest* request = [[SKReceiptRefreshRequest alloc] initWithReceiptProperties:nil];
-    request.delegate = self;
-    [request start];
-    
-}
-
-- (void)restorePurchase
-{
+- (void)purchase {
     [_activityIndicator startAnimating];
     
-    _restorePurchaseStarted = true;
-    
-    //First try to restore the receipt. If it fails it will try to restore the purchase.
-    [self restoreReceipt];
+    // Perform the purchase operation asynchronously
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[IAPManagerSwift sharedManager] purchaseProduct];
+    });
 }
 
-- (void)productPurchased:(NSNotification *)notification {
-    NSLog(@"Product purchased. Remove buy buttons");
+- (void)restorePurchase {
+    [_activityIndicator startAnimating];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[IAPManagerSwift sharedManager] restorePurchase];
+    });
+}
+
+- (void)productPurchased {
     _purchased = true;
-    [_activityIndicator stopAnimating];
-    [self alertMessage:@"Informasjon" s:@"Takk! App'en er nå låst opp."];
+
+    dispatch_async(dispatch_get_main_queue(),^ {
+        [self.activityIndicator stopAnimating];
+        [self alertMessage:@"Informasjon" s:@"Takk! App'en er nå låst opp."];
+    });
 }
 
-- (void)restorePurchaseFailed:(NSNotification *)notification
+- (void)purchaseFailed:(NSString *)errorMessage
 {
-    [self alertMessage:@"Informasjon" s:@"Klarte ikke å koble til App store."];
-    [_activityIndicator stopAnimating];
-}
-
-- (void)purchasedAlready:(NSNotification *)notification
-{
-    [self alertMessage:@"Informasjon" s:@"Du har allerede kjøpt app'en."];
-}
-
-- (void)purchaseFailed:(NSNotification *)notification
-{
-    [self alertMessage:@"Informasjon" s:@"Klarte ikke å koble til App store."];
-    [_activityIndicator stopAnimating];
-}
-- (void)transactionFinished:(NSNotification *)notification
-{
-    if(!_purchased)
-    {
-        [self alertMessage:@"Informasjon" s:@"Du har ikke kjøpt app'en."];
-    }
-    [_activityIndicator stopAnimating];
+    dispatch_async(dispatch_get_main_queue(),^ {
+        [self.activityIndicator stopAnimating];
+        [self alertMessage:@"Feil" s:errorMessage];
+    });
 }
 
 //From http://stackoverflow.com/questions/2705865/change-uisearchbar-keyboard-search-button-title
@@ -339,7 +228,7 @@
                     [self DisplayAlertView:self.usageCounter nag:nag];
                 } );
             }
-            else
+            else if(self.usageCounter == 1) //Display the first time
             {
                 [self performSelectorOnMainThread:@selector(ShowStartupDialog) withObject:nil waitUntilDone:NO];
             }
@@ -360,8 +249,6 @@
 
 - (void) DisplayAlertView:(int)noOfTimesUsed  nag:(bool)nag
 {
-    // Create the view
-    
     CGRect screenBounds = [UIScreen mainScreen].bounds;
     CGFloat maxWidth = screenBounds.size.width;
     CGFloat maxHeight = screenBounds.size.height;
@@ -375,10 +262,8 @@
     f.origin.y = maxHeight/8;
     self.alertView.frame = f;
     
-//    self.view.userInteractionEnabled=NO;
     [self.view addSubview:self.alertView];
 }
-
 
 -(NSString*)CreatePrice:(NSString*)s
 {
@@ -547,6 +432,7 @@
     
     self.filter = (int)buttonIndex;
     [self getWines];
+    [self save];
 }
 
 - (IBAction)ShowFilterDialog:(id)sender {
@@ -583,12 +469,11 @@
        handler:^(UIAlertAction * action) {
            [self DisplayAlertView:self.usageCounter nag:false];
        }];
-    if(_purchased)
+    if(self.purchased || self.nagscreenOnDisplay)
     {
         buyAction.enabled = NO;
     }
     [alert addAction:buyAction];
-
 
     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Avbryt" style:UIAlertActionStyleCancel
          handler:nil
@@ -658,6 +543,7 @@
     }
     else
     {
+        self.orderBy = self.wineSegment.selectedSegmentIndex;
         self.orderAscending = true;
     }
 }
@@ -682,12 +568,13 @@
     [self.wineSegment setNeedsLayout];
     [self.wineSegment layoutIfNeeded];
 }
+
 - (IBAction)segmentChanged:(id)sender {
     [self setSortDirection];
-    self.orderBy = self.wineSegment.selectedSegmentIndex;
     [self updateSortArrows];
 
     [self getWines];
+    [self save];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -709,7 +596,6 @@
     long i = [indexPath row];
     
     Wine *wine;
-
 
     wine = [self.fullWineList objectAtIndex:i];
     cell.textLabel.text = wine.name;
@@ -853,7 +739,6 @@ CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl'
     [self.wineTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
     [self.wineTableView reloadData];
 }
-
 
 - (void)getWines
 {
@@ -1166,7 +1051,6 @@ CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl'
                                                                        message:msg
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
-        // "Ja" Action
         UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Ja"
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * _Nonnull action) {
@@ -1201,7 +1085,6 @@ CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl'
     [defaults setBool:self.primaryOrderKeyActive forKey:@"primaryOrderKeyActive"];
     [defaults setBool:self.primaryOrderAscending forKey:@"primaryOrderAscending"];
     [defaults setInteger:self.primaryOrderKey forKey:@"primaryOrderKey"];
-
     [defaults setBool:self.orderAscending forKey:@"orderAscending"];
     [defaults setInteger:self.orderBy forKey:@"orderBy"];
     [defaults setInteger:self.filter forKey:@"filter"];
@@ -1213,7 +1096,6 @@ CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl'
 
 - (void)load
 {
-    // Get the stored data before the view loads
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     if ([defaults objectForKey:@"primaryOrderKeyActive"] != nil)
@@ -1231,7 +1113,7 @@ CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl'
 
     if ([defaults objectForKey:@"orderAscending"] != nil)
     {
-        self.primaryOrderKeyActive = [defaults boolForKey:@"orderAscending"];
+        self.orderAscending = [defaults boolForKey:@"orderAscending"];
     }
     if ([defaults objectForKey:@"orderBy"] != nil)
     {
@@ -1256,6 +1138,5 @@ CAST(REPLACE(REPLACE(SUBSTR(volume, 1, INSTR(volume, ' ') - 1), ',', '.'), ' cl'
     }
  */
 }
-
 
 @end
