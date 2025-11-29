@@ -6,11 +6,12 @@
 //  Copyright (c) 2015 Erlend Thune. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
+
 
 @interface ETStockViewController : UIViewController
 @property (nonatomic, strong) NSString *url;
 @property int sku;
-@property (weak, nonatomic) IBOutlet UIWebView *stockWebView;
+@property (weak, nonatomic) IBOutlet WKWebView *stockWebView;
 
 @end

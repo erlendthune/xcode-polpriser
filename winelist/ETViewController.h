@@ -17,15 +17,15 @@
 @class ETAlertView;
 @class ETInternetconnection;
 
-@interface ETViewController : UIViewController<UIActionSheetDelegate, NSURLConnectionDelegate,  SKRequestDelegate>
+@interface ETViewController : UIViewController<UIActionSheetDelegate,  NSURLSessionDelegate, NSURLSessionDataDelegate,  SKRequestDelegate>
 -(void)ShowStartupDialog;
 - (void)purchase;
 - (void)restorePurchase;
-- (void) AppNotPurchased;
-- (void) AppPurchased;
+
+- (void) productPurchased;
+- (void) purchaseFailed:(NSString *)errorMessage;
 
 @property (nonatomic,strong) NSMutableArray *fullWineList;
-//@property (strong, nonatomic) FMDBDataAccess *db;
 @property (copy, nonatomic) NSString *currentSearchString;
 @property (weak, nonatomic) IBOutlet UITableView *wineTableView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *wineSegment;
@@ -36,10 +36,14 @@
 @property (nonatomic) bool orderAscending;
 @property (nonatomic) bool nagscreenOnDisplay;
 @property (nonatomic) bool filterMenuHasBeenDisplayed;
-@property (nonatomic) int orderBy;
+@property (nonatomic) long orderBy;
+@property (nonatomic) bool primaryOrderKeyActive;
+@property (nonatomic) long primaryOrderKey;
+@property (nonatomic) bool primaryOrderAscending;
+
 @property (nonatomic) long bytesReceived;
 @property (nonatomic) long activeSegment;
-@property (nonatomic) int filter;
+@property (nonatomic) long filter;
 @property (weak, nonatomic) IBOutlet UIView *nagView;
 @property (nonatomic) int usageCounter;
 @property (nonatomic) int downloadState;

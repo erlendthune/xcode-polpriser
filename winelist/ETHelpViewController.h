@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Erlend Thune. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 @interface ETHelpViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIWebView *helpView;
+@property (weak, nonatomic) IBOutlet WKWebView *helpView;
 
 @end
